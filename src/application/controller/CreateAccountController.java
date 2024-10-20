@@ -26,7 +26,6 @@ public class CreateAccountController {
 		openingDateField.setValue(LocalDate.now());
 		// Updates date if user selects a date
 		openingDateField.setOnAction(event -> openingDateField.getValue());
-		
 	}
 
 	@FXML public void enterOpeningBalOp() {}
