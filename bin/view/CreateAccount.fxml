@@ -31,7 +31,7 @@
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <TextField layoutX="71.0" layoutY="166.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Enter Account Name">
+      <TextField fx:id="accNameField" layoutX="71.0" layoutY="166.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Enter Account Name">
          <font>
             <Font name="PT Sans" size="10.0" />
          </font>
@@ -46,7 +46,7 @@
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <DatePicker layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="10/19/2024" />
+      <DatePicker fx:id="openingDateField" layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="10/19/2024" />
       <Label layoutX="71.0" layoutY="269.0" prefHeight="31.0" prefWidth="120.0" text="Opening Balance" textFill="#37474f">
          <font>
             <Font name="PT Sans" size="13.0" />
@@ -57,7 +57,7 @@
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <TextField layoutX="71.0" layoutY="296.0" onAction="#enterOpeningBalOp" prefHeight="29.0" prefWidth="184.0" promptText="\$0.00">
+      <TextField fx:id="openingBalField" layoutX="71.0" layoutY="296.0" onAction="#enterOpeningBalOp" prefHeight="29.0" prefWidth="184.0" promptText="\$0.00">
          <font>
             <Font name="PT Sans" size="10.0" />
          </font>
