@@ -6,7 +6,6 @@ import javafx.scene.layout.HBox;
  * This class contains all the references we would like to share among all controllers.
  */
 public class CommonObjs {
-	// create commonObjs which stores references of mainBox
 	private static CommonObjs commonObjs = new CommonObjs();
 	private HBox mainBox;
 	private String accountName;

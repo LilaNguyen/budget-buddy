@@ -4,6 +4,7 @@ import application.CommonObjs;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import java.time.LocalDate;
 
 public class CreateAccountController {
 	// Need a reference of CommonObjs objects here
@@ -13,9 +14,20 @@ public class CreateAccountController {
     @FXML private DatePicker openingDateField;  // For opening date input
     @FXML private TextField openingBalField;  // For opening balance input
 
+    @FXML
+	public void initialize() {
+    	enterOpeningDateOp();
+	}
+    
 	@FXML public void enterAccNameOp() {}
 
-	@FXML public void enterOpeningDateOp() {}
+	@FXML public void enterOpeningDateOp() {
+		// By default, opening date is set to current date 
+		openingDateField.setValue(LocalDate.now());
+		// Updates date if user selects a date
+		openingDateField.setOnAction(event -> openingDateField.getValue());
+		
+	}
 
 	@FXML public void enterOpeningBalOp() {}
 
@@ -34,12 +46,12 @@ public class CreateAccountController {
             System.out.println("Account name is required.");
             return;
         }
-
+        
         if (openingDate == null || openingDate.trim().isEmpty()) {
             System.out.println("Opening date is required.");
             return;
         }
-
+		
         double balance = 0.0;
         try {
             balance = Double.parseDouble(openingBalance);
