@@ -4,7 +4,6 @@ Personal Budgeting GUI Application
 ## How to Contribute as a Collaborator:
 1. `git clone` the project
 2. `cd` into the directory
-3. create a new branch for each new feature using `git branch`
 4. start coding! be sure to `git add` and `git commit` often
 5. once completed, `git push` your branch
 6. submit a "Create pull request" and clearly describe what was changed and why
