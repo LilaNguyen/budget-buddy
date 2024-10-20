@@ -1,14 +1,5 @@
 package application.controller;
 
-import java.io.IOException;
-import java.net.URL;
-
-import application.CommonObjs;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-
 import application.CommonObjs;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -17,18 +8,16 @@ import javafx.scene.control.TextField;
 public class CreateAccountController {
 	// Need a reference of CommonObjs objects here
 	private CommonObjs commonObjs = CommonObjs.getInstance();
+	
+	@FXML private TextField accNameField;  // For account name input
+    @FXML private DatePicker openingDateField;  // For opening date input
+    @FXML private TextField openingBalField;  // For opening balance input
 
 	@FXML public void enterAccNameOp() {}
 
 	@FXML public void enterOpeningDateOp() {}
 
 	@FXML public void enterOpeningBalOp() {}
-	
-	@FXML private TextField accNameField;  // For account name input
-
-    @FXML private DatePicker openingDateField;  // For opening date input
-
-    @FXML private TextField openingBalField;  // For opening balance input
 
 	@FXML public void submitOp() {
 		String accName = accNameField.getText();  // Get the account name

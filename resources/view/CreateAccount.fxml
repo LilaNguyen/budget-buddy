@@ -16,14 +16,14 @@
             <Image url="@../images/addCard.png" />
          </image>
       </ImageView>
-      <Label layoutX="71.0" layoutY="106.0" prefHeight="31.0" prefWidth="141.0" text="Add New Account" textFill="#37474f">
+      <Label layoutX="71.0" layoutY="107.0" prefHeight="31.0" prefWidth="168.0" text="Add New Account" textFill="#37474f">
          <font>
-            <Font name="PT Sans" size="18.0" />
+            <Font name="Hiragino Sans GB W3" size="16.0" />
          </font>
       </Label>
       <Label layoutX="71.0" layoutY="139.0" prefHeight="31.0" prefWidth="94.0" text="Account Name" textFill="#37474f">
          <font>
-            <Font name="PT Sans" size="13.0" />
+            <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
       <Label layoutX="155.0" layoutY="146.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
@@ -33,12 +33,12 @@
       </Label>
       <TextField fx:id="accNameField" layoutX="71.0" layoutY="166.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Enter Account Name">
          <font>
-            <Font name="PT Sans" size="10.0" />
+            <Font name="Hiragino Sans GB W3" size="9.0" />
          </font>
       </TextField>
       <Label layoutX="71.0" layoutY="204.0" prefHeight="31.0" prefWidth="80.0" text="Opening Date" textFill="#37474f">
          <font>
-            <Font name="PT Sans" size="13.0" />
+            <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
       <Label layoutX="151.0" layoutY="211.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
@@ -49,7 +49,7 @@
       <DatePicker fx:id="openingDateField" layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="10/19/2024" />
       <Label layoutX="71.0" layoutY="269.0" prefHeight="31.0" prefWidth="120.0" text="Opening Balance" textFill="#37474f">
          <font>
-            <Font name="PT Sans" size="13.0" />
+            <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
       <Label layoutX="168.0" layoutY="276.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
@@ -59,17 +59,17 @@
       </Label>
       <TextField fx:id="openingBalField" layoutX="71.0" layoutY="296.0" onAction="#enterOpeningBalOp" prefHeight="29.0" prefWidth="184.0" promptText="\$0.00">
          <font>
-            <Font name="PT Sans" size="10.0" />
+            <Font name="Hiragino Sans GB W3" size="9.0" />
          </font>
       </TextField>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="342.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Submit" textAlignment="CENTER" textFill="#37474f">
          <font>
-            <Font name="PT Sans" size="10.0" />
+            <Font name="Hiragino Sans GB W3" size="9.0" />
          </font>
       </Button>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="138.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancelOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
          <font>
-            <Font name="PT Sans" size="10.0" />
+            <Font name="Hiragino Sans GB W3" size="9.0" />
          </font>
       </Button>
    </children>

@@ -9,14 +9,10 @@ public class CommonObjs {
 	// create commonObjs which stores references of mainBox
 	private static CommonObjs commonObjs = new CommonObjs();
 	private HBox mainBox;
-	
-<<<<<<< HEAD
 	private String accountName;
     private String openingDate;
     private String openingBalance;
-	
-=======
->>>>>>> 3296208537fe1ee93c40435a1d45f8078642fb19
+    
 	private CommonObjs() {}
 	
 	public static CommonObjs getInstance() {

@@ -14,7 +14,7 @@ public class MainController {
 
 	@FXML
 	public void initialize() {
-		// returnToHomepageOp();
+		returnToHomepageOp();
 	}
 
 	@FXML public void returnToHomepageOp() {
