@@ -10,8 +10,6 @@ public class CommonObjs {
 	private static CommonObjs commonObjs = new CommonObjs();
 	private HBox mainBox;
 	
-	
-	
 	private CommonObjs() {}
 	
 	public static CommonObjs getInstance() {

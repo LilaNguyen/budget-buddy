@@ -44,40 +44,55 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="161.0" mnemonicParsing="false" onAction="#showNewAccOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="New Account" textAlignment="CENTER" textFill="#37474f">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="166.0" mnemonicParsing="false" onAction="#showNewAccOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="New Account" textAlignment="CENTER" textFill="#37474f">
                <font>
                   <Font name="PT Sans" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="161.0" mnemonicParsing="false" onAction="#showViewAccsOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="View Accounts" textAlignment="CENTER" textFill="#37474f">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="166.0" mnemonicParsing="false" onAction="#showViewAccsOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="View Accounts" textAlignment="CENTER" textFill="#37474f">
                <font>
                   <Font name="PT Sans" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="214.0" mnemonicParsing="false" onAction="#showNewTransOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="New Transaction" textAlignment="CENTER" textFill="#37474f" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="219.0" mnemonicParsing="false" onAction="#showNewTransOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="New Transaction" textAlignment="CENTER" textFill="#37474f" wrapText="true">
                <font>
                   <Font name="PT Sans" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="214.0" mnemonicParsing="false" onAction="#showScheduledTransOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Scheduled Transactions" textAlignment="CENTER" textFill="#37474f" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="219.0" mnemonicParsing="false" onAction="#showScheduledTransOp" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Scheduled Transactions" textAlignment="CENTER" textFill="#37474f" wrapText="true">
                <font>
                   <Font name="PT Sans" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="268.0" mnemonicParsing="false" onAction="#showTransTypeOp" prefHeight="39.0" prefWidth="101.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="New Transaction Type" textAlignment="CENTER" textFill="#37474f" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="273.0" mnemonicParsing="false" onAction="#showTransTypeOp" prefHeight="39.0" prefWidth="101.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="New Transaction Type" textAlignment="CENTER" textFill="#37474f" wrapText="true">
                <font>
                   <Font name="PT Sans" size="10.0" />
                </font>
             </Button>
-            <Hyperlink layoutX="99.0" layoutY="349.0" onAction="#returnToHomepageOp" text="Return to Homepage" textFill="#99bec9" underline="true">
+            <Hyperlink layoutX="105.0" layoutY="348.0" onAction="#returnToHomepageOp" text="Return to Homepage" underline="true">
                <font>
                   <Font name="PT Sans" size="8.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop color="#acd3df" />
+                        <Stop color="#99bec9" offset="0.007518796992481203" />
+                        <Stop color="#99bec9" offset="0.3838904694167852" />
+                        <Stop color="#aeb3bf" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Hyperlink>
             <ImageView fitHeight="77.0" fitWidth="73.0" layoutX="37.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/piggybank.png" />
                </image></ImageView>
+            <ImageView fitHeight="12.0" fitWidth="23.0" layoutX="87.0" layoutY="350.0" opacity="0.25" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/homeIcon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
