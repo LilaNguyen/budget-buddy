@@ -33,7 +33,7 @@
       </Label>
       <TextField fx:id="accNameField" layoutX="71.0" layoutY="166.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Enter Account Name">
          <font>
-            <Font name="Hiragino Sans GB W3" size="9.0" />
+            <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </TextField>
       <Label layoutX="71.0" layoutY="204.0" prefHeight="31.0" prefWidth="80.0" text="Opening Date" textFill="#37474f">
@@ -46,7 +46,7 @@
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <DatePicker fx:id="openingDateField" layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="10/19/2024" />
+      <DatePicker fx:id="openingDateField" layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="10/19/2024" style="-fx-font-size: 11.5;" />
       <Label layoutX="71.0" layoutY="269.0" prefHeight="31.0" prefWidth="120.0" text="Opening Balance" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
@@ -59,17 +59,17 @@
       </Label>
       <TextField fx:id="openingBalField" layoutX="71.0" layoutY="296.0" onAction="#enterOpeningBalOp" prefHeight="29.0" prefWidth="184.0" promptText="\$0.00">
          <font>
-            <Font name="Hiragino Sans GB W3" size="9.0" />
+            <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </TextField>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="342.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Submit" textAlignment="CENTER" textFill="#37474f">
          <font>
-            <Font name="Hiragino Sans GB W3" size="9.0" />
+            <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
       <Button alignment="CENTER" contentDisplay="CENTER" layoutX="138.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancelOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
          <font>
-            <Font name="Hiragino Sans GB W3" size="9.0" />
+            <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
    </children>

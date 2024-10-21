@@ -58,10 +58,12 @@ public class CreateAccountController {
                 System.out.println("Balance cannot be negative.");
                 return;
             }
-        } catch (NumberFormatException e) {
+        } 
+        catch (NumberFormatException e) {
             System.out.println("Invalid balance. Please enter a numeric value.");
             return;
         }
+        System.out.println("Account successfully created.");
 	}
 
 	@FXML public void cancelOp() {}
