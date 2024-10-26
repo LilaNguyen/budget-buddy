@@ -1,1 +1,15 @@
+**/.DS_Store
+**/.temp*
+/.classpath
+/.gitignore
+/.project
+/.settings/
+/README.md
 /application/
+<<<<<<< HEAD
+=======
+/build.fxbuild
+/css/
+/images/
+/view/
+>>>>>>> 2dc90f94cabbff057e4c09e424bfd1576c7bb907

@@ -11,4 +11,4 @@ Personal Budgeting GUI Application
 8. if there are no conflicts, pull requests will be merged into master branch
 
 ## Contributors
-Lila Nguyen, Rogelio Comino Hipolito, Noah Jones, Ali Altimimi
+Lila Nguyen, Rogelio Comino Hipolito, Noah Jones, Ali Altimi
