@@ -19,36 +19,26 @@ public class FileDal {
     }
 
     // Save a new account to the list
-    public List<Account> saveAccount(String accountId, String accountName, double balance) {
+    public List<Account> saveAccount(String accountName, String balance) {
         // Create a new Account and add it to the list
-        Account account = new Account(accountId, accountName, balance);
+        Account account = new Account(accountName, balance);
         accounts.add(account);
-        
+        //
         // Return the updated list of accounts
         return accounts;
     }
 
     // Inner class to represent Account data
     class Account {
-        private String accountId;
         private String accountName;
-        private double balance;
+        private String balance;
 
-        public Account(String accountId, String accountName, double balance) {
-            this.accountId = accountId;
+        public Account(String accountName, String balance) {
             this.accountName = accountName;
             this.balance = balance;
         }
 
         // Getters and setters
-        public String getAccountId() {
-            return accountId;
-        }
-
-        public void setAccountId(String accountId) {
-            this.accountId = accountId;
-        }
-
         public String getAccountName() {
             return accountName;
         }
@@ -57,20 +47,19 @@ public class FileDal {
             this.accountName = accountName;
         }
 
-        public double getBalance() {
+        public String getBalance() {
             return balance;
         }
 
-        public void setBalance(double balance) {
+        public void setBalance(String balance) {
             this.balance = balance;
         }
 
         @Override
         public String toString() {
             return "Account{" +
-                    "accountId='" + accountId + '\'' +
-                    ", accountName='" + accountName + '\'' +
-                    ", balance=" + balance +
+                    "accountName='" + accountName + '\'' +
+                    ", balance='" + balance + '\'' +
                     '}';
         }
     }
@@ -80,8 +69,8 @@ public class FileDal {
         FileDal fileDal = new FileDal();
 
         // Save some accounts
-        fileDal.saveAccount("123", "John Doe", 1000.0);
-        fileDal.saveAccount("456", "Jane Smith", 2500.0);
+        fileDal.saveAccount("John Doe", "1000.0");
+        fileDal.saveAccount("Jane Smith", "2500.0");
 
         // Load and display all accounts
         List<Account> accounts = fileDal.LoadAccounts();
