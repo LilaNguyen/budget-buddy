@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import java.time.LocalDate;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 
 public class CreateAccountController {
 	// Need a reference of CommonObjs objects here
@@ -44,12 +47,12 @@ public class CreateAccountController {
 
         // Perform validation
         if (accName == null || accName.trim().isEmpty()) {
-            System.out.println("Account name is required.");
+        	displayErrorAlert("Account name is required.");
             return;
         }
         
         if (openingDate == null || openingDate.trim().isEmpty()) {
-            System.out.println("Opening date is required.");
+        	displayErrorAlert("Opening date is required.");
             return;
         }
 		
@@ -57,31 +60,59 @@ public class CreateAccountController {
         try {
             balance = Double.parseDouble(openingBalance);
             if (balance < 0) {
-                System.out.println("Balance cannot be negative.");
+            	displayErrorAlert("Balance cannot be negative.");
                 // clear field for new input
                 openingBalField.setText("");
+                return;
             }
             // format balance to 2 decimal places
             openingBalField.setText(String.format("%.2f", balance));
         } 
         catch (NumberFormatException e) {
-            System.out.println("Invalid balance. Please enter a numeric value.");
+        	displayErrorAlert("Invalid balance. Please enter a numeric value.");
             // clear field for new input
             openingBalField.setText("");
             return;
         }
-        System.out.println("Account successfully created.");
+        displaySuccessAlert("Account successfully created.");
+        clearFormOp();
 	}
 
 	/**
 	 * This method clears the fields for "Account Name" and "Opening Balance."
 	 * The field "Opening Date" is not cleared but reset to its default value (current date).
 	 */
-	@FXML public void cancelOp() {
+	@FXML public void clearFormOp() {
 		accNameField.clear();
 		enterOpeningDateOp();
 		openingBalField.clear();
 	}
-
+	
+	/**
+	 * The following method displays a pop-up alert, informing the user of the error.
+	 * @param message the error message to be displayed
+	 */
+	private void displayErrorAlert(String message) {
+		Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
+		alert.setTitle("Input Error");
+		// remove default header
+		alert.setHeaderText(null);
+		// display the alert and wait for user interaction
+		alert.showAndWait();
+	}
+	
+	/**
+	 * The following method displays a pop-up alert, informing the user that an action was completed
+	 * successfully.
+	 * @param message the success message to be displayed
+	 */
+	private void displaySuccessAlert(String message) {
+		Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
+		alert.setTitle("Success");
+		// remove default header
+		alert.setHeaderText(null);
+		// display the alert and wait for user interaction
+		alert.showAndWait();
+	}
 	
 }
