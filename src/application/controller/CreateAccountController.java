@@ -4,6 +4,9 @@ import application.CommonObjs;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.time.LocalDate;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -111,6 +114,12 @@ public class CreateAccountController {
 		alert.setTitle("Success");
 		// remove default header
 		alert.setHeaderText(null);
+		// load custom image to use as icon
+		Image icon = new Image("images/successIcon.png");
+		ImageView iconView = new ImageView(icon);
+		iconView.setFitHeight(50);
+		iconView.setFitWidth(50);
+		alert.setGraphic(iconView);
 		// display the alert and wait for user interaction
 		alert.showAndWait();
 	}
