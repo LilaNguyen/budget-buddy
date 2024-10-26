@@ -3,11 +3,15 @@ package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.fxml.FXMLLoader;
 
 
 public class Main extends Application {
+	
+	private TableView table1 = new TableView();
+	
 	@Override
 	public void start(Stage primaryStage) {
 		

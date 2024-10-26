@@ -48,11 +48,23 @@ public class MainController {
 		}
 	}
 
-	/*
-	 * To be implemented at a later date.
-	 */
-	@FXML public void showViewAccsOp() {}
-
+	
+	@FXML public void showViewAccsOp() {
+		URL url = getClass().getClassLoader().getResource("view/ViewAccounts.fxml");
+		
+		try {
+			AnchorPane pane3 = (AnchorPane) FXMLLoader.load(url);
+			// before inserting new child, remove previous one
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			mainBox.getChildren().add(pane3);
+		
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	/*
 	 * To be implemented at a later date.
 	 */
