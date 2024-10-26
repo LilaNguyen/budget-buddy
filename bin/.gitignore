@@ -1,4 +1,12 @@
+**/.DS_Store
+**/.temp*
+/.classpath
+/.gitignore
+/.project
+/.settings/
+/README.md
 /application/
+/build.fxbuild
 /css/
 /images/
 /view/
