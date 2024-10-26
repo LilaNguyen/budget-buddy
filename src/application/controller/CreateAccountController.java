@@ -21,10 +21,12 @@ public class CreateAccountController {
     
 	@FXML public void enterAccNameOp() {}
 
+	/**
+	 * This method sets the default value of opening date to the current date. 
+	 * The opening date is updated if user selects a date. 
+	 */
 	@FXML public void enterOpeningDateOp() {
-		// By default, opening date is set to current date 
 		openingDateField.setValue(LocalDate.now());
-		// Updates date if user selects a date
 		openingDateField.setOnAction(event -> openingDateField.getValue());
 	}
 
@@ -56,17 +58,30 @@ public class CreateAccountController {
             balance = Double.parseDouble(openingBalance);
             if (balance < 0) {
                 System.out.println("Balance cannot be negative.");
-                return;
+                // clear field for new input
+                openingBalField.setText("");
             }
+            // format balance to 2 decimal places
+            openingBalField.setText(String.format("%.2f", balance));
         } 
         catch (NumberFormatException e) {
             System.out.println("Invalid balance. Please enter a numeric value.");
+            // clear field for new input
+            openingBalField.setText("");
             return;
         }
         System.out.println("Account successfully created.");
 	}
 
-	@FXML public void cancelOp() {}
+	/**
+	 * This method clears the fields for "Account Name" and "Opening Balance."
+	 * The field "Opening Date" is not cleared but reset to its default value (current date).
+	 */
+	@FXML public void cancelOp() {
+		accNameField.clear();
+		enterOpeningDateOp();
+		openingBalField.clear();
+	}
 
 	
 }
