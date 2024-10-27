@@ -1,6 +1,9 @@
 package application.controller;
 
 import application.CommonObjs;
+import application.interfaces.FileDal;
+import application.model.AccountBean;
+import application.model.DalInt;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -39,10 +42,14 @@ public class CreateAccountController {
 	@FXML public void enterOpeningBalOp() {}
 
 	@FXML public void submitOp() {
-		String accName = accNameField.getText();  // Get the account name
-        String openingDate = openingDateField.getValue() != null ? openingDateField.getValue().toString() : null;  // Convert date to String
-        String openingBalance = openingBalField.getText();  // Get the balance
+		
+		// String accName = accNameField.getText();  // Get the account name
+        // String openingDate = openingDateField.getValue() != null ? openingDateField.getValue().toString() : null;  // Convert date to String
+        // String openingBalanceStr = openingBalField.getText();  // Get the balance
 
+		String accName = accNameField.getText();
+		LocalDate openingDate = openingDateField.getValue();
+		String openingBalanceStr = openingBalField.getText(); 
         /*
         // Set the input values into CommonObjs
         commonObjs.setAccountName(accName);
@@ -56,29 +63,39 @@ public class CreateAccountController {
             return;
         }
         
-        if (openingDate == null || openingDate.trim().isEmpty()) {
+        if (openingDate == null) {
         	displayErrorAlert("Opening date is required.");
             return;
         }
 		
-        double balance = 0.0;
+        double openingBalance = 0.0;
         try {
-            balance = Double.parseDouble(openingBalance);
-            if (balance < 0) {
+        	openingBalance = Double.parseDouble(openingBalanceStr);
+            if (openingBalance < 0) {
             	displayErrorAlert("Balance cannot be negative.");
                 // clear field for new input
-                openingBalField.setText("");
+            	openingBalField.clear();
                 return;
             }
             // format balance to 2 decimal places
-            openingBalField.setText(String.format("%.2f", balance));
+            openingBalField.setText(String.format("%.2f", openingBalance));
         } 
         catch (NumberFormatException e) {
         	displayErrorAlert("Invalid balance. Please enter a numeric value.");
             // clear field for new input
-            openingBalField.setText("");
+        	openingBalField.clear();
             return;
         }
+        // Create AccountBean object to represent new account
+        AccountBean newAccount = new AccountBean(accName, openingDate, openingBalance);
+        
+        // Save account using DAL
+        DalInt dalInterface = new FileDal();
+        dalInterface.saveAccount(newAccount);
+        
+        // Set new account in CommonObjs to access most recently created account
+        CommonObjs.getInstance().setAccountBean(newAccount);
+        
         displaySuccessAlert("Account successfully created.");
         clearFormOp();
 	}

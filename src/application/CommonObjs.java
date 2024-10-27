@@ -2,6 +2,7 @@ package application;
 
 import java.time.LocalDate;
 
+import application.model.AccountBean;
 import javafx.scene.layout.HBox;
 
 /**
@@ -10,9 +11,12 @@ import javafx.scene.layout.HBox;
 public class CommonObjs {
 	private static CommonObjs commonObjs = new CommonObjs();
 	private HBox mainBox;
+	/*
 	private String accountName;
     private LocalDate openingDate;
     private double openingBalance;
+    */
+    private AccountBean accountBean; // reference to AccountBean
     
 	private CommonObjs() {}
 	
@@ -28,7 +32,15 @@ public class CommonObjs {
 		this.mainBox = mainBox;
 	}
 	
-
+	public AccountBean getAccountBean() {
+		return accountBean;
+	}
+	
+	public void setAccountBean(AccountBean accountBean) {
+		this.accountBean = accountBean;
+	}
+	
+	/*
     // Getter and Setter for accountName
     public String getAccountName() {
         return accountName;
@@ -55,6 +67,7 @@ public class CommonObjs {
     public void setOpeningBalance(double openingBalance) {
         this.openingBalance = openingBalance;
     }
+    */
 	
 	
 	

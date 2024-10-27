@@ -3,9 +3,9 @@ package application.controller;
 import java.time.LocalDate;
 import java.util.List;
 
-import application.DalInt;
-import application.FileDal;
-import application.AccountBean;
+import application.interfaces.FileDal;
+import application.model.AccountBean;
+import application.model.DalInt;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,12 +29,15 @@ public class ViewAccountsController {
     public void initialize() {
         // Set up the columns - MAKE SURE NAMES MATCH
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("accountName"));
-        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        transactionColumn.setCellValueFactory(new PropertyValueFactory<>("lastTransaction"));
+        balanceColumn.setCellValueFactory(new PropertyValueFactory<>("openingBalance"));
+        transactionColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
 
         // Initialize the list and table
         accountList = FXCollections.observableArrayList(dalInterface.loadAccounts());
         accountTable.setItems(accountList);
+        
+        // For Debugging-- make sure data is being loaded
+        System.out.println("Loaded accounts: " + accountList.size());
     }
 
     /*
@@ -42,7 +45,7 @@ public class ViewAccountsController {
     	// Test data and Refresh the table
         fileDal.saveAccount("John Doe", 1000.0, LocalDate.now().minusDays(5));
         fileDal.saveAccount("Jane Smith", 2500.0, LocalDate.now().minusDays(2));
-        accountList.setAll(fileDal.LoadAccounts());  
+        accountList.setAll(fileDal.loadAccounts());  
     }
     */
 }
