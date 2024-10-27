@@ -43,10 +43,12 @@ public class CreateAccountController {
         String openingDate = openingDateField.getValue() != null ? openingDateField.getValue().toString() : null;  // Convert date to String
         String openingBalance = openingBalField.getText();  // Get the balance
 
+        /*
         // Set the input values into CommonObjs
         commonObjs.setAccountName(accName);
         commonObjs.setOpeningDate(openingDate);
         commonObjs.setOpeningBalance(openingBalance);
+        */
 
         // Perform validation
         if (accName == null || accName.trim().isEmpty()) {

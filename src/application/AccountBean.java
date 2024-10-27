@@ -1,42 +1,47 @@
 package application;
 
+import java.time.LocalDate;
+
 public class AccountBean {
 	// Fields for account information
 	private String accountName;
-    private String openingDate;
-    private String openingBalance;
+    private LocalDate openingDate;
+    private double openingBalance;
 
     // Constructor
-    public AccountBean() {
+    public AccountBean(String accountName, LocalDate openingDate, double openingBalance) {
+    	this.accountName = accountName;
+    	this.openingDate = openingDate;
+    	this.openingBalance = openingBalance;
     }
 
     // Getter for name
-    public String getaccountName() {
+    public String getAccountName() {
         return accountName;
     }
 
     // Setter for name
-    public void setName(String accountName) {
+    public void setAccName(String accountName) {
         this.accountName = accountName;
     }
 
     // Getter for date
-    public String getDate() {
+    public LocalDate getOpeningDate() {
         return openingDate;
     }
 
     // Setter for date
-    public void setopeningDate(String date) {
+    public void setOpeningDate(LocalDate date) {
         this.openingDate = date;
     }
 
     // Getter for balance
-    public String getopeningBalance() {
+    public double getOpeningBalance() {
         return openingBalance;
     }
 
     // Setter for balance
-    public void setBalance(String openingBalance) {
+    public void setOpeningBalance(double openingBalance) {
         this.openingBalance = openingBalance;
     }
 
@@ -44,9 +49,9 @@ public class AccountBean {
     @Override
     public String toString() {
         return "AccountBean{" +
-                "name='" + accountName + '\'' +
-                ", date=" + openingDate +
-                ", balance=" + openingBalance +
+                "accountName='" + accountName + '\'' +
+                ", openingDate=" + openingDate +
+                ", openingBalance=" + openingBalance +
                 '}';
     }
 
