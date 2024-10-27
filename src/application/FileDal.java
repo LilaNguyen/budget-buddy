@@ -29,7 +29,7 @@ public class FileDal {
     }
 
     // Inner class to represent Account data
-    public static class Account {
+    public class Account {
         private String accountName;
         private double balance;
         private LocalDate lastTransaction;

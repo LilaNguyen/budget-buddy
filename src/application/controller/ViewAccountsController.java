@@ -31,6 +31,10 @@ public class ViewAccountsController {
         // Initialize the list and table
         accountList = FXCollections.observableArrayList(fileDal.LoadAccounts());
         accountTable.setItems(accountList);
+        
+        // Sort the data by opening date
+        transactionColumn.setSortType(TableColumn.SortType.DESCENDING);
+        accountTable.getSortOrder().add(transactionColumn);
 
         // Add sample data
         addSampleData();
@@ -40,6 +44,8 @@ public class ViewAccountsController {
     	// Test data and Refresh the table
         fileDal.saveAccount("John Doe", 1000.0, LocalDate.now().minusDays(5));
         fileDal.saveAccount("Jane Smith", 2500.0, LocalDate.now().minusDays(2));
+        
         accountList.setAll(fileDal.LoadAccounts());  
+        accountTable.sort();
     }
 }
