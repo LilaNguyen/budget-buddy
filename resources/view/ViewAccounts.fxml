@@ -19,7 +19,7 @@
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Account Name" />
           <TableColumn fx:id="balanceColumn" prefWidth="75.0" text="Balance" />
-          <TableColumn fx:id="transactionColumn" prefWidth="75.0" text="Last Transaction" />
+          <TableColumn fx:id="openingDateColumn" prefWidth="75.0" text="Opening Date" />
         </columns>
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

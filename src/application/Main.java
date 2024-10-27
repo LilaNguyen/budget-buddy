@@ -9,9 +9,6 @@ import javafx.fxml.FXMLLoader;
 
 
 public class Main extends Application {
-	
-	private TableView table1 = new TableView();
-	
 	@Override
 	public void start(Stage primaryStage) {
 		

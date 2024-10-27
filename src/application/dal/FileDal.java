@@ -1,13 +1,11 @@
-package application.interfaces;
+package application.dal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import application.model.AccountBean;
-import application.model.DalInt;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +26,7 @@ public class FileDal implements DalInt {
     
     /**
      * This method load all accounts from the CSV file.
+     * NOTE: System.out.println are used for debugging purposes.
      * @return a list of AccountBean objects
      */
     @Override
@@ -35,9 +34,9 @@ public class FileDal implements DalInt {
 		System.out.println("IN LOAD ACCOUNTS");
 
     	try {
-			System.out.println("Here we go");
+    		System.out.println("Here we go");
 
-    		URL url = getClass().getClassLoader().getResource("CSVs/accounts.csv");
+    		URL url = getClass().getClassLoader().getResource(csvFilePath);
 			System.out.println("Here is url " + url);
 			
 			String path = url.toURI().getPath();
@@ -63,6 +62,7 @@ public class FileDal implements DalInt {
     		while ((line = br.readLine()) != null) {
     			line = line.trim();
     			System.out.println("Reading line: " + line);
+    			
     			if (line.isEmpty()) {
     				continue;
     			}
@@ -96,16 +96,18 @@ public class FileDal implements DalInt {
 
     /**
      * This method saves an AccountBean object.
+     * NOTE: System.out.println are used for debugging purposes.
      * @return a list of AccountBean objects
      */
 	@Override
 	public List<AccountBean> saveAccount(AccountBean account) {
-		System.out.println("IN SAVEACCOUNT");
+		System.out.println("IN SAVE ACCOUNT");
+		
 		// Add AccountBean object to list of accounts
 		accounts.add(account);
 		
 		try {
-			URL url = getClass().getClassLoader().getResource("CSVs/accounts.csv");
+			URL url = getClass().getClassLoader().getResource(csvFilePath);
 			System.out.println("Here is url " + url);
 			
 			String path = url.toURI().getPath();
@@ -116,8 +118,7 @@ public class FileDal implements DalInt {
 				writer.append(account.getAccountName()).append(",")
 					.append(account.getOpeningDate().format(dateFormatter)).append(",")
 					.append(String.valueOf(account.getOpeningBalance())).append("\n");
-			}
-								
+			}		
 		}
 		catch (Exception e) {
 			e.printStackTrace();

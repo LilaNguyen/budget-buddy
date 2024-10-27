@@ -19,8 +19,6 @@ public class MainController {
 
 	@FXML public void returnToHomepageOp() {
 		URL url = getClass().getClassLoader().getResource("view/Homepage.fxml");
-
-		System.out.println("HOME PAGE is from " + url);
 		
 		try {
 			AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);

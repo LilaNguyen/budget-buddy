@@ -1,11 +1,10 @@
 package application.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import application.interfaces.FileDal;
+import application.dal.DalInt;
+import application.dal.FileDal;
 import application.model.AccountBean;
-import application.model.DalInt;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +17,7 @@ public class ViewAccountsController {
     @FXML private TableView<AccountBean> accountTable;
     @FXML private TableColumn<AccountBean, String> nameColumn;
     @FXML private TableColumn<AccountBean, Double> balanceColumn;
-    @FXML private TableColumn<AccountBean, LocalDate> transactionColumn;
+    @FXML private TableColumn<AccountBean, LocalDate> openingDateColumn;
 
     // Reference to DalInt
     private DalInt dalInterface = new FileDal();
@@ -27,25 +26,26 @@ public class ViewAccountsController {
 
     @FXML
     public void initialize() {
-        // Set up the columns - MAKE SURE NAMES MATCH
+        // Set up the columns
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("accountName"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("openingBalance"));
-        transactionColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
+        openingDateColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
 
         // Initialize the list and table
         accountList = FXCollections.observableArrayList(dalInterface.loadAccounts());
         accountTable.setItems(accountList);
         
+        // Sort the data by opening date   
+        openingDateColumn.setSortType(TableColumn.SortType.DESCENDING);
+        accountTable.getSortOrder().add(openingDateColumn);
+        
         // For Debugging-- make sure data is being loaded
         System.out.println("Loaded accounts: " + accountList.size());
     }
 
-    /*
+    
     private void addSampleData() {
-    	// Test data and Refresh the table
-        fileDal.saveAccount("John Doe", 1000.0, LocalDate.now().minusDays(5));
-        fileDal.saveAccount("Jane Smith", 2500.0, LocalDate.now().minusDays(2));
-        accountList.setAll(fileDal.loadAccounts());  
+    	accountTable.sort();
     }
-    */
+    
 }
