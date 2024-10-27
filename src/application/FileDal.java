@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class FileDal {
 
@@ -19,28 +20,24 @@ public class FileDal {
     }
 
     // Save a new account to the list
-    public List<Account> saveAccount(String accountName, String balance) {
+    public List<Account> saveAccount(String accountName, double balance, LocalDate lastTransaction) {
         // Create a new Account and add it to the list
-        Account account = new Account(accountName, balance);
+        Account account = new Account(accountName, balance, lastTransaction);
         accounts.add(account);
-        //
         // Return the updated list of accounts
         return accounts;
     }
 
     // Inner class to represent Account data
-<<<<<<< HEAD
-    public class Account {
-        private String accountId;
-=======
-    class Account {
->>>>>>> 2dc90f94cabbff057e4c09e424bfd1576c7bb907
+    public static class Account {
         private String accountName;
-        private String balance;
+        private double balance;
+        private LocalDate lastTransaction;
 
-        public Account(String accountName, String balance) {
+        public Account(String accountName, double balance, LocalDate lastTransaction) {
             this.accountName = accountName;
             this.balance = balance;
+            this.lastTransaction = lastTransaction;
         }
 
         // Getters and setters
@@ -52,12 +49,20 @@ public class FileDal {
             this.accountName = accountName;
         }
 
-        public String getBalance() {
+        public double getBalance() {
             return balance;
         }
 
-        public void setBalance(String balance) {
+        public void setBalance(double balance) {
             this.balance = balance;
+        }
+        
+        public LocalDate getLastTransaction() {
+            return lastTransaction;
+        }
+
+        public void setLastTransaction(LocalDate lastTransaction) {
+            this.lastTransaction = lastTransaction;
         }
 
         @Override
@@ -69,13 +74,13 @@ public class FileDal {
         }
     }
 
-    // Example main method for testing
+/**    // Example main method for testing
     public static void main(String[] args) {
         FileDal fileDal = new FileDal();
 
         // Save some accounts
-        fileDal.saveAccount("John Doe", "1000.0");
-        fileDal.saveAccount("Jane Smith", "2500.0");
+        fileDal.saveAccount("John Doe", 1000.0, LocalDate.now().minusDays(5));
+        fileDal.saveAccount("Jane Smith", 2500.0, LocalDate.now().minusDays(2));
 
         // Load and display all accounts
         List<Account> accounts = fileDal.LoadAccounts();
@@ -83,4 +88,5 @@ public class FileDal {
             System.out.println(account);
         }
     }
+**/
 }

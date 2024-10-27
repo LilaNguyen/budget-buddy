@@ -5,11 +5,7 @@
 /.project
 /.settings/
 /README.md
-/application/
-<<<<<<< HEAD
-=======
 /build.fxbuild
-/css/
-/images/
+/application/
 /view/
->>>>>>> 2dc90f94cabbff057e4c09e424bfd1576c7bb907
+/data/
