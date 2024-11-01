@@ -18,7 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 public class CreateAccountController {
-	// Need a reference of CommonObjs objects here
+	// Reference to CommonObjs objects
 	private CommonObjs commonObjs = CommonObjs.getInstance();
 	
 	@FXML private TextField accNameField;  // For account name input

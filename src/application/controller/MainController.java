@@ -18,13 +18,17 @@ public class MainController {
 	}
 
 	@FXML public void returnToHomepageOp() {
+		// Create url to get fxml file 
 		URL url = getClass().getClassLoader().getResource("view/Homepage.fxml");
 		
 		try {
+			// Read the fxml file, then convert to AnchorPane
 			AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);
+			// Before inserting new child, remove previous one
 			if (mainBox.getChildren().size() > 1) {
 				mainBox.getChildren().remove(1);
 			}
+			// Get children of root pane manager, then add new pane to it
 			mainBox.getChildren().add(pane1);
 			
 		} catch (IOException e) {
@@ -78,6 +82,21 @@ public class MainController {
 	/*
 	 * To be implemented at a later date.
 	 */
-	@FXML public void showTransTypeOp() {}
+	@FXML public void showTransTypeOp() {
+		URL url = getClass().getClassLoader().getResource("view/CreateTransType.fxml");
+		
+		try {
+			AnchorPane pane6 = (AnchorPane) FXMLLoader.load(url);
+			// Before inserting new child, remove previous one
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			mainBox.getChildren().add(pane6);
+		
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

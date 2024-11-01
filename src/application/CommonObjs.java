@@ -4,12 +4,12 @@ import application.model.AccountBean;
 import javafx.scene.layout.HBox;
 
 /**
- * This class contains all the references we would like to share among all controllers.
+ * This class contains all references of mainBox that we would like to share among the 
+ * controllers, using the Singleton design pattern.
  */
 public class CommonObjs {
 	private static CommonObjs commonObjs = new CommonObjs();
 	private HBox mainBox;
-	
     private AccountBean accountBean; // reference to AccountBean
     
 	private CommonObjs() {}

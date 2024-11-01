@@ -21,7 +21,7 @@
             <Font name="Hiragino Sans GB W3" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="71.0" layoutY="139.0" prefHeight="31.0" prefWidth="94.0" text="Account Name" textFill="#37474f">
+      <Label layoutX="71.0" layoutY="139.0" prefHeight="31.0" prefWidth="94.0" text="Account name" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
@@ -31,12 +31,12 @@
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="accNameField" layoutX="71.0" layoutY="166.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Enter Account Name">
+      <TextField fx:id="accNameField" layoutX="71.0" layoutY="166.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Capitol One Savor Credit">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </TextField>
-      <Label layoutX="71.0" layoutY="204.0" prefHeight="31.0" prefWidth="80.0" text="Opening Date" textFill="#37474f">
+      <Label layoutX="71.0" layoutY="204.0" prefHeight="31.0" prefWidth="80.0" text="Opening date" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
@@ -46,8 +46,8 @@
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <DatePicker fx:id="openingDateField" layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="10/19/2024" style="-fx-font-size: 11.5;" />
-      <Label layoutX="71.0" layoutY="269.0" prefHeight="31.0" prefWidth="120.0" text="Opening Balance" textFill="#37474f">
+      <DatePicker fx:id="openingDateField" layoutX="71.0" layoutY="231.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="mm/dd/yyyy" style="-fx-font-size: 11.5;" />
+      <Label layoutX="71.0" layoutY="269.0" prefHeight="31.0" prefWidth="120.0" text="Opening balance" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
