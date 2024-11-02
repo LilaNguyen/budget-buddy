@@ -1,11 +1,10 @@
-
 package application.model;
 
 public class TransTypeBean {
     // Fields for transaction type information
-    private String transactionTypeName;
-    private String transactionDescription;
-    private int transactionCode;
+    private String transactionTypeName;  // Name of the transaction type (e.g., Deposit, Withdrawal)
+    private String transactionDescription; // Description of the transaction type
+    private int transactionCode;         // Unique identifier or code for the transaction type
 
     // Constructor
     public TransTypeBean(String transactionTypeName, String transactionDescription, int transactionCode) {
@@ -54,6 +53,3 @@ public class TransTypeBean {
                 '}';
     }
 }
-package application.model;
-
-import java.time.LocalDate;
