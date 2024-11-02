@@ -1,36 +1,17 @@
 
 package application.model;
 
-import java.time.LocalDate;
-
-public class TransBean {
-    // Fields for transaction information
-    private String accountName;
+public class TransTypeBean {
+    // Fields for transaction type information
     private String transactionTypeName;
-    private LocalDate transactionDate;
     private String transactionDescription;
-    private double paymentAmount;
-    private double depositAmount;
+    private int transactionCode;
 
     // Constructor
-    public TransBean(String accountName, String transactionTypeName, LocalDate transactionDate, 
-                     String transactionDescription, double paymentAmount, double depositAmount) {
-        this.accountName = accountName;
+    public TransTypeBean(String transactionTypeName, String transactionDescription, int transactionCode) {
         this.transactionTypeName = transactionTypeName;
-        this.transactionDate = transactionDate;
         this.transactionDescription = transactionDescription;
-        this.paymentAmount = paymentAmount;
-        this.depositAmount = depositAmount;
-    }
-
-    // Getter for account name
-    public String getAccountName() {
-        return accountName;
-    }
-
-    // Setter for account name
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+        this.transactionCode = transactionCode;
     }
 
     // Getter for transaction type name
@@ -43,16 +24,6 @@ public class TransBean {
         this.transactionTypeName = transactionTypeName;
     }
 
-    // Getter for transaction date
-    public LocalDate getTransactionDate() {
-        return transactionDate;
-    }
-
-    // Setter for transaction date
-    public void setTransactionDate(LocalDate transactionDate) {
-        this.transactionDate = transactionDate;
-    }
-
     // Getter for transaction description
     public String getTransactionDescription() {
         return transactionDescription;
@@ -63,36 +34,26 @@ public class TransBean {
         this.transactionDescription = transactionDescription;
     }
 
-    // Getter for payment amount
-    public double getPaymentAmount() {
-        return paymentAmount;
+    // Getter for transaction code
+    public int getTransactionCode() {
+        return transactionCode;
     }
 
-    // Setter for payment amount
-    public void setPaymentAmount(double paymentAmount) {
-        this.paymentAmount = paymentAmount;
+    // Setter for transaction code
+    public void setTransactionCode(int transactionCode) {
+        this.transactionCode = transactionCode;
     }
 
-    // Getter for deposit amount
-    public double getDepositAmount() {
-        return depositAmount;
-    }
-
-    // Setter for deposit amount
-    public void setDepositAmount(double depositAmount) {
-        this.depositAmount = depositAmount;
-    }
-
-    // toString method to display transaction details
+    // toString method to display transaction type details
     @Override
     public String toString() {
-        return "TransBean{" +
-                "accountName='" + accountName + '\'' +
-                ", transactionTypeName='" + transactionTypeName + '\'' +
-                ", transactionDate=" + transactionDate +
+        return "TransTypeBean{" +
+                "transactionTypeName='" + transactionTypeName + '\'' +
                 ", transactionDescription='" + transactionDescription + '\'' +
-                ", paymentAmount=" + paymentAmount +
-                ", depositAmount=" + depositAmount +
+                ", transactionCode=" + transactionCode +
                 '}';
     }
 }
+package application.model;
+
+import java.time.LocalDate;
