@@ -4,13 +4,12 @@ package application.model;
 import java.time.LocalDate;
 
 public class TransBean {
-    // Fields for transaction information
-    private String accountName;
-    private String transactionTypeName;
-    private LocalDate transactionDate;
-    private String transactionDescription;
-    private double paymentAmount;
-    private double depositAmount;
+    private String accountName;          // Name of the account associated with the transaction
+    private String transactionTypeName;  // Type of transaction (e.g., Deposit, Withdrawal)
+    private LocalDate transactionDate;   // Date of the transaction
+    private String transactionDescription; // Description of the transaction
+    private double paymentAmount;        // Payment amount (if applicable)
+    private double depositAmount;        // Deposit amount (if applicable)
 
     // Constructor
     public TransBean(String accountName, String transactionTypeName, LocalDate transactionDate, 
