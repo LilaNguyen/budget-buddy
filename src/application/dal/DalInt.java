@@ -9,4 +9,8 @@ public interface DalInt {
 	
 	List<AccountBean> saveAccount(AccountBean account);
 	
+	List<TransTypeBean> loadTransTypes();
+	
+	List<TransTypeBean> saveTransType();
+	
 }
