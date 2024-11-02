@@ -7,6 +7,8 @@ import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.AccountBean;
+import application.model.TransTypeBean;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -32,7 +34,7 @@ public class CreateTransTypeController {
             return;
         }
         
-        /*
+        
 		// Check for duplicates
 		boolean haveDuplicate = false;
 		List<TransTypeBean> types = dalInterface.loadTypes();
@@ -57,7 +59,7 @@ public class CreateTransTypeController {
         
         // Set new account in CommonObjs to access most recently created account
         CommonObjs.getInstance().setTransTypeBean(newTransType);
-        */
+        
         displaySuccessAlert("Transaction type successfully created.");
         clearFormOp();
 	}

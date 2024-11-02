@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class TransBean {
     private String accountName;          // Name of the account associated with the transaction
-    private String transactionTypeName;  // Type of transaction (e.g., Deposit, Withdrawal)
+    private String transactionTypeName;  // Type of transaction (e.g., Education, House)
     private LocalDate transactionDate;   // Date of the transaction
     private String transactionDescription; // Description of the transaction
     private double paymentAmount;        // Payment amount (if applicable)

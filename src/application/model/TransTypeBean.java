@@ -2,54 +2,54 @@ package application.model;
 
 public class TransTypeBean {
     // Fields for transaction type information
-    private String transactionTypeName;  // Name of the transaction type (e.g., Deposit, Withdrawal)
-    private String transactionDescription; // Description of the transaction type
-    private int transactionCode;         // Unique identifier or code for the transaction type
+    private String transTypeName;  // Name of the transaction type (e.g., Deposit, Withdrawal)
+    private String transDescription; // Description of the transaction type
+    private int transCode;         // Unique identifier or code for the transaction type
 
     // Constructor
-    public TransTypeBean(String transactionTypeName, String transactionDescription, int transactionCode) {
-        this.transactionTypeName = transactionTypeName;
-        this.transactionDescription = transactionDescription;
-        this.transactionCode = transactionCode;
+    public TransTypeBean(String transTypeName, String transDescription, int transCode) {
+        this.transTypeName = transTypeName;
+        this.transDescription = transDescription;
+        this.transCode = transCode;
     }
 
     // Getter for transaction type name
-    public String getTransactionTypeName() {
-        return transactionTypeName;
+    public String getTransTypeName() {
+        return transTypeName;
     }
 
     // Setter for transaction type name
-    public void setTransactionTypeName(String transactionTypeName) {
-        this.transactionTypeName = transactionTypeName;
+    public void setTransTypeName(String transTypeName) {
+        this.transTypeName = transTypeName;
     }
 
     // Getter for transaction description
-    public String getTransactionDescription() {
-        return transactionDescription;
+    public String getTransDescription() {
+        return transDescription;
     }
 
     // Setter for transaction description
-    public void setTransactionDescription(String transactionDescription) {
-        this.transactionDescription = transactionDescription;
+    public void setTransDescription(String transDescription) {
+        this.transDescription = transDescription;
     }
 
     // Getter for transaction code
-    public int getTransactionCode() {
-        return transactionCode;
+    public int getTransCode() {
+        return transCode;
     }
 
     // Setter for transaction code
-    public void setTransactionCode(int transactionCode) {
-        this.transactionCode = transactionCode;
+    public void setTransCode(int transCode) {
+        this.transCode = transCode;
     }
 
     // toString method to display transaction type details
     @Override
     public String toString() {
         return "TransTypeBean{" +
-                "transactionTypeName='" + transactionTypeName + '\'' +
-                ", transactionDescription='" + transactionDescription + '\'' +
-                ", transactionCode=" + transactionCode +
+                "transTypeName='" + transTypeName + '\'' +
+                ", transDescription='" + transDescription + '\'' +
+                ", transCode=" + transCode +
                 '}';
     }
 }
