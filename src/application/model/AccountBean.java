@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class AccountBean {
 	// Fields for account information
-	private String accountName;
+    private String accountName;
     private LocalDate openingDate;
     private double openingBalance;
 
