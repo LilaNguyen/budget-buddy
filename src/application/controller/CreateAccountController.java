@@ -44,23 +44,16 @@ public class CreateAccountController {
 	@FXML public void enterOpeningBalOp() {}
 
 	@FXML public void submitOp() {
-<<<<<<< HEAD
-=======
-		
 		// String accName = accNameField.getText();  // Get the account name
         // String openingDate = openingDateField.getValue() != null ? openingDateField.getValue().toString() : null;  // Convert date to String
         // String openingBalanceStr = openingBalField.getText();  // Get the balance
 		
         DalInt dalInterface = new FileDal();
->>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
-
+        
 		String accName = accNameField.getText();
 		LocalDate openingDate = openingDateField.getValue();
 		String openingBalanceStr = openingBalField.getText(); 
-<<<<<<< HEAD
 
-=======
-        
 		/*
         // Set the input values into CommonObjs
         commonObjs.setAccountName(accName);
@@ -68,7 +61,6 @@ public class CreateAccountController {
         commonObjs.setOpeningBalance(openingBalance);
         */
 		
->>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
         // Perform validation
         if (accName == null || accName.trim().isEmpty()) {
         	displayErrorAlert("Account name is required.");

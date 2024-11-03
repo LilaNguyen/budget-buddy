@@ -34,7 +34,7 @@ public class CreateTransTypeController {
             return;
         }
         
-        
+        /*
 		// Check for duplicates
 		boolean haveDuplicate = false;
 		List<TransTypeBean> types = dalInterface.loadTypes();
@@ -59,7 +59,7 @@ public class CreateTransTypeController {
         
         // Set new account in CommonObjs to access most recently created account
         CommonObjs.getInstance().setTransTypeBean(newTransType);
-        
+        */
         displaySuccessAlert("Transaction type successfully created.");
         clearFormOp();
 	}

@@ -34,25 +34,7 @@ public class ViewAccountsController {
         // Initialize the list and table
         accountList = FXCollections.observableArrayList(dalInterface.loadAccounts());
         accountTable.setItems(accountList);
-        
-<<<<<<< HEAD
-        // Sort the data by opening date
-        transactionColumn.setSortType(TableColumn.SortType.DESCENDING);
-        accountTable.getSortOrder().add(transactionColumn);
 
-        // Add sample data
-        addSampleData();
-    }
-
-    
-    private void addSampleData() {
-    	//Refresh the table
-    	
-        accountList.setAll(dalInterface.loadAccounts());
-        accountTable.refresh();
-        accountTable.sort();
-    }
-=======
         // Sort the data by opening date in descending order
         openingDateColumn.setSortType(TableColumn.SortType.DESCENDING);
         accountTable.getSortOrder().add(openingDateColumn);
@@ -64,5 +46,4 @@ public class ViewAccountsController {
         System.out.println("Loaded accounts: " + accountList.size());
     }
     
->>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
 }

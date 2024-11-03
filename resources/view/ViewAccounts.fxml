@@ -15,11 +15,7 @@
          </font>
       </Label>
 
-<<<<<<< HEAD
-      <TableView fx:id="accountTable" layoutX="16.0" layoutY="138.0" prefHeight="200.0" prefWidth="293.0">
-=======
       <TableView fx:id="accountTable" layoutX="16.0" layoutY="110.0" prefHeight="221.0" prefWidth="294.0">
->>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
         <columns>
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Account Name" />
           <TableColumn fx:id="balanceColumn" prefWidth="75.0" text="Balance" />

@@ -3,9 +3,9 @@ package application.controller;
 import java.time.LocalDate;
 
 import application.CommonObjs;
-import application.interfaces.FileDal;
+import application.dal.FileDal;
 import application.model.AccountBean;
-import application.model.DalInt;
+import application.dal.DalInt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
