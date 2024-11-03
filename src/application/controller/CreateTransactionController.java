@@ -101,7 +101,6 @@ public class CreateTransactionController {
 					return;
 				}
 			}
-			
 			System.out.println("transaction saved");
 		}
 		private void displayErrorAlert(String message) {

@@ -34,13 +34,13 @@ public class CreateTransTypeController {
             return;
         }
         
-        /*
+        
 		// Check for duplicates
 		boolean haveDuplicate = false;
-		List<TransTypeBean> types = dalInterface.loadTypes();
+		List<TransTypeBean> types = dalInterface.loadTransTypes();
 		for (TransTypeBean existingType : types) {
 			try {
-				if (existingType.getTransType().equalsIgnoreCase(transType)) {
+				if (existingType.getTransTypeName().equalsIgnoreCase(transType)) {
 					haveDuplicate = true;
 					displayErrorAlert("This transaction type's name already exists. Please enter a unique name.");
 					return;
@@ -59,7 +59,7 @@ public class CreateTransTypeController {
         
         // Set new account in CommonObjs to access most recently created account
         CommonObjs.getInstance().setTransTypeBean(newTransType);
-        */
+        
         displaySuccessAlert("Transaction type successfully created.");
         clearFormOp();
 	}

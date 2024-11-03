@@ -136,31 +136,40 @@ public class FileDal implements DalInt {
 	public List<TransTypeBean> loadTransTypes() {
 		transTypes.clear();
 	    try {
+	    	System.out.println("Here we go");
+	    	
 	        URL url = getClass().getClassLoader().getResource(transTypeFilePath);
+	        System.out.println("Here is url " + url);
+			
+			String path = url.toURI().getPath();
+			
+			InputStream inputStream = url.openStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+    
+	        // Check to see if file was found
 	        if (url == null) {
 	            System.out.println("Unable to find TransTypes.csv");
 	            return transTypes;
 	        }
 
-	        String path = url.toURI().getPath();
-	        InputStream inputStream = url.openStream();
-	        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-
 	        // Skip header line
 	        String header = br.readLine();
 
+	        // Hold each line read from CSV file
 	        String line;
 	        while ((line = br.readLine()) != null) {
 	            line = line.trim();
+	            
 	            if (line.isEmpty()) {
 	                continue;
 	            }
 
 	            String[] fields = line.split(",");
-	            if (fields.length == 2) {
-	                String transTypeName = fields[1].trim();
-	                int transCode = Integer.parseInt(fields[0].trim());
-	                transTypes.add(new TransTypeBean(transTypeName, transCode));
+	            if (fields.length == 1) {
+	                String transTypeName = fields[0].trim();
+	                // int transCode = Integer.parseInt(fields[0].trim());
+	                // transTypes.add(new TransTypeBean(transTypeName, transCode));
+	                transTypes.add(new TransTypeBean(transTypeName));
 	            }
 	        }
 	    } catch (URISyntaxException | IOException | NumberFormatException e) {
@@ -171,7 +180,7 @@ public class FileDal implements DalInt {
 
 	@Override
 	public List<TransTypeBean> saveTransType(TransTypeBean transType) {
-        transTypes.add(transTypes);
+		transTypes.add(transType);
 
         try {
             URL url = getClass().getClassLoader().getResource(transTypeFilePath);
@@ -183,12 +192,11 @@ public class FileDal implements DalInt {
             String path = url.toURI().getPath();
 
             try (FileWriter writer = new FileWriter(path, true)) {
-                writer.append(transTypes.getTransTypeName() + ",")
-                        .append(transTypes.getTransCode()).append("\n");
+            	writer.append(transType.getTransTypeName()).append("\n");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    return transTypes;
+        return transTypes;
 	}
 }
