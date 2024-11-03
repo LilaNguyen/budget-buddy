@@ -1,9 +1,6 @@
 package application.model;
 
-import application.model.AccountBean;
-import application.model.TransTypeBean;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /*
   Represents a financial transaction in the Budget Buddy application.

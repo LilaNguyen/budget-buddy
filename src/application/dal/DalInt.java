@@ -17,7 +17,7 @@ public interface DalInt {
 	
 	List<TransBean> loadTransactions();
 	
-	List<TransBean> saveTransactions(TransBean Transaction);
+	List<TransBean> saveTransactions(TransBean transaction);
 
 
 	

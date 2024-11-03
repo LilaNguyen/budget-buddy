@@ -1,19 +1,16 @@
 package application.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
-import application.model.AccountBean;
 import application.model.TransTypeBean;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
