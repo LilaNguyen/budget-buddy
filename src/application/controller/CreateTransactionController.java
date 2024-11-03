@@ -1,10 +1,13 @@
 package application.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import application.CommonObjs;
 import application.dal.FileDal;
 import application.model.AccountBean;
+import application.model.TransBean;
+import application.model.TransTypeBean;
 import application.dal.DalInt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,6 +17,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 
 public class CreateTransactionController {
@@ -33,9 +38,17 @@ public class CreateTransactionController {
 	    public void initialize() {
 	        System.out.println("Initializing the controller...");
 
-	        // Filler Data
-	        accountDropDown.getItems().addAll("Acc1", "Acc2");
-	        transactionTypeDropDown.getItems().addAll("Deposit", "Withdrawal");
+	        DalInt dalInterface = new FileDal();
+	        List<AccountBean> accounts = dalInterface.loadAccounts();
+	        List<TransTypeBean> types = dalInterface.loadTransTypes();
+	        
+	        for (AccountBean bean : accounts) {
+	        	accountDropDown.getItems().add(bean.getAccountName());
+	        }
+	        
+	        for (TransTypeBean bean : types) {
+	        	transactionTypeDropDown.getItems().add(bean.getTransTypeName());
+	        }
 	        
 	        // Fill values
 	        accountDropDown.getSelectionModel().selectFirst(); // shows first by default
@@ -55,12 +68,14 @@ public class CreateTransactionController {
 	    
 
 		private void submit() {
+			DalInt dalInterface = new FileDal();
+			
 			String accName = accountDropDown.getSelectionModel().getSelectedItem();
 			String transType = transactionTypeDropDown.getSelectionModel().getSelectedItem();
 			LocalDate transDate = transactionDatePicker.getValue();
 			String descr = descriptionField.getText();
-			Double payment = null;
-			Double deposit = null;
+			Double payment = 0.0;
+			Double deposit = 0.0;
 			
 			//make sure completing all fields
 			if (accName == null ||
@@ -77,10 +92,9 @@ public class CreateTransactionController {
 			}
 			//not both
 			if(!paymentAmountField.getText().isEmpty() && !depositAmountField.getText().isEmpty()) {
-				displayErrorAlert("Please enter only one: a Payment or Deposit amount");
+				displayErrorAlert("Please enter either a Payment OR Deposit amount");
 				return;
 			}
-			//i
 			//if deposit
 			if(paymentAmountField.getText().isEmpty()) {
 				try {
@@ -88,8 +102,11 @@ public class CreateTransactionController {
 				}
 				catch (NumberFormatException e) {
 					displayErrorAlert("Deposit must be a valid number");
+					// clear field for new input
+					depositAmountField.clear();
 					return;
 				}
+				depositAmountField.setText(String.format("%.2f", deposit));
 			}
 			//if payment
 			if(depositAmountField.getText().isEmpty()) {
@@ -98,16 +115,49 @@ public class CreateTransactionController {
 				}
 				catch (NumberFormatException e) {
 					displayErrorAlert("Payment must be a valid number");
+					// clear field for new input
+					paymentAmountField.clear();
 					return;
 				}
+				paymentAmountField.setText(String.format("%.2f", payment));
 			}
-			System.out.println("transaction saved");
+			
+
+	        // Create TransTypeBean object to represent new transaction type
+			TransBean newTrans = new TransBean(accName, transType, transDate, descr, payment, deposit);
+	        
+	        // Save account using DAL
+	        dalInterface.saveTransactions(newTrans);
+	        
+	        // Set new account in CommonObjs to access most recently created account
+	        CommonObjs.getInstance().setTransBean(newTrans);
+
+			displaySuccessAlert("Transaction successfully saved");
+			
+			
+			
 		}
+		
 		private void displayErrorAlert(String message) {
 			Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
 			alert.setTitle("Input Error");
 			// remove default header
 			alert.setHeaderText(null);
+			// display the alert and wait for user interaction
+			alert.showAndWait();
+		}
+		
+		private void displaySuccessAlert(String message) {
+			Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
+			alert.setTitle("Success");
+			// remove default header
+			alert.setHeaderText(null);
+			// load custom image to use as icon
+			Image icon = new Image("images/successIcon.png");
+			ImageView iconView = new ImageView(icon);
+			iconView.setFitHeight(50);
+			iconView.setFitWidth(50);
+			alert.setGraphic(iconView);
 			// display the alert and wait for user interaction
 			alert.showAndWait();
 		}

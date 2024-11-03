@@ -24,10 +24,11 @@ public class FileDal implements DalInt {
     // In-memory list to store accounts
     private List<AccountBean> accounts = new ArrayList<>();
     private List<TransTypeBean> transTypes = new ArrayList<>();
-    private List<TransBean> Transaction = new ArrayList<>();
+    private List<TransBean> transactions = new ArrayList<>();
 
     private final String csvFilePath = "CSVs/accounts.csv";
     private final String transTypeFilePath = "CSVs/TransType.csv";
+    private final String transactionsFilePath = "CSVs/transactions.csv";
 
     // Makes sure dates are formatted correctly
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -198,5 +199,97 @@ public class FileDal implements DalInt {
             e.printStackTrace();
         }
         return transTypes;
+	}
+
+	@Override
+	public List<TransBean> loadTransactions() {
+		transactions.clear();
+		 
+    	try {
+    		System.out.println("Here we go");
+
+    		URL url = getClass().getClassLoader().getResource(transactionsFilePath);
+			System.out.println("Here is url " + url);
+			
+			String path = url.toURI().getPath();
+			
+			InputStream inputStream = url.openStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+    
+    		// Check to see if file was found
+    		if (inputStream == null) {
+    			System.out.println("Unable to find transactions.csv");
+    			// Return empty list of accounts
+    			return transactions;
+    		}
+    		
+    		// Skip header line
+    		String header = br.readLine(); 
+    		
+    		// Hold each line read from CSV file
+    		String line;
+    		// Read lines from file until there are no more lines
+    		while ((line = br.readLine()) != null) {
+    			line = line.trim();
+    			
+    			if (line.isEmpty()) {
+    				continue;
+    			}
+    			
+    			String[] fields = line.split(",");
+    			// Check that line contains exactly 6 fields
+    			if (fields.length == 6) {
+    				String accountName = fields[0].trim();
+    				String transType = fields[1].trim();
+    				LocalDate transDate = LocalDate.parse(fields[2], dateFormatter);
+    				String transDescription = fields[3].trim();
+    				double paymentAmount = Double.parseDouble(fields[4].trim()); // Remove any potential whitespace
+    				double depositAmount = Double.parseDouble(fields[5].trim()); // Remove any potential whitespace
+    				// Create new Transaction object to add to list
+    				transactions.add(new TransBean(accountName, transType, transDate, transDescription, paymentAmount, depositAmount));
+    			}
+    		}
+    	}
+    	catch (URISyntaxException e) {
+			e.printStackTrace();
+    	}
+    	catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	catch (DateTimeParseException e) {
+    		System.out.println("Error parsing date: " + e.getMessage());
+    	}
+    	catch (NumberFormatException e) {
+    		System.out.println("Error parsing balance: " + e.getMessage());
+    	}
+    	// Return list of accounts loaded
+        return transactions;
+	}
+
+	@Override
+	public List<TransBean> saveTransactions(TransBean transaction) {
+		transactions.add(transaction);
+		try {
+            URL url = getClass().getClassLoader().getResource(transactionsFilePath);
+            if (url == null) {
+                System.out.println("Unable to find transactionsFilePath.csv");
+                return transactions;
+            }
+
+            String path = url.toURI().getPath();
+
+            try (FileWriter writer = new FileWriter(path, true)) {
+            	writer.append(transaction.getAccount()).append(",")
+            		.append(transaction.getTransType()).append(",")
+            		.append(transaction.getTransDate().format(dateFormatter)).append(",")
+            		.append(transaction.getDescription()).append(",")
+            		.append(String.valueOf(transaction.getPaymentAmount())).append(",")
+            		.append(String.valueOf(transaction.getDepositAmount())).append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return transactions;
+		
 	}
 }
