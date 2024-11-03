@@ -21,7 +21,11 @@ public class FileDal implements DalInt {
 
     // In-memory list to store accounts
     private List<AccountBean> accounts = new ArrayList<>();
+    private List<TransTypeBean> transTypes = new ArrayList<>();
+
     private final String csvFilePath = "CSVs/accounts.csv";
+    private final String transTypeFilePath = "CSVs/TransType.csv";
+
     // Makes sure dates are formatted correctly
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     
@@ -127,13 +131,61 @@ public class FileDal implements DalInt {
 
 	@Override
 	public List<TransTypeBean> loadTransTypes() {
-		// TODO Auto-generated method stub
-		return null;
+		transTypes.clear();
+	    try {
+	        URL url = getClass().getClassLoader().getResource(transTypeFilePath);
+	        if (url == null) {
+	            System.out.println("Unable to find TransTypes.csv");
+	            return transTypes;
+	        }
+
+	        String path = url.toURI().getPath();
+	        InputStream inputStream = url.openStream();
+	        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+
+	        // Skip header line
+	        String header = br.readLine();
+
+	        String line;
+	        while ((line = br.readLine()) != null) {
+	            line = line.trim();
+	            if (line.isEmpty()) {
+	                continue;
+	            }
+
+	            String[] fields = line.split(",");
+	            if (fields.length == 2) {
+	                int id = Integer.parseInt(fields[0].trim());
+	                String name = fields[1].trim();
+	                transTypes.add(new TransTypeBean(id, name));
+	            }
+	        }
+	    } catch (URISyntaxException | IOException | NumberFormatException e) {
+	        e.printStackTrace();
+	    }
+	    return transTypes;
 	}
 
 	@Override
-	public List<TransTypeBean> saveTransType() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TransTypeBean> saveTransType(TransTypeBean transType) {
+        transTypes.add(transTypes);
+
+        try {
+            URL url = getClass().getClassLoader().getResource(transTypeFilePath);
+            if (url == null) {
+                System.out.println("Unable to find TransTypes.csv");
+                return transTypes;
+            }
+
+            String path = url.toURI().getPath();
+
+            try (FileWriter writer = new FileWriter(path, true)) {
+                writer.append(transTypes.getId() + ",")
+                        .append(transTypes.getName()).append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    return transTypes;
 	}
 }

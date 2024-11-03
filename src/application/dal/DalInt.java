@@ -12,6 +12,6 @@ public interface DalInt {
 	
 	List<TransTypeBean> loadTransTypes();
 	
-	List<TransTypeBean> saveTransType();
+	List<TransTypeBean> saveTransType(TransTypeBean transType);
 	
 }
