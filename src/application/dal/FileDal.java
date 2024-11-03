@@ -1,13 +1,11 @@
-package application.interfaces;
+package application.dal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import application.model.AccountBean;
-import application.model.DalInt;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +26,7 @@ public class FileDal implements DalInt {
     
     /**
      * This method load all accounts from the CSV file.
+     * NOTE: System.out.println are used for debugging purposes.
      * @return a list of AccountBean objects
      */
     @Override
@@ -36,8 +35,15 @@ public class FileDal implements DalInt {
 		accounts.clear();
 		 
     	try {
+<<<<<<< HEAD:src/application/interfaces/FileDal.java
 
     		URL url = getClass().getClassLoader().getResource("CSVs/accounts.csv");
+=======
+    		System.out.println("Here we go");
+
+    		URL url = getClass().getClassLoader().getResource(csvFilePath);
+			System.out.println("Here is url " + url);
+>>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e:src/application/dal/FileDal.java
 			
 			String path = url.toURI().getPath();
 			
@@ -59,6 +65,11 @@ public class FileDal implements DalInt {
     		// Read lines from file until there are no more lines
     		while ((line = br.readLine()) != null) {
     			line = line.trim();
+<<<<<<< HEAD:src/application/interfaces/FileDal.java
+=======
+    			System.out.println("Reading line: " + line);
+    			
+>>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e:src/application/dal/FileDal.java
     			if (line.isEmpty()) {
     				continue;
     			}
@@ -92,14 +103,26 @@ public class FileDal implements DalInt {
 
     /**
      * This method saves an AccountBean object.
+     * NOTE: System.out.println are used for debugging purposes.
      * @return a list of AccountBean objects
      */
 	@Override
 	public List<AccountBean> saveAccount(AccountBean account) {
+<<<<<<< HEAD:src/application/interfaces/FileDal.java
 		accounts.add(account);
 		
 		try {
 			URL url = getClass().getClassLoader().getResource("CSVs/accounts.csv");
+=======
+		System.out.println("IN SAVE ACCOUNT");
+		
+		// Add AccountBean object to list of accounts
+		accounts.add(account);
+		
+		try {
+			URL url = getClass().getClassLoader().getResource(csvFilePath);
+			System.out.println("Here is url " + url);
+>>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e:src/application/dal/FileDal.java
 			
 			String path = url.toURI().getPath();
 			
@@ -108,8 +131,7 @@ public class FileDal implements DalInt {
 				writer.append(account.getAccountName()).append(",")
 					.append(account.getOpeningDate().format(dateFormatter)).append(",")
 					.append(String.valueOf(account.getOpeningBalance())).append("\n");
-			}
-								
+			}		
 		}
 		catch (Exception e) {
 			e.printStackTrace();

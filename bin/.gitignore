@@ -3,3 +3,5 @@
 **/*.class
 /application/
 /view/
+/CSVs/
+/data/

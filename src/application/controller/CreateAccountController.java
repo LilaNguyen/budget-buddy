@@ -1,9 +1,9 @@
 package application.controller;
 
 import application.CommonObjs;
-import application.interfaces.FileDal;
+import application.dal.DalInt;
+import application.dal.FileDal;
 import application.model.AccountBean;
-import application.model.DalInt;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -11,12 +11,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
 public class CreateAccountController {
-	// Need a reference of CommonObjs objects here
+	// Reference to CommonObjs objects
 	private CommonObjs commonObjs = CommonObjs.getInstance();
 	
 	@FXML private TextField accNameField;  // For account name input
@@ -42,16 +44,52 @@ public class CreateAccountController {
 	@FXML public void enterOpeningBalOp() {}
 
 	@FXML public void submitOp() {
+<<<<<<< HEAD
+=======
+		
+		// String accName = accNameField.getText();  // Get the account name
+        // String openingDate = openingDateField.getValue() != null ? openingDateField.getValue().toString() : null;  // Convert date to String
+        // String openingBalanceStr = openingBalField.getText();  // Get the balance
+		
+        DalInt dalInterface = new FileDal();
+>>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
 
 		String accName = accNameField.getText();
 		LocalDate openingDate = openingDateField.getValue();
 		String openingBalanceStr = openingBalField.getText(); 
+<<<<<<< HEAD
 
+=======
+        
+		/*
+        // Set the input values into CommonObjs
+        commonObjs.setAccountName(accName);
+        commonObjs.setOpeningDate(openingDate);
+        commonObjs.setOpeningBalance(openingBalance);
+        */
+		
+>>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
         // Perform validation
         if (accName == null || accName.trim().isEmpty()) {
         	displayErrorAlert("Account name is required.");
             return;
         }
+        
+		// Check for duplicates
+		boolean haveDuplicate = false;
+		List<AccountBean> accounts = dalInterface.loadAccounts();
+		for (AccountBean existingAcc : accounts) {
+			try {
+				if (existingAcc.getAccountName().equalsIgnoreCase(accName)) {
+					haveDuplicate = true;
+					displayErrorAlert("This account name already exists. Please enter a unique account name.");
+					return;
+				}
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
         
         if (openingDate == null) {
         	displayErrorAlert("Opening date is required.");
@@ -80,7 +118,6 @@ public class CreateAccountController {
         AccountBean newAccount = new AccountBean(accName, openingDate, openingBalance);
         
         // Save account using DAL
-        DalInt dalInterface = new FileDal();
         dalInterface.saveAccount(newAccount);
         
         // Set new account in CommonObjs to access most recently created account

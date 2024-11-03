@@ -1,11 +1,10 @@
 package application.controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import application.interfaces.FileDal;
+import application.dal.DalInt;
+import application.dal.FileDal;
 import application.model.AccountBean;
-import application.model.DalInt;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +17,7 @@ public class ViewAccountsController {
     @FXML private TableView<AccountBean> accountTable;
     @FXML private TableColumn<AccountBean, String> nameColumn;
     @FXML private TableColumn<AccountBean, Double> balanceColumn;
-    @FXML private TableColumn<AccountBean, LocalDate> transactionColumn;
+    @FXML private TableColumn<AccountBean, LocalDate> openingDateColumn;
 
     // Reference to DalInt
     private DalInt dalInterface = new FileDal();
@@ -27,15 +26,16 @@ public class ViewAccountsController {
 
     @FXML
     public void initialize() {
-        // Set up the columns - MAKE SURE NAMES MATCH
+        // Set up the columns
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("accountName"));
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("openingBalance"));
-        transactionColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
+        openingDateColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
 
         // Initialize the list and table
         accountList = FXCollections.observableArrayList(dalInterface.loadAccounts());
         accountTable.setItems(accountList);
         
+<<<<<<< HEAD
         // Sort the data by opening date
         transactionColumn.setSortType(TableColumn.SortType.DESCENDING);
         accountTable.getSortOrder().add(transactionColumn);
@@ -52,4 +52,17 @@ public class ViewAccountsController {
         accountTable.refresh();
         accountTable.sort();
     }
+=======
+        // Sort the data by opening date in descending order
+        openingDateColumn.setSortType(TableColumn.SortType.DESCENDING);
+        accountTable.getSortOrder().add(openingDateColumn);
+        
+        // Sort table
+        accountTable.sort();
+        
+        // For Debugging-- make sure data is being loaded
+        System.out.println("Loaded accounts: " + accountList.size());
+    }
+    
+>>>>>>> 1f1f8c2c8269b5750aa0a49f25ede40388abfd7e
 }
