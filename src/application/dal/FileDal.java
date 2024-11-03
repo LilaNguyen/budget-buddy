@@ -5,6 +5,8 @@ import java.util.List;
 
 import application.model.AccountBean;
 import application.model.TransTypeBean;
+import application.model.TransBean;
+
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -22,6 +24,7 @@ public class FileDal implements DalInt {
     // In-memory list to store accounts
     private List<AccountBean> accounts = new ArrayList<>();
     private List<TransTypeBean> transTypes = new ArrayList<>();
+    private List<TransBean> Transaction = new ArrayList<>();
 
     private final String csvFilePath = "CSVs/accounts.csv";
     private final String transTypeFilePath = "CSVs/TransType.csv";
