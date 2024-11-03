@@ -21,12 +21,23 @@ public class FileDal {
 
     // Save a new account to the list
     public List<Account> saveAccount(String accountName, double balance, LocalDate lastTransaction) {
-        // Create a new Account and add it to the list
+        // Check if account name already exists
+    	if (isDuplicate(accountName)) {
+    		System.out.println("Account name " + accountName + " already exists");
+    		return accounts;
+    	}
+    	
+    	// Create a new Account and add it to the list
         Account account = new Account(accountName, balance, lastTransaction);
         accounts.add(account);
         // Return the updated list of accounts
         return accounts;
     }
+    
+   // Helper class to check if duplicate account name
+   private boolean isDuplicate(String accName) {
+	   return accounts.stream().anyMatch(account -> account.getAccountName().equalsIgnoreCase(accName));
+   }
 
     // Inner class to represent Account data
     public class Account {
@@ -73,20 +84,4 @@ public class FileDal {
                     '}';
         }
     }
-
-/**    // Example main method for testing
-    public static void main(String[] args) {
-        FileDal fileDal = new FileDal();
-
-        // Save some accounts
-        fileDal.saveAccount("John Doe", 1000.0, LocalDate.now().minusDays(5));
-        fileDal.saveAccount("Jane Smith", 2500.0, LocalDate.now().minusDays(2));
-
-        // Load and display all accounts
-        List<Account> accounts = fileDal.LoadAccounts();
-        for (Account account : accounts) {
-            System.out.println(account);
-        }
-    }
-**/
 }

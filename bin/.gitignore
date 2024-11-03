@@ -1,11 +1,5 @@
 **/.DS_Store
 **/.temp*
-/.classpath
-/.gitignore
-/.project
-/.settings/
-/README.md
-/build.fxbuild
+**/*.class
 /application/
 /view/
-/data/

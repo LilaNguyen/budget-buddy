@@ -19,6 +19,8 @@ public class MainController {
 
 	@FXML public void returnToHomepageOp() {
 		URL url = getClass().getClassLoader().getResource("view/Homepage.fxml");
+
+		System.out.println("HOME PAGE is from " + url);
 		
 		try {
 			AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);
@@ -65,11 +67,23 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
-	/*
-	 * To be implemented at a later date.
-	 */
-	@FXML public void showNewTransOp() {}
-
+	
+	@FXML public void showNewTransOp() {
+		URL url = getClass().getClassLoader().getResource("view/CreateTransaction.fxml");
+		
+		try {
+			AnchorPane pane = (AnchorPane) FXMLLoader.load(url);
+			// before inserting new child, remove previous one
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			mainBox.getChildren().add(pane);
+		
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	/*
 	 * To be implemented at a later date.
 	 */
