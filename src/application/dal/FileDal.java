@@ -155,9 +155,9 @@ public class FileDal implements DalInt {
 
 	            String[] fields = line.split(",");
 	            if (fields.length == 2) {
-	                int id = Integer.parseInt(fields[0].trim());
-	                String name = fields[1].trim();
-	                transTypes.add(new TransTypeBean(id, name));
+	                String transTypeName = fields[1].trim();
+	                int transCode = Integer.parseInt(fields[0].trim());
+	                transTypes.add(new TransTypeBean(transTypeName, transCode));
 	            }
 	        }
 	    } catch (URISyntaxException | IOException | NumberFormatException e) {
@@ -180,8 +180,8 @@ public class FileDal implements DalInt {
             String path = url.toURI().getPath();
 
             try (FileWriter writer = new FileWriter(path, true)) {
-                writer.append(transTypes.getId() + ",")
-                        .append(transTypes.getName()).append("\n");
+                writer.append(transTypes.getTransTypeName() + ",")
+                        .append(transTypes.getTransCode()).append("\n");
             }
         } catch (Exception e) {
             e.printStackTrace();
