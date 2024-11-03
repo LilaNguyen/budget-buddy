@@ -84,7 +84,7 @@ public class CreateAccountController {
 		}
         
         if (openingDate == null) {
-        	displayErrorAlert("Opening date is required.");
+        	displayErrorAlert("Opening date selection is required.");
             return;
         }
 		

@@ -17,9 +17,9 @@
 
       <TableView fx:id="accountTable" layoutX="16.0" layoutY="110.0" prefHeight="221.0" prefWidth="294.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Account Name" />
-          <TableColumn fx:id="balanceColumn" prefWidth="75.0" text="Balance" />
-          <TableColumn fx:id="openingDateColumn" prefWidth="75.0" text="Opening Date" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Account Name" />
+          <TableColumn fx:id="balanceColumn" prefWidth="75.0" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Balance" />
+          <TableColumn fx:id="openingDateColumn" prefWidth="75.0" sortType="DESCENDING" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Opening Date" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

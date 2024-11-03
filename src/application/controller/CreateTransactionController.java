@@ -56,43 +56,49 @@ public class CreateTransactionController {
 
 	        // Set the date to today
 	        transactionDatePicker.setValue(LocalDate.now());
-	        
-	        // Print to confirm values
-	        System.out.println("Default account: " + accountDropDown.getSelectionModel().getSelectedItem());
-	        System.out.println("Default transaction type: " + transactionTypeDropDown.getSelectionModel().getSelectedItem());
-	        System.out.println("Default date: " + transactionDatePicker.getValue());
-
-	        // Action for save button
-	        save.setOnAction(event -> submit());
 	    }
 	    
 
-		private void submit() {
+	    @FXML public void submitOp() {
 			DalInt dalInterface = new FileDal();
 			
 			String accName = accountDropDown.getSelectionModel().getSelectedItem();
 			String transType = transactionTypeDropDown.getSelectionModel().getSelectedItem();
 			LocalDate transDate = transactionDatePicker.getValue();
+	        
 			String descr = descriptionField.getText();
 			Double payment = 0.0;
 			Double deposit = 0.0;
 			
 			//make sure completing all fields
-			if (accName == null ||
-				transType == null ||
-				transDate == null ||
-				descr.isEmpty()) {
-				displayErrorAlert("Please Complete All Fields");
+			if (accName == null) {
+				displayErrorAlert("Account selection is required.");
 				return;
 			}
+			
+			if (transType == null) {
+				displayErrorAlert("Transaction Type selection is required.");
+				return;
+			}
+			
+			if (transDate == null) {
+				displayErrorAlert("Transaction Date is required.");
+				return;
+			}
+			
+			if (descr.isEmpty()) {
+				displayErrorAlert("Transaction Description is required.");
+				return;
+			}
+			
 			//make sure entered either payment or deposit
 			if(paymentAmountField.getText().isEmpty() && depositAmountField.getText().isEmpty()) {
-				displayErrorAlert("Please enter a Payment or Deposit amount");
+				displayErrorAlert("Payment or deposit amount required.");
 				return;
 			}
 			//not both
 			if(!paymentAmountField.getText().isEmpty() && !depositAmountField.getText().isEmpty()) {
-				displayErrorAlert("Please enter either a Payment OR Deposit amount");
+				displayErrorAlert("Enter either a payment OR deposit amount.");
 				return;
 			}
 			//if deposit
@@ -101,7 +107,7 @@ public class CreateTransactionController {
 					deposit = Double.parseDouble(depositAmountField.getText());
 				}
 				catch (NumberFormatException e) {
-					displayErrorAlert("Deposit must be a valid number");
+					displayErrorAlert("Deposit must be a valid number.");
 					// clear field for new input
 					depositAmountField.clear();
 					return;
@@ -114,14 +120,13 @@ public class CreateTransactionController {
 					payment = Double.parseDouble(paymentAmountField.getText());
 				}
 				catch (NumberFormatException e) {
-					displayErrorAlert("Payment must be a valid number");
+					displayErrorAlert("Payment must be a valid number.");
 					// clear field for new input
 					paymentAmountField.clear();
 					return;
 				}
 				paymentAmountField.setText(String.format("%.2f", payment));
 			}
-			
 
 	        // Create TransTypeBean object to represent new transaction type
 			TransBean newTrans = new TransBean(accName, transType, transDate, descr, payment, deposit);
@@ -133,9 +138,19 @@ public class CreateTransactionController {
 	        CommonObjs.getInstance().setTransBean(newTrans);
 
 			displaySuccessAlert("Transaction successfully saved");
-			
-			
-			
+			clearFormOp();
+		}
+		
+		/**
+		 * This method clears the fields for "Description," "Payment Amount," and "Deposit Amount."
+		 * The fields "Account," "Transaction Type," and "Transaction Date" are not cleared but reset 
+		 * to their default values.
+		 */
+		@FXML public void clearFormOp() {
+			initialize();
+			descriptionField.clear();
+			paymentAmountField.clear();
+			depositAmountField.clear();
 		}
 		
 		private void displayErrorAlert(String message) {
