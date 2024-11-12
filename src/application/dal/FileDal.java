@@ -14,7 +14,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -141,8 +140,6 @@ public class FileDal implements DalInt {
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
 	        // Check to see if file was found
-			
-			
 	        if (inputStream == null) {
 	            System.out.println("Unable to find TransTypes.csv");
 	            return transTypes;

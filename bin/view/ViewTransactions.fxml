@@ -6,15 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="transactionTable" layoutX="13.0" layoutY="138.0" prefHeight="200.0" prefWidth="300.0">
+      <TableView layoutX="13.0" layoutY="138.0" prefHeight="200.0" prefWidth="300.0">
         <columns>
-          <TableColumn fx:id="accountColumn" prefWidth="60.0" text="Account" />
-          <TableColumn fx:id="typeColumn" prefWidth="60.0" text="Type" />
-            <TableColumn fx:id="dateColumn" prefWidth="60.0" text="Date" />
-            <TableColumn fx:id="descriptionColumn" minWidth="0.0" prefWidth="60.0" text="Description" />
-            <TableColumn fx:id="amountColumn" prefWidth="60.0" text="Amount" />
+          <TableColumn prefWidth="60.0" text="Account" />
+          <TableColumn prefWidth="60.0" text="Type" />
+            <TableColumn prefWidth="60.0" text="Date" />
+            <TableColumn minWidth="0.0" prefWidth="60.0" text="Description" />
+            <TableColumn prefWidth="60.0" text="Amount" />
         </columns>
       </TableView>
       <Label layoutX="18.0" layoutY="66.0" prefHeight="31.0" prefWidth="150.0" text="View Transactions" textFill="#37474f">
