@@ -70,17 +70,9 @@ public class TransBean {
     public void setDepositAmount(double depositAmount) {
         this.depositAmount = depositAmount;
     }
+    
     @Override
     public String toString() {
-       /*
-    	return 
-        	   "account" + account +
-        	   ",TransBean{" + transType +
-               ", amount=" + depositAmount +
-               ", date=" + transDate +
-               ", description='" + description + '\'' +
-               '}';
-       */
         return "TransBean{" +
 		        "account='" + account + '\'' +
 		        ", transDate=" + transDate +

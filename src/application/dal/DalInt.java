@@ -3,6 +3,7 @@ package application.dal;
 import java.util.List;
 
 import application.model.AccountBean;
+import application.model.ScheduledTransBean;
 import application.model.TransBean;
 import application.model.TransTypeBean;
 
@@ -19,6 +20,8 @@ public interface DalInt {
 	
 	List<TransBean> saveTransactions(TransBean transaction);
 
-
+	List<ScheduledTransBean> loadScheduledTrans();
+	
+	List<ScheduledTransBean> saveScheduledTrans(ScheduledTransBean scheduledTran);
 	
 }

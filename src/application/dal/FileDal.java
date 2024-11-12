@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.model.AccountBean;
+import application.model.ScheduledTransBean;
 import application.model.TransTypeBean;
 import application.model.TransBean;
 
@@ -25,10 +26,12 @@ public class FileDal implements DalInt {
     private List<AccountBean> accounts = new ArrayList<>();
     private List<TransTypeBean> transTypes = new ArrayList<>();
     private List<TransBean> transactions = new ArrayList<>();
+    private List<ScheduledTransBean> scheduledTrans = new ArrayList<>();
 
     private final String csvFilePath = "CSVs/accounts.csv";
     private final String transTypeFilePath = "CSVs/TransType.csv";
     private final String transactionsFilePath = "CSVs/transactions.csv";
+    private final String scheduledTransFilePath = "CSVs/ScheduledTrans.csv";
 
     // Makes sure dates are formatted correctly
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -48,9 +51,7 @@ public class FileDal implements DalInt {
 
     		URL url = getClass().getClassLoader().getResource(csvFilePath);
 			System.out.println("Here is url " + url);
-			
-			String path = url.toURI().getPath();
-			
+						
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
@@ -60,10 +61,7 @@ public class FileDal implements DalInt {
     			// Return empty list of accounts
     			return accounts;
     		}
-    		
-    		// Skip header line
-    		String header = br.readLine(); 
-    		
+
     		// Hold each line read from CSV file
     		String line;
     		// Read lines from file until there are no more lines
@@ -84,9 +82,6 @@ public class FileDal implements DalInt {
     				accounts.add(new AccountBean(accountName, openingDate, openingBalance));
     			}
     		}
-    	}
-    	catch (URISyntaxException e) {
-			e.printStackTrace();
     	}
     	catch (IOException e) {
     		e.printStackTrace();
@@ -141,20 +136,17 @@ public class FileDal implements DalInt {
 	    	
 	        URL url = getClass().getClassLoader().getResource(transTypeFilePath);
 	        System.out.println("Here is url " + url);
-			
-			String path = url.toURI().getPath();
-			
+						
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
 	        // Check to see if file was found
-	        if (url == null) {
+			
+			
+	        if (inputStream == null) {
 	            System.out.println("Unable to find TransTypes.csv");
 	            return transTypes;
 	        }
-
-	        // Skip header line
-	        String header = br.readLine();
 
 	        // Hold each line read from CSV file
 	        String line;
@@ -173,7 +165,7 @@ public class FileDal implements DalInt {
 	                transTypes.add(new TransTypeBean(transTypeName));
 	            }
 	        }
-	    } catch (URISyntaxException | IOException | NumberFormatException e) {
+	    } catch (IOException | NumberFormatException e) {
 	        e.printStackTrace();
 	    }
 	    return transTypes;
@@ -210,9 +202,7 @@ public class FileDal implements DalInt {
 
     		URL url = getClass().getClassLoader().getResource(transactionsFilePath);
 			System.out.println("Here is url " + url);
-			
-			String path = url.toURI().getPath();
-			
+						
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
@@ -222,9 +212,6 @@ public class FileDal implements DalInt {
     			// Return empty list of accounts
     			return transactions;
     		}
-    		
-    		// Skip header line
-    		String header = br.readLine(); 
     		
     		// Hold each line read from CSV file
     		String line;
@@ -250,9 +237,6 @@ public class FileDal implements DalInt {
     			}
     		}
     	}
-    	catch (URISyntaxException e) {
-			e.printStackTrace();
-    	}
     	catch (IOException e) {
     		e.printStackTrace();
     	}
@@ -272,7 +256,7 @@ public class FileDal implements DalInt {
 		try {
             URL url = getClass().getClassLoader().getResource(transactionsFilePath);
             if (url == null) {
-                System.out.println("Unable to find transactionsFilePath.csv");
+                System.out.println("Unable to find transactions.csv");
                 return transactions;
             }
 
@@ -291,5 +275,82 @@ public class FileDal implements DalInt {
         }
 		return transactions;
 		
+	}
+
+	@Override
+	public List<ScheduledTransBean> loadScheduledTrans() {
+		scheduledTrans.clear();
+		 
+    	try {
+    		System.out.println("Here we go");
+
+    		URL url = getClass().getClassLoader().getResource(scheduledTransFilePath);
+			System.out.println("Here is url " + url);
+						
+			InputStream inputStream = url.openStream();
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+    
+    		// Check to see if file was found
+    		if (inputStream == null) {
+    			System.out.println("Unable to find ScheduledTrans.csv");
+    			// Return empty list of accounts
+    			return scheduledTrans;
+    		}
+    		
+    		// Hold each line read from CSV file
+    		String line;
+    		// Read lines from file until there are no more lines
+    		while ((line = br.readLine()) != null) {
+    			line = line.trim();
+    			
+    			if (line.isEmpty()) {
+    				continue;
+    			}
+    			
+    			String[] fields = line.split(",");
+    			// Check that line contains exactly 6 fields
+    			if (fields.length == 6) {
+    				String scheduleName = fields[0].trim();
+    				String account = fields[1].trim();
+    				String transType = fields[2].trim();
+    				String frequency = fields[3].trim();
+    				int dueDate = Integer.parseInt(fields[4].trim()); // Remove any potential whitespace
+    				double paymentAmount = Double.parseDouble(fields[5].trim()); // Remove any potential whitespace
+    				// Create new Transaction object to add to list
+    				scheduledTrans.add(new ScheduledTransBean(scheduleName, account, transType, frequency, dueDate, paymentAmount));
+    			}
+    		}
+    	}
+    	catch (IOException e) {
+    		e.printStackTrace();
+    	}
+    	// Return list of accounts loaded
+        return scheduledTrans;
+	}
+
+	@Override
+	public List<ScheduledTransBean> saveScheduledTrans(ScheduledTransBean scheduledTran) {
+		scheduledTrans.add(scheduledTran);
+		try {
+            URL url = getClass().getClassLoader().getResource(scheduledTransFilePath);
+            if (url == null) {
+                System.out.println("Unable to find ScheduledTrans.csv");
+                return scheduledTrans;
+            }
+
+            String path = url.toURI().getPath();
+
+            try (FileWriter writer = new FileWriter(path, true)) {
+            	writer.append(scheduledTran.getScheduleName()).append(",")
+            		.append(scheduledTran.getAccount()).append(",")
+            		.append(scheduledTran.getTransType()).append(",")
+            		.append(scheduledTran.getFrequency()).append(",")
+            		.append(String.valueOf(scheduledTran.getDueDate())).append(",")
+            		.append(String.valueOf(scheduledTran.getPaymentAmount())).append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return scheduledTrans;
 	}
 }
