@@ -54,15 +54,20 @@ public class FileDal implements DalInt {
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
+			String line = br.readLine(); // Read first line (header)
+			if (line != null && line.contains("Account Name,Opening Date,Balance")) {
+			    System.out.println("Skipping header row");
+			}
+
     		// Check to see if file was found
     		if (inputStream == null) {
     			System.out.println("Unable to find accounts.csv");
     			// Return empty list of accounts
     			return accounts;
     		}
-
+ 
     		// Hold each line read from CSV file
-    		String line;
+    		//String line;
     		// Read lines from file until there are no more lines
     		while ((line = br.readLine()) != null) {
     			line = line.trim();
@@ -139,6 +144,11 @@ public class FileDal implements DalInt {
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
+			String line = br.readLine(); // Read first line (header)
+			if (line != null && line.contains("Transaction Type")) {
+			    System.out.println("Skipping header row");
+			}
+
 	        // Check to see if file was found
 	        if (inputStream == null) {
 	            System.out.println("Unable to find TransTypes.csv");
@@ -146,7 +156,7 @@ public class FileDal implements DalInt {
 	        }
 
 	        // Hold each line read from CSV file
-	        String line;
+	        //String line;
 	        while ((line = br.readLine()) != null) {
 	            line = line.trim();
 	            
@@ -203,6 +213,11 @@ public class FileDal implements DalInt {
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
+			String line = br.readLine(); // Read first line (header)
+			if (line != null && line.contains("accountName,transactionTypeName,transactionDate,transactionDescription,paymentAmount,depositAmount")) {
+			    System.out.println("Skipping header row");
+			}
+			
     		// Check to see if file was found
     		if (inputStream == null) {
     			System.out.println("Unable to find transactions.csv");
@@ -211,7 +226,7 @@ public class FileDal implements DalInt {
     		}
     		
     		// Hold each line read from CSV file
-    		String line;
+    		//String line;
     		// Read lines from file until there are no more lines
     		while ((line = br.readLine()) != null) {
     			line = line.trim();
@@ -287,6 +302,11 @@ public class FileDal implements DalInt {
 			InputStream inputStream = url.openStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
     
+			String line = br.readLine(); // Read first line (header)
+			if (line != null && line.contains("scheduleName,account,transType,frequency,dueDate,paymentAmount")) {
+			    System.out.println("Skipping header row");
+			}
+			
     		// Check to see if file was found
     		if (inputStream == null) {
     			System.out.println("Unable to find ScheduledTrans.csv");
@@ -295,7 +315,7 @@ public class FileDal implements DalInt {
     		}
     		
     		// Hold each line read from CSV file
-    		String line;
+    		//String line;
     		// Read lines from file until there are no more lines
     		while ((line = br.readLine()) != null) {
     			line = line.trim();

@@ -37,7 +37,7 @@ public class CreateTransactionController {
 	    @FXML
 	    public void initialize() {
 	        System.out.println("Initializing the controller...");
-
+	        	        
 	        DalInt dalInterface = new FileDal();
 	        List<AccountBean> accounts = dalInterface.loadAccounts();
 	        List<TransTypeBean> types = dalInterface.loadTransTypes();
