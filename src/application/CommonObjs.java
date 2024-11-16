@@ -3,6 +3,7 @@ package application;
 import application.model.AccountBean;
 import application.model.TransBean;
 import application.model.TransTypeBean;
+import application.model.ScheduledTransBean;
 import javafx.scene.layout.HBox;
 
 /**
@@ -15,6 +16,7 @@ public class CommonObjs {
     private AccountBean accountBean; // reference to AccountBean
     private TransTypeBean transTypeBean; // reference to TransTypeBean
     private TransBean transBean; // reference to TransBean
+    private ScheduledTransBean scheduledTransBean;
     
 	private CommonObjs() {}
 	
@@ -53,5 +55,10 @@ public class CommonObjs {
 	public void setTransBean(TransBean transBean) {
 		this.transBean = transBean;
 	}
-	
+	public ScheduledTransBean getScheduledTransBean() {
+		return scheduledTransBean;
+	}
+	public void setScheduledTransBean(ScheduledTransBean scheduledTransBean) {
+		this.scheduledTransBean = scheduledTransBean;
+	}
 }
