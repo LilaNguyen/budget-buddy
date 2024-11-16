@@ -1,1 +1,3 @@
-scheduleName,accountName,transType,frequency,dueDate,paymentAmount
+scheduleName,account,transType,frequency,dueDate,paymentAmount
+Rent,Chase Freedom Unlimited,Dining,Monthly,30,1250.0
+M,Capitol One Savor,Dining,Monthly,0,9.0

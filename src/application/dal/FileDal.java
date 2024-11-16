@@ -167,8 +167,6 @@ public class FileDal implements DalInt {
 	            String[] fields = line.split(",");
 	            if (fields.length == 1) {
 	                String transTypeName = fields[0].trim();
-	                // int transCode = Integer.parseInt(fields[0].trim());
-	                // transTypes.add(new TransTypeBean(transTypeName, transCode));
 	                transTypes.add(new TransTypeBean(transTypeName));
 	            }
 	        }

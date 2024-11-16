@@ -31,7 +31,6 @@ public class CreateTransTypeController {
             return;
         }
         
-        
 		// Check for duplicates
 		boolean haveDuplicate = false;
 		List<TransTypeBean> types = dalInterface.loadTransTypes();
