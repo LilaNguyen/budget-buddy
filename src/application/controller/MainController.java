@@ -70,36 +70,46 @@ public class MainController {
 		}
 	}
 	
-	@FXML public void showNewTransOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateTransaction.fxml");
+	@FXML public void showViewTransOp() {
+		URL url = getClass().getClassLoader().getResource("view/ViewTransactions.fxml");
 		
 		try {
-			AnchorPane pane = (AnchorPane) FXMLLoader.load(url);
+			AnchorPane pane4 = (AnchorPane) FXMLLoader.load(url);
 			// before inserting new child, remove previous one
 			if (mainBox.getChildren().size() > 1) {
 				mainBox.getChildren().remove(1);
 			}
-			mainBox.getChildren().add(pane);
+			mainBox.getChildren().add(pane4);
 		
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	/*
-	 * To be implemented at a later date.
-	 */
-	@FXML public void showScheduledTransOp() {}
-
-	/*
-	 * To be implemented at a later date.
-	 */
-	@FXML public void showTransTypeOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateTransType.fxml");
+	
+	@FXML public void showNewTransOp() {
+		URL url = getClass().getClassLoader().getResource("view/CreateTransaction.fxml");
+		
+		try {
+			AnchorPane pane5 = (AnchorPane) FXMLLoader.load(url);
+			// before inserting new child, remove previous one
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			mainBox.getChildren().add(pane5);
+		
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML public void showScheduleTransOp() {
+		URL url = getClass().getClassLoader().getResource("view/CreateScheduledTrans.fxml");
 		
 		try {
 			AnchorPane pane6 = (AnchorPane) FXMLLoader.load(url);
-			// Before inserting new child, remove previous one
+			// before inserting new child, remove previous one
 			if (mainBox.getChildren().size() > 1) {
 				mainBox.getChildren().remove(1);
 			}
@@ -110,5 +120,41 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML public void showViewScheduledTransOp() {
+		URL url = getClass().getClassLoader().getResource("view/ViewScheduledTrans.fxml");
+		
+		try {
+			AnchorPane pane7 = (AnchorPane) FXMLLoader.load(url);
+			// before inserting new child, remove previous one
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			mainBox.getChildren().add(pane7);
+		
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML public void showTransTypeOp() {
+		URL url = getClass().getClassLoader().getResource("view/CreateTransType.fxml");
+		
+		try {
+			AnchorPane pane8 = (AnchorPane) FXMLLoader.load(url);
+			// Before inserting new child, remove previous one
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+			mainBox.getChildren().add(pane8);
+		
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	
 }

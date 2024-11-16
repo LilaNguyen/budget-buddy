@@ -19,8 +19,8 @@ public class ViewTransactionsController {
     @FXML private TableColumn<TransBean, String> typeColumn;
     @FXML private TableColumn<TransBean, LocalDate> dateColumn;
     @FXML private TableColumn<TransBean, String> descriptionColumn;
-    @FXML private TableColumn<TransBean, Double> paymentColumn;
-    @FXML private TableColumn<TransBean, Double> depositColumn;
+    @FXML private TableColumn<TransBean, Double> paymentAmountColumn;
+    @FXML private TableColumn<TransBean, Double> depositAmountColumn;
 
     
     // Reference to DalInt
@@ -35,12 +35,14 @@ public class ViewTransactionsController {
     	typeColumn.setCellValueFactory(new PropertyValueFactory<>("transType"));
     	dateColumn.setCellValueFactory(new PropertyValueFactory<>("transDate"));
     	descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-    	paymentColumn.setCellValueFactory(new PropertyValueFactory<>("payment"));	
-    	depositColumn.setCellValueFactory(new PropertyValueFactory<>("deposit"));	
+    	paymentAmountColumn.setCellValueFactory(new PropertyValueFactory<>("paymentAmount"));	
+    	depositAmountColumn.setCellValueFactory(new PropertyValueFactory<>("depositAmount"));	
 
         // Initialize the list and table
     	
     	transactionList = FXCollections.observableArrayList(dalInterface.loadTransactions());
+    	transactionList.forEach(trans -> System.out.println("Payment: " + trans.getPaymentAmount() + ", Deposit: " + trans.getDepositAmount()));
+
     	transactionTable.setItems(transactionList);
 
         // Sort the data by opening date in descending order
