@@ -139,9 +139,9 @@ public class CreateScheduledTransController {
     	scheduleName.clear();
         dueDateField.clear();
         paymentAmountField.clear();
-        accountDropDown.getSelectionModel().clearSelection();
-        transactionTypeDropDown.getSelectionModel().clearSelection();
-        frequencyDropDown.getSelectionModel().clearSelection();
+        accountDropDown.getSelectionModel().selectFirst(); // shows first by default
+        frequencyDropDown.getSelectionModel().selectFirst();
+        transactionTypeDropDown.getSelectionModel().selectFirst(); // shows first by default
     }
     
 	private void displayErrorAlert(String message) {
