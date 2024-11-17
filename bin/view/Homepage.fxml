@@ -8,13 +8,13 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="325.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="90.0" fitWidth="91.0" layoutX="39.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="90.0" fitWidth="91.0" layoutX="64.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/piggybank.png" />
          </image></ImageView>
-      <Label alignment="TOP_RIGHT" layoutX="92.0" layoutY="157.0" prefHeight="55.0" prefWidth="194.0" text="Budget" textAlignment="RIGHT" wrapText="true">
+      <Label alignment="TOP_RIGHT" layoutX="117.0" layoutY="169.0" prefHeight="55.0" prefWidth="194.0" text="Budget" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Hiragino Sans GB W6" size="44.0" />
          </font>
@@ -28,7 +28,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label alignment="TOP_RIGHT" layoutX="99.0" layoutY="206.0" prefHeight="55.0" prefWidth="186.0" text="Buddy" textAlignment="RIGHT" wrapText="true">
+      <Label alignment="TOP_RIGHT" layoutX="124.0" layoutY="218.0" prefHeight="55.0" prefWidth="186.0" text="Buddy" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Hiragino Sans GB W6" size="44.0" />
          </font>
@@ -42,7 +42,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="39.0" layoutY="119.0" prefHeight="48.0" prefWidth="186.0" text="say hello to your" textFill="#37474f">
+      <Label layoutX="64.0" layoutY="131.0" prefHeight="48.0" prefWidth="186.0" text="say hello to your" textFill="#37474f">
          <font>
             <Font name="Baskerville Italic" size="22.0" />
          </font>

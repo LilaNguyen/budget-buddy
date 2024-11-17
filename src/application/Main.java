@@ -15,7 +15,7 @@ public class Main extends Application {
 		try {
 			
 			HBox mainBox = (HBox)FXMLLoader.load(getClass().getClassLoader().getResource("view/Main.fxml"));
-			Scene scene = new Scene(mainBox,600,400);
+			Scene scene = new Scene(mainBox,650,425);
 			scene.getStylesheets().add(getClass().getClassLoader().getResource("css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="325.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateTransactionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateTransactionController">
    <children>
-      <GridPane layoutX="16.0" layoutY="112.0" prefHeight="199.0" prefWidth="293.0">
+      <GridPane layoutX="41.0" layoutY="118.0" prefHeight="199.0" prefWidth="293.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -73,17 +73,17 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </GridPane>
-      <Button fx:id="save" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="327.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Submit" textAlignment="CENTER" textFill="#37474f">
+      <Button fx:id="save" alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="333.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Submit" textAlignment="CENTER" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="327.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="333.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Label layoutX="36.0" layoutY="65.0" prefHeight="31.0" prefWidth="174.0" text="Add New Transaction" textFill="#37474f">
+      <Label layoutX="61.0" layoutY="71.0" prefHeight="31.0" prefWidth="174.0" text="Add New Transaction" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="16.0" />
          </font>

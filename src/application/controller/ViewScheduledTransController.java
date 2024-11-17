@@ -41,7 +41,6 @@ public class ViewScheduledTransController {
         TableUtility.setTextWrappingForColumn(typeColumn);
         TableUtility.setTextWrappingForColumn(frequencyColumn);
         
-
         // Initialize the list and table
         scheduledTransList = FXCollections.observableArrayList(dalInterface.loadScheduledTrans());
         scheduledTransList.forEach(payment -> System.out.println("Payment: " + payment.getPaymentAmount()));
