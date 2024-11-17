@@ -8,9 +8,12 @@ import application.model.TransBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
+import view.TableUtility;
 
 public class ViewTransactionsController {
 	// Table and the columns
@@ -37,9 +40,13 @@ public class ViewTransactionsController {
     	descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
     	paymentAmountColumn.setCellValueFactory(new PropertyValueFactory<>("paymentAmount"));	
     	depositAmountColumn.setCellValueFactory(new PropertyValueFactory<>("depositAmount"));	
-
-        // Initialize the list and table
     	
+    	// Enable text wrapping for respective column
+    	TableUtility.setTextWrappingForColumn(accountColumn);
+    	TableUtility.setTextWrappingForColumn(typeColumn);
+    	TableUtility.setTextWrappingForColumn(descriptionColumn);
+    	
+        // Initialize the list and table
     	transactionList = FXCollections.observableArrayList(dalInterface.loadTransactions());
     	transactionList.forEach(trans -> System.out.println("Payment: " + trans.getPaymentAmount() + ", Deposit: " + trans.getDepositAmount()));
 

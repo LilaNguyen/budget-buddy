@@ -147,7 +147,6 @@ public class CreateTransactionController {
 		 * to their default values.
 		 */
 		@FXML public void clearFormOp() {
-			initialize();
 			descriptionField.clear();
 			paymentAmountField.clear();
 			depositAmountField.clear();

@@ -107,6 +107,20 @@ public class CreateScheduledTransController {
 		    displayErrorAlert("Payment amount is required.");
 		    return;
 		}
+		
+		// Check for duplicate schedule name
+		List<ScheduledTransBean> scheduleNames = dalInterface.loadScheduledTrans();
+		for (ScheduledTransBean existingSchedule : scheduleNames) {
+			try {
+				if (existingSchedule.getScheduleName().equalsIgnoreCase(schedName)) {
+					displayErrorAlert("This schedule name already exists. Please enter a unique schedule name.");
+					return;
+				}
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		try {
 		    paymentAmount = Double.parseDouble(paymentAmountField.getText());
@@ -139,9 +153,6 @@ public class CreateScheduledTransController {
     	scheduleName.clear();
         dueDateField.clear();
         paymentAmountField.clear();
-        accountDropDown.getSelectionModel().selectFirst(); // shows first by default
-        frequencyDropDown.getSelectionModel().selectFirst();
-        transactionTypeDropDown.getSelectionModel().selectFirst(); // shows first by default
     }
     
 	private void displayErrorAlert(String message) {

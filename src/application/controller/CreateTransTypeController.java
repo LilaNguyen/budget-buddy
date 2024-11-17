@@ -31,13 +31,11 @@ public class CreateTransTypeController {
             return;
         }
         
-		// Check for duplicates
-		boolean haveDuplicate = false;
+		// Check for duplicate transaction type
 		List<TransTypeBean> types = dalInterface.loadTransTypes();
 		for (TransTypeBean existingType : types) {
 			try {
 				if (existingType.getTransTypeName().equalsIgnoreCase(transType)) {
-					haveDuplicate = true;
 					displayErrorAlert("This transaction type's name already exists. Please enter a unique name.");
 					return;
 				}

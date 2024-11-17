@@ -67,13 +67,11 @@ public class CreateAccountController {
             return;
         }
         
-		// Check for duplicates
-		boolean haveDuplicate = false;
+        // Check for duplicate account name
 		List<AccountBean> accounts = dalInterface.loadAccounts();
 		for (AccountBean existingAcc : accounts) {
 			try {
 				if (existingAcc.getAccountName().equalsIgnoreCase(accName)) {
-					haveDuplicate = true;
 					displayErrorAlert("This account name already exists. Please enter a unique account name.");
 					return;
 				}

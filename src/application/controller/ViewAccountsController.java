@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import view.TableUtility;
 
 public class ViewAccountsController {
 	// Table and the columns
@@ -31,6 +32,9 @@ public class ViewAccountsController {
         balanceColumn.setCellValueFactory(new PropertyValueFactory<>("openingBalance"));
         openingDateColumn.setCellValueFactory(new PropertyValueFactory<>("openingDate"));
 
+     	// Enable text wrapping for respective column
+    	TableUtility.setTextWrappingForColumn(nameColumn);
+    	
         // Initialize the list and table
         accountList = FXCollections.observableArrayList(dalInterface.loadAccounts());
         accountTable.setItems(accountList);
