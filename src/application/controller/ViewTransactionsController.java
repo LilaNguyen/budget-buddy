@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import view.TableUtility;
+import javafx.event.ActionEvent;
 
 public class ViewTransactionsController {
 	// Table and the columns
@@ -62,5 +63,11 @@ public class ViewTransactionsController {
         // For Debugging-- make sure data is being loaded
         System.out.println("Loaded accounts: " + transactionList.size());
     }
+
+	@FXML public void showEditTransOp() {}
+
+	@FXML public void searchOp() {}
+
+	@FXML public void deleteOp() {}
     
 }

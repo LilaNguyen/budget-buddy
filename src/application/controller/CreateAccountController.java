@@ -44,11 +44,7 @@ public class CreateAccountController {
 	@FXML public void enterOpeningBalOp() {}
 
 	@FXML public void submitOp() {
-		// String accName = accNameField.getText();  // Get the account name
-        // String openingDate = openingDateField.getValue() != null ? openingDateField.getValue().toString() : null;  // Convert date to String
-        // String openingBalanceStr = openingBalField.getText();  // Get the balance
-		
-        DalInt dalInterface = new FileDal();
+		DalInt dalInterface = new FileDal();
         
 		String accName = accNameField.getText();
 		LocalDate openingDate = openingDateField.getValue();

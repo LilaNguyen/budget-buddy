@@ -27,7 +27,7 @@ public class FileDal implements DalInt {
     private List<TransBean> transactions = new ArrayList<>();
     private List<ScheduledTransBean> scheduledTrans = new ArrayList<>();
 
-    private final String csvFilePath = "CSVs/accounts.csv";
+    private final String accountsFilePath = "CSVs/accounts.csv";
     private final String transTypeFilePath = "CSVs/TransType.csv";
     private final String transactionsFilePath = "CSVs/transactions.csv";
     private final String scheduledTransFilePath = "CSVs/ScheduledTrans.csv";
@@ -48,7 +48,7 @@ public class FileDal implements DalInt {
     	try {
     		System.out.println("Here we go");
 
-    		URL url = getClass().getClassLoader().getResource(csvFilePath);
+    		URL url = getClass().getClassLoader().getResource(accountsFilePath);
 			System.out.println("Here is url " + url);
 						
 			InputStream inputStream = url.openStream();
@@ -113,7 +113,7 @@ public class FileDal implements DalInt {
 		accounts.add(account);
 		
 		try {
-			URL url = getClass().getClassLoader().getResource(csvFilePath);
+			URL url = getClass().getClassLoader().getResource(accountsFilePath);
 			System.out.println("Here is url " + url);
 			
 			String path = url.toURI().getPath();
