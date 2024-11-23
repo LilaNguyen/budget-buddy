@@ -71,23 +71,37 @@ public class ViewTransactionsController {
         searchOp();
     }
 
-	@FXML public void showEditTransOp() {
+    @FXML public void showEditTransOp() {
 		URL url = getClass().getClassLoader().getResource("view/EditTransaction.fxml");
-
 		try {
-			AnchorPane pane = (AnchorPane) FXMLLoader.load(url);
-			HBox mainBox = commonObjs.getMainBox();
+			FXMLLoader loader = new FXMLLoader(url);
+	        AnchorPane pane = loader.load();
+	       
+	        EditTransactionController controller = loader.getController();
+	        int selectedIndex = transactionTable.getSelectionModel().getSelectedIndex();
+	        if (selectedIndex >= 0) {
+	        	controller.setTransactionList(transactionList);
+	        	controller.setIndex(selectedIndex);
+	        	System.out.println("Selected Index: " + selectedIndex);
+	        	
+	        	transactionTable.getSelectionModel().clearSelection(); // Clear selection
+	        	
+	        	HBox mainBox = commonObjs.getMainBox();
+				
+				if (mainBox.getChildren().size() > 1) {
+					mainBox.getChildren().remove(1);
+				}
 			
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-		
-			mainBox.getChildren().add(pane);
-
+				mainBox.getChildren().add(pane);
+	        }
+	        else {
+	        	System.out.println("No selected row");
+	        }
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	
 	@FXML public void searchOp() {
 		FilteredList<TransBean> filteredTrans = new FilteredList<>(transactionList);
