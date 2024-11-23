@@ -13,10 +13,15 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import view.TableUtility;
@@ -95,7 +100,7 @@ public class ViewTransactionsController {
 				mainBox.getChildren().add(pane);
 	        }
 	        else {
-	        	System.out.println("No selected row");
+	        	displayErrorAlert();
 	        }
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -137,12 +142,21 @@ public class ViewTransactionsController {
 				System.out.println("Transaction deleted: " + selectedTrans.toString());
 			}
 			else {
-				System.out.println("To delete, a transaction must be selected first.");
+				displayErrorAlert();
 			}
 		}
 		catch (NullPointerException e) {
 			System.out.print(e.getMessage());
 		}
+	}
+	
+	private void displayErrorAlert() {
+		Alert alert = new Alert(AlertType.WARNING, "A transaction must be selected first.", ButtonType.OK);
+		alert.setTitle("Input Error");
+		// remove default header
+		alert.setHeaderText(null);
+		// display the alert and wait for user interaction
+		alert.showAndWait();
 	}
     
 }
