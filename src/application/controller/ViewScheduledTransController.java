@@ -64,16 +64,17 @@ public class ViewScheduledTransController {
 		
 		// Observe changes in search input
 		TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
-			filteredTrans.setPredicate(TransBean -> {
+			filteredScheduledTrans.setPredicate(ScheduledTransBean -> {
 				
 				// If search input is empty, show all results
 				if (currentText == null || currentText.isEmpty()) {
 					return true;
 				}
 				
-				String searchedDescription = currentText.toLowerCase();
-				// Check if description contains search input
-				return TransBean.getDescription().toLowerCase().contains(searchedDescription);
+				String searchedName = currentText.toLowerCase();
+				
+				// Check if schedule name contains search input
+				return ScheduledTransBean.getScheduleName().toLowerCase().contains(searchedName);
 			});
 		});
 	}
