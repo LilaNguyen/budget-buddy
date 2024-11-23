@@ -288,9 +288,31 @@ public class FileDal implements DalInt {
 	}
 
 	@Override
-	public List<TransBean> saveAllTransactions(List<TransBean> transList) {
-		// To be implemented
-		return transList;
+	public void saveAllTransactions(List<TransBean> transList) {
+		try {
+            URL url = getClass().getClassLoader().getResource(transactionsFilePath);
+            if (url == null) {
+                System.out.println("Unable to find transactions.csv");
+                return;
+            }
+
+            String path = url.toURI().getPath();
+
+            try (FileWriter writer = new FileWriter(path, false)) {
+            	// Write header than each transaction
+            	writer.append("accountName,transactionTypeName,transactionDate,transactionDescription,paymentAmount,depositAmount\n");
+            	for (TransBean transaction : transList) {
+	            	writer.append(transaction.getAccount()).append(",")
+	            		.append(transaction.getTransType()).append(",")
+	            		.append(transaction.getTransDate().format(dateFormatter)).append(",")
+	            		.append(transaction.getDescription()).append(",")
+	            		.append(String.valueOf(transaction.getPaymentAmount())).append(",")
+	            		.append(String.valueOf(transaction.getDepositAmount())).append("\n");
+            	}
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 	
 	@Override
@@ -384,9 +406,8 @@ public class FileDal implements DalInt {
 	}
 
 	@Override
-	public List<ScheduledTransBean> saveAllScheduledTrans(List<ScheduledTransBean> scheduledTransList) {
+	public void saveAllScheduledTrans(List<ScheduledTransBean> scheduledTransList) {
 		// To be implemented
-		return scheduledTransList;
 	}
 
 	@Override
