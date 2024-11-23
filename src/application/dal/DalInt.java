@@ -16,13 +16,16 @@ public interface DalInt {
 	List<TransTypeBean> loadTransTypes();
 	List<TransTypeBean> saveTransType(TransTypeBean transType);
 	
-	// Load and save methods for transactions
+	// Load, save, and delete methods for transactions
 	List<TransBean> loadTransactions();
 	List<TransBean> saveTransactions(TransBean transaction);
 	List<TransBean> saveAllTransactions(List<TransBean> transList);
+	List<TransBean> deleteTransaction(TransBean transaction);
 
-	// Load and save methods for scheduled transactions
+	// Load, save, and delete methods for scheduled transactions
 	List<ScheduledTransBean> loadScheduledTrans();
 	List<ScheduledTransBean> saveScheduledTrans(ScheduledTransBean scheduledTran);
+	List<ScheduledTransBean> saveAllScheduledTrans(List<ScheduledTransBean> scheduledTransList);
+	List<ScheduledTransBean> deleteScheduledTrans(ScheduledTransBean scheduledTran);
 	
 }

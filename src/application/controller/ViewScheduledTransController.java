@@ -3,8 +3,10 @@ package application.controller;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.ScheduledTransBean;
+import application.model.TransBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -55,4 +57,46 @@ public class ViewScheduledTransController {
         System.out.println("Loaded scheduled transactions: " + scheduledTransList.size());
     }
 
+
+	@FXML public void searchOp() {
+		FilteredList<ScheduledTransBean> filteredScheduledTrans = new FilteredList<>(scheduledTransList);
+		scheduledTransTable.setItems(filteredScheduledTrans); // table will show filtered list
+		
+		// Observe changes in search input
+		TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
+			filteredTrans.setPredicate(TransBean -> {
+				
+				// If search input is empty, show all results
+				if (currentText == null || currentText.isEmpty()) {
+					return true;
+				}
+				
+				String searchedDescription = currentText.toLowerCase();
+				// Check if description contains search input
+				return TransBean.getDescription().toLowerCase().contains(searchedDescription);
+			});
+		});
+	}
+	
+	@FXML public void deleteOp() {
+		try {
+			// Get selected scheduled transaction
+			ScheduledTransBean selectedScheduledTrans = scheduledTransTable.getSelectionModel().getSelectedItem();
+			
+			if (selectedScheduledTrans != null) {
+				// Remove scheduled transaction from list and table
+				scheduledTransList.remove(selectedScheduledTrans);
+				dalInterface.deleteScheduledTrans(selectedScheduledTrans);
+				
+				// For debugging
+				System.out.println("Scheduled transaction deleted: " + selectedScheduledTrans.toString());
+			}
+			else {
+				System.out.println("To delete, a scheduled transaction must be selected first.");
+			}
+		}
+		catch (NullPointerException e) {
+			System.out.print(e.getMessage());
+		}
+	}
 }
