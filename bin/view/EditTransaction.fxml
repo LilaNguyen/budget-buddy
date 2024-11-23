@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.EditTransactionController">
+   <children>
+      <GridPane layoutX="41.0" layoutY="118.0" prefHeight="199.0" prefWidth="293.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="43.0" prefWidth="163.0" text="Account" textFill="#37474f">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="11.0" />
+               </font>
+            </Label>
+            <Label prefHeight="53.0" prefWidth="184.0" text="Transaction type" textFill="#37474f" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="11.0" />
+               </font></Label>
+            <Label prefHeight="36.0" prefWidth="167.0" text="Transaction date" textFill="#37474f" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="11.0" />
+               </font></Label>
+            <Label prefHeight="48.0" prefWidth="159.0" text="Description" textFill="#37474f" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="11.0" />
+               </font></Label>
+            <Label prefHeight="64.0" prefWidth="177.0" text="Payment amount" textFill="#37474f" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="11.0" />
+               </font></Label>
+            <Label prefHeight="70.0" prefWidth="168.0" text="Deposit amount" textFill="#37474f" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="11.0" />
+               </font></Label>
+            <ComboBox fx:id="accountDropDown" prefHeight="28.0" prefWidth="129.0" promptText="Select Account" style="-fx-font-family: Hiragino Sans GB W3; -fx-font-size: 10.5;" GridPane.columnIndex="1" />
+            <ComboBox fx:id="transactionTypeDropDown" prefHeight="28.0" prefWidth="129.0" promptText="Select Type" style="-fx-font-family: Hiragino Sans GB W3; -fx-font-size: 10.5;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker fx:id="transactionDatePicker" prefHeight="28.0" prefWidth="129.0" promptText="Select Date" style="-fx-font-size: 11.5;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="descriptionField" prefHeight="28.0" prefWidth="129.0" promptText="Japan flight" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="10.5" />
+               </font></TextField>
+            <TextField fx:id="paymentAmountField" prefHeight="28.0" prefWidth="129.0" promptText="\$0.00" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="10.5" />
+               </font></TextField>
+            <TextField fx:id="depositAmountField" prefHeight="28.0" prefWidth="129.0" promptText="\$0.00" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Hiragino Sans GB W3" size="10.5" />
+               </font></TextField>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </GridPane>
+      <Button fx:id="save" alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="333.0" mnemonicParsing="false" onAction="#saveOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Save" textAlignment="CENTER" textFill="#37474f">
+         <font>
+            <Font name="Hiragino Sans GB W3" size="10.5" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancelOp" prefHeight="17.0" prefWidth="55.0" style="-fx-border-color: #CCCCCC; -fx-background-color: #E6E2E6;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
+         <font>
+            <Font name="Hiragino Sans GB W3" size="10.5" />
+         </font>
+      </Button>
+      <Label layoutX="61.0" layoutY="71.0" prefHeight="31.0" prefWidth="174.0" text="Edit Transaction" textFill="#37474f">
+         <font>
+            <Font name="Hiragino Sans GB W3" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

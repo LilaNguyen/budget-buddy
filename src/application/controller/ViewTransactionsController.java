@@ -1,17 +1,23 @@
 package application.controller;
 
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 
+import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.TransBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import view.TableUtility;
 import javafx.event.ActionEvent;
@@ -26,11 +32,9 @@ public class ViewTransactionsController {
     @FXML private TableColumn<TransBean, Double> paymentAmountColumn;
     @FXML private TableColumn<TransBean, Double> depositAmountColumn;
 
-    
-    // Reference to DalInt
     private DalInt dalInterface = new FileDal();
-    
     private ObservableList<TransBean> transactionList;
+    private CommonObjs commonObjs = CommonObjs.getInstance();
     
     @FXML
     public void initialize() {
@@ -64,10 +68,30 @@ public class ViewTransactionsController {
         System.out.println("Loaded accounts: " + transactionList.size());
     }
 
-	@FXML public void showEditTransOp() {}
+	@FXML public void showEditTransOp() {
+		URL url = getClass().getClassLoader().getResource("view/EditTransaction.fxml");
 
-	@FXML public void searchOp() {}
+		try {
+			AnchorPane pane = (AnchorPane) FXMLLoader.load(url);
+			HBox mainBox = commonObjs.getMainBox();
+			
+			if (mainBox.getChildren().size() > 1) {
+				mainBox.getChildren().remove(1);
+			}
+		
+			mainBox.getChildren().add(pane);
 
-	@FXML public void deleteOp() {}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML public void searchOp() {
+		// To be implemented
+	}
+
+	@FXML public void deleteOp() {
+		// To be implemented
+	}
     
 }
