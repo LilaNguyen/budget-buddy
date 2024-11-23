@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
 
 
 public class CreateTransactionController {
-	// Need a reference of CommonObjs objects here
+		// Need a reference of CommonObjs objects here
 		private CommonObjs commonObjs = CommonObjs.getInstance();
 		
 		@FXML private ComboBox<String> accountDropDown;
