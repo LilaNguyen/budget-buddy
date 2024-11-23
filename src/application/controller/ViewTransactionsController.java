@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import view.AlertUtility;
 import view.TableUtility;
 
 public class ViewTransactionsController {
@@ -95,7 +96,7 @@ public class ViewTransactionsController {
 				mainBox.getChildren().add(pane);
 	        }
 	        else {
-	        	System.out.println("No selected row");
+	        	AlertUtility.displayErrorAlert("A transaction must be selected first.");
 	        }
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -137,7 +138,7 @@ public class ViewTransactionsController {
 				System.out.println("Transaction deleted: " + selectedTrans.toString());
 			}
 			else {
-				System.out.println("To delete, a transaction must be selected first.");
+				AlertUtility.displayErrorAlert("A transaction must be selected first.");
 			}
 		}
 		catch (NullPointerException e) {

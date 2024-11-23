@@ -1,25 +1,18 @@
 package application.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import application.CommonObjs;
+import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.AccountBean;
 import application.model.ScheduledTransBean;
-import application.model.TransBean;
 import application.model.TransTypeBean;
-import application.dal.DalInt;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import view.AlertUtility;
 
 
 public class CreateScheduledTransController {
@@ -74,37 +67,37 @@ public class CreateScheduledTransController {
 		
 		//make sure completing all fields
 		if(schedName.isEmpty()) {
-			displayErrorAlert("Schedule name is required.");
+			AlertUtility.displayErrorAlert("Schedule name is required.");
 			return;
 		}
 		if (accName == null) {
-			displayErrorAlert("Account selection is required.");
+			AlertUtility.displayErrorAlert("Account selection is required.");
 			return;
 		}
 		
 		if (transType == null) {
-			displayErrorAlert("Transaction Type selection is required.");
+			AlertUtility.displayErrorAlert("Transaction Type selection is required.");
 			return;
 		}
 		
 		if (frequency == null) {
-			displayErrorAlert("Frequency is required.");
+			AlertUtility.displayErrorAlert("Frequency is required.");
 			return;
 		}
 		//check due date field to make sure its not empty and then turn it back into an integer
 		if (dueDateField.getText().isEmpty()) {
-		    displayErrorAlert("Due date is required.");
+			AlertUtility.displayErrorAlert("Due date is required.");
 		    return;
 		}
 		try {
 		    dueDate = Integer.parseInt(dueDateField.getText());
 		} catch (NumberFormatException e) {
-		    displayErrorAlert("Due date must be a valid number.");
+			AlertUtility.displayErrorAlert("Due date must be a valid number.");
 		    dueDateField.clear();
 		    return;
 		}
 		if (paymentAmountField.getText().isEmpty()) {
-		    displayErrorAlert("Payment amount is required.");
+			AlertUtility.displayErrorAlert("Payment amount is required.");
 		    return;
 		}
 		
@@ -113,7 +106,7 @@ public class CreateScheduledTransController {
 		for (ScheduledTransBean existingSchedule : scheduleNames) {
 			try {
 				if (existingSchedule.getScheduleName().equalsIgnoreCase(schedName)) {
-					displayErrorAlert("This schedule name already exists. Please enter a unique schedule name.");
+					AlertUtility.displayErrorAlert("This schedule name already exists. Please enter a unique schedule name.");
 					return;
 				}
 			}
@@ -125,13 +118,13 @@ public class CreateScheduledTransController {
 		try {
 		    paymentAmount = Double.parseDouble(paymentAmountField.getText());
 		    if (paymentAmount <= 0) {
-		        displayErrorAlert("Payment amount must be greater than zero.");
+		    	AlertUtility.displayErrorAlert("Payment amount must be greater than zero.");
 		        paymentAmountField.clear();
 		        return;
 		    }
 		    paymentAmountField.setText(String.format("%.2f", paymentAmount));
 		} catch (NumberFormatException e) {
-		    displayErrorAlert("Payment amount must be a valid numeric value.");
+			AlertUtility.displayErrorAlert("Payment amount must be a valid numeric value.");
 		    paymentAmountField.clear();
 		    return;
 		}
@@ -145,7 +138,7 @@ public class CreateScheduledTransController {
         // Set new account in CommonObjs to access most recently created account
         CommonObjs.getInstance().setScheduledTransBean(newScheduledTrans);
 
-		displaySuccessAlert("Transaction successfully saved");
+        AlertUtility.displaySuccessAlert("Transaction successfully saved");
 		clearFormOp();
 	}
 
@@ -155,30 +148,5 @@ public class CreateScheduledTransController {
         paymentAmountField.clear();
     }
     
-	private void displayErrorAlert(String message) {
-		Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
-		alert.setTitle("Input Error");
-		// remove default header
-		alert.setHeaderText(null);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
-		
-	}
-	private void displaySuccessAlert(String message) {
-		Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
-		alert.setTitle("Success");
-		// remove default header
-		alert.setHeaderText(null);
-		// load custom image to use as icon
-		Image icon = new Image("images/successIcon.png");
-		ImageView iconView = new ImageView(icon);
-		iconView.setFitHeight(50);
-		iconView.setFitWidth(50);
-		alert.setGraphic(iconView);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
-	}
-
-
 
 }

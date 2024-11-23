@@ -8,10 +8,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import view.TableUtility;
+import view.AlertUtility;
 
 public class ViewScheduledTransController {
     // Table and columns
@@ -64,16 +68,17 @@ public class ViewScheduledTransController {
 		
 		// Observe changes in search input
 		TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
-			filteredTrans.setPredicate(TransBean -> {
+			filteredScheduledTrans.setPredicate(ScheduledTransBean -> {
 				
 				// If search input is empty, show all results
 				if (currentText == null || currentText.isEmpty()) {
 					return true;
 				}
 				
-				String searchedDescription = currentText.toLowerCase();
-				// Check if description contains search input
-				return TransBean.getDescription().toLowerCase().contains(searchedDescription);
+				String searchedName = currentText.toLowerCase();
+				
+				// Check if schedule name contains search input
+				return ScheduledTransBean.getScheduleName().toLowerCase().contains(searchedName);
 			});
 		});
 	}
@@ -92,11 +97,12 @@ public class ViewScheduledTransController {
 				System.out.println("Scheduled transaction deleted: " + selectedScheduledTrans.toString());
 			}
 			else {
-				System.out.println("To delete, a scheduled transaction must be selected first.");
+				AlertUtility.displayErrorAlert("A scheduled transaction must be selected first.");
 			}
 		}
 		catch (NullPointerException e) {
 			System.out.print(e.getMessage());
 		}
 	}
+    
 }
