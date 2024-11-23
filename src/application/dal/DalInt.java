@@ -19,6 +19,7 @@ public interface DalInt {
 	// Load and save methods for transactions
 	List<TransBean> loadTransactions();
 	List<TransBean> saveTransactions(TransBean transaction);
+	List<TransBean> saveAllTransactions(List<TransBean> transList);
 
 	// Load and save methods for scheduled transactions
 	List<ScheduledTransBean> loadScheduledTrans();

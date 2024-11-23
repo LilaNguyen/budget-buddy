@@ -10,11 +10,15 @@ import application.model.TransBean;
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -262,7 +266,15 @@ public class FileDal implements DalInt {
 
 	@Override
 	public List<TransBean> saveTransactions(TransBean transaction) {
-		transactions.add(transaction);
+		ArrayList<TransBean> transList = new ArrayList<TransBean>();
+		transList.add(transaction);
+		return saveAllTransactions(transList);
+	}
+	@Override
+	public List<TransBean> saveAllTransactions(List<TransBean> transList) {
+		for (TransBean transaction : transList) {
+			transactions.add(transaction);
+		}
 		try {
             URL url = getClass().getClassLoader().getResource(transactionsFilePath);
             if (url == null) {
@@ -273,20 +285,22 @@ public class FileDal implements DalInt {
             String path = url.toURI().getPath();
 
             try (FileWriter writer = new FileWriter(path, true)) {
-            	writer.append(transaction.getAccount()).append(",")
+            	for (TransBean transaction : transList) {
+            		writer.append(transaction.getAccount()).append(",")
             		.append(transaction.getTransType()).append(",")
             		.append(transaction.getTransDate().format(dateFormatter)).append(",")
             		.append(transaction.getDescription()).append(",")
             		.append(String.valueOf(transaction.getPaymentAmount())).append(",")
             		.append(String.valueOf(transaction.getDepositAmount())).append("\n");
+        		}	
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 		return transactions;
-		
 	}
-
+	
+		
 	@Override
 	public List<ScheduledTransBean> loadScheduledTrans() {
 		scheduledTrans.clear();
