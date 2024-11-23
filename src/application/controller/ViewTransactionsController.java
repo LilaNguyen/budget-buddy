@@ -1,162 +1,102 @@
 package application.controller;
 
-import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 
 import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
+import application.model.AccountBean;
 import application.model.TransBean;
-import javafx.collections.FXCollections;
+import application.model.TransTypeBean;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import view.TableUtility;
 
 public class ViewTransactionsController {
-	// Table and the columns
-    @FXML private TableView<TransBean> transactionTable;
-    @FXML private TableColumn<TransBean, String> accountColumn;
-    @FXML private TableColumn<TransBean, String> typeColumn;
-    @FXML private TableColumn<TransBean, LocalDate> dateColumn;
-    @FXML private TableColumn<TransBean, String> descriptionColumn;
-    @FXML private TableColumn<TransBean, Double> paymentAmountColumn;
-    @FXML private TableColumn<TransBean, Double> depositAmountColumn;
-    @FXML private TextField TransactionsSearchBar;
+    @FXML private ComboBox<String> accountDropDown;
+    @FXML private ComboBox<String> transactionTypeDropDown;
+    @FXML private DatePicker transactionDatePicker;
+    @FXML private TextField descriptionField;
+    @FXML private TextField paymentAmountField;
+    @FXML private TextField depositAmountField;
+    @FXML private Button save;
+    @FXML private Button cancel;
     
+    private int oldTransIndex;
+    private TransBean oldTransaction;
     private DalInt dalInterface = new FileDal();
     private ObservableList<TransBean> transactionList;
     private CommonObjs commonObjs = CommonObjs.getInstance();
-    
-    @FXML
+   
     public void initialize() {
-        // Set up the columns MAKE SURE NAMES MATCH GET/SET METHODS
-    	accountColumn.setCellValueFactory(new PropertyValueFactory<>("account"));
-    	typeColumn.setCellValueFactory(new PropertyValueFactory<>("transType"));
-    	dateColumn.setCellValueFactory(new PropertyValueFactory<>("transDate"));
-    	descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-    	paymentAmountColumn.setCellValueFactory(new PropertyValueFactory<>("paymentAmount"));	
-    	depositAmountColumn.setCellValueFactory(new PropertyValueFactory<>("depositAmount"));	
-    	
-    	// Enable text wrapping for respective column
-    	TableUtility.setTextWrappingForColumn(accountColumn);
-    	TableUtility.setTextWrappingForColumn(typeColumn);
-    	TableUtility.setTextWrappingForColumn(descriptionColumn);
-    	
-        // Initialize the list and table
-    	transactionList = FXCollections.observableArrayList(dalInterface.loadTransactions());
-    	transactionList.forEach(trans -> System.out.println("Payment: " + trans.getPaymentAmount() + ", Deposit: " + trans.getDepositAmount()));
-
-    	transactionTable.setItems(transactionList);
-
-        // Sort the data by opening date in descending order
-    	dateColumn.setSortType(TableColumn.SortType.DESCENDING);
-        transactionTable.getSortOrder().add(dateColumn);
-        
-        // Sort table
-        transactionTable.sort();
-        
-        // For Debugging-- make sure data is being loaded
-        System.out.println("Loaded accounts: " + transactionList.size());
-        
-        // Initialize search-- will show all items until user starts a search
-        searchOp();
+        System.out.println("Initializing the EditTransactionController...");
+        List<AccountBean> accounts = dalInterface.loadAccounts();
+        List<TransTypeBean> types = dalInterface.loadTransTypes();
+       
+        for (AccountBean bean : accounts) {
+            accountDropDown.getItems().add(bean.getAccountName());
+        }
+       
+        for (TransTypeBean bean : types) {
+            transactionTypeDropDown.getItems().add(bean.getTransTypeName());
+        }
     }
-
-    @FXML public void showEditTransOp() {
-		URL url = getClass().getClassLoader().getResource("view/EditTransaction.fxml");
-		try {
-			FXMLLoader loader = new FXMLLoader(url);
-	        AnchorPane pane = loader.load();
-	       
-	        EditTransactionController controller = loader.getController();
-	        int selectedIndex = transactionTable.getSelectionModel().getSelectedIndex();
-	        if (selectedIndex >= 0) {
-	        	controller.setTransactionList(transactionList);
-	        	controller.setIndex(selectedIndex);
-	        	System.out.println("Selected Index: " + selectedIndex);
-	        	
-	        	transactionTable.getSelectionModel().clearSelection(); // Clear selection
-	        	
-	        	HBox mainBox = commonObjs.getMainBox();
-				
-				if (mainBox.getChildren().size() > 1) {
-					mainBox.getChildren().remove(1);
-				}
-			
-				mainBox.getChildren().add(pane);
-	        }
-	        else {
-	        	displayErrorAlert();
-	        }
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	
-	@FXML public void searchOp() {
-		FilteredList<TransBean> filteredTrans = new FilteredList<>(transactionList);
-		transactionTable.setItems(filteredTrans); // table will show filtered list
-		
-		// Observe changes in search input
-		TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
-			filteredTrans.setPredicate(TransBean -> {
-				
-				// If search input is empty, show all results
-				if (currentText == null || currentText.isEmpty()) {
-					return true;
-				}
-				
-				String searchedDescription = currentText.toLowerCase();
-				// Check if description contains search input
-				return TransBean.getDescription().toLowerCase().contains(searchedDescription);
-			});
-		});
-	}
-	
-	@FXML public void deleteOp() {
-		try {
-			// Get selected transaction
-			TransBean selectedTrans = transactionTable.getSelectionModel().getSelectedItem();
-			
-			if (selectedTrans != null) {
-				// Remove transaction from list and table
-				transactionList.remove(selectedTrans);
-				dalInterface.deleteTransaction(selectedTrans);
-				
-				// For debugging
-				System.out.println("Transaction deleted: " + selectedTrans.toString());
-			}
-			else {
-				displayErrorAlert();
-			}
-		}
-		catch (NullPointerException e) {
-			System.out.print(e.getMessage());
-		}
-	}
-	
-	private void displayErrorAlert() {
-		Alert alert = new Alert(AlertType.WARNING, "A transaction must be selected first.", ButtonType.OK);
-		alert.setTitle("Input Error");
-		// remove default header
-		alert.setHeaderText(null);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
-	}
+   
+    @FXML public void saveOp() {
+        // Your save operation code
+    }
     
+    @FXML public void cancelOp() {
+        // Your cancel operation code
+    }
+    
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
+        alert.setTitle("Input Error");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+    
+    private void displaySuccessAlert(String message) {
+        Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+    
+    @FXML public void clearFormOp() {
+        // Your clear form code
+    }
+    
+    // **Ensure this method is present and correctly defined**
+    public void setTransactionList(ObservableList<TransBean> transactionList) {
+        this.transactionList = transactionList;
+    }
+    
+    public void setIndex(int oldTransIndex) {
+        this.oldTransIndex = oldTransIndex;
+        oldTransaction = transactionList.get(oldTransIndex);
+        System.out.println("Edit Index: " + oldTransIndex);
+        updateFields();
+    }
+    
+    private void updateFields() {
+        accountDropDown.setValue(oldTransaction.getAccount());
+        transactionTypeDropDown.setValue(oldTransaction.getTransType());
+        transactionDatePicker.setValue(oldTransaction.getTransDate());
+        descriptionField.setText(oldTransaction.getDescription());
+        if(oldTransaction.getPaymentAmount() != 0) { 
+            paymentAmountField.setText(String.valueOf(oldTransaction.getPaymentAmount())); 
+        }
+        if(oldTransaction.getDepositAmount() != 0) { 
+            depositAmountField.setText(String.valueOf(oldTransaction.getDepositAmount())); 
+        }
+    }
 }

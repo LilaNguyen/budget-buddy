@@ -3,7 +3,6 @@ package application.controller;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.ScheduledTransBean;
-import application.model.TransBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import view.TableUtility;
@@ -26,6 +26,9 @@ public class ViewScheduledTransController {
     @FXML private TableColumn<ScheduledTransBean, Integer> dueDateColumn;
     @FXML private TableColumn<ScheduledTransBean, Double> paymentAmountColumn;
 
+    // Search bar
+    @FXML private TextField TransactionsSearchBar;
+
     // Reference to DalInt
     private DalInt dalInterface = new FileDal();
     private ObservableList<ScheduledTransBean> scheduledTransList;
@@ -33,7 +36,7 @@ public class ViewScheduledTransController {
     @FXML
     public void initialize() {
         // Set up the columns to match the ScheduledTransBean fields
-    	scheduleNameColumn.setCellValueFactory(new PropertyValueFactory<>("scheduleName"));
+        scheduleNameColumn.setCellValueFactory(new PropertyValueFactory<>("scheduleName"));
         accountColumn.setCellValueFactory(new PropertyValueFactory<>("account"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("transType"));
         frequencyColumn.setCellValueFactory(new PropertyValueFactory<>("frequency"));
@@ -48,69 +51,69 @@ public class ViewScheduledTransController {
         
         // Initialize the list and table
         scheduledTransList = FXCollections.observableArrayList(dalInterface.loadScheduledTrans());
-        scheduledTransList.forEach(payment -> System.out.println("Payment: " + payment.getPaymentAmount()));
         scheduledTransTable.setItems(scheduledTransList);
 
-        // Sort the data by opening date in ascending order
-    	dueDateColumn.setSortType(TableColumn.SortType.ASCENDING);
-    	scheduledTransTable.getSortOrder().add(dueDateColumn);
+        // Sort the data by due date in ascending order
+        dueDateColumn.setSortType(TableColumn.SortType.ASCENDING);
+        scheduledTransTable.getSortOrder().add(dueDateColumn);
         scheduledTransTable.sort();
         
         // For Debugging-- make sure data is being loaded
         System.out.println("Loaded scheduled transactions: " + scheduledTransList.size());
+        
+        // Initialize the search operation
+        searchOp();
     }
 
-
-	@FXML public void searchOp() {
-		FilteredList<ScheduledTransBean> filteredScheduledTrans = new FilteredList<>(scheduledTransList);
-		scheduledTransTable.setItems(filteredScheduledTrans); // table will show filtered list
-		
-		// Observe changes in search input
-		TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
-			filteredScheduledTrans.setPredicate(ScheduledTransBean -> {
-				
-				// If search input is empty, show all results
-				if (currentText == null || currentText.isEmpty()) {
-					return true;
-				}
-				
-				String searchedName = currentText.toLowerCase();
-				
-				// Check if schedule name contains search input
-				return ScheduledTransBean.getScheduleName().toLowerCase().contains(searchedName);
-			});
-		});
-	}
-	
-	@FXML public void deleteOp() {
-		try {
-			// Get selected scheduled transaction
-			ScheduledTransBean selectedScheduledTrans = scheduledTransTable.getSelectionModel().getSelectedItem();
-			
-			if (selectedScheduledTrans != null) {
-				// Remove scheduled transaction from list and table
-				scheduledTransList.remove(selectedScheduledTrans);
-				dalInterface.deleteScheduledTrans(selectedScheduledTrans);
-				
-				// For debugging
-				System.out.println("Scheduled transaction deleted: " + selectedScheduledTrans.toString());
-			}
-			else {
-				displayErrorAlert();
-			}
-		}
-		catch (NullPointerException e) {
-			System.out.print(e.getMessage());
-		}
-	}
-	
-	private void displayErrorAlert() {
-		Alert alert = new Alert(AlertType.WARNING, "A scheduled transaction must be selected first.", ButtonType.OK);
-		alert.setTitle("Input Error");
-		// remove default header
-		alert.setHeaderText(null);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
-	}
+    @FXML public void searchOp() {
+        FilteredList<ScheduledTransBean> filteredScheduledTrans = new FilteredList<>(scheduledTransList, p -> true);
+        scheduledTransTable.setItems(filteredScheduledTrans); // table will show filtered list
+        
+        // Observe changes in search input
+        TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
+            filteredScheduledTrans.setPredicate(scheduledTransBean -> {
+                
+                // If search input is empty, show all results
+                if (currentText == null || currentText.isEmpty()) {
+                    return true;
+                }
+                
+                String searchedName = currentText.toLowerCase();
+                
+                // Check if schedule name contains search input
+                return scheduledTransBean.getScheduleName().toLowerCase().contains(searchedName);
+            });
+        });
+    }
     
+    @FXML public void deleteOp() {
+        try {
+            // Get selected scheduled transaction
+            ScheduledTransBean selectedScheduledTrans = scheduledTransTable.getSelectionModel().getSelectedItem();
+            
+            if (selectedScheduledTrans != null) {
+                // Remove scheduled transaction from list and table
+                scheduledTransList.remove(selectedScheduledTrans);
+                dalInterface.deleteScheduledTrans(selectedScheduledTrans);
+                
+                // For debugging
+                System.out.println("Scheduled transaction deleted: " + selectedScheduledTrans.toString());
+            }
+            else {
+                displayErrorAlert();
+            }
+        }
+        catch (NullPointerException e) {
+            System.out.print(e.getMessage());
+        }
+    }
+    
+    private void displayErrorAlert() {
+        Alert alert = new Alert(AlertType.WARNING, "A scheduled transaction must be selected first.", ButtonType.OK);
+        alert.setTitle("Input Error");
+        // remove default header
+        alert.setHeaderText(null);
+        // display the alert and wait for user interaction
+        alert.showAndWait();
+    }
 }
