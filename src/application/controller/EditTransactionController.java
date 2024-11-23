@@ -131,6 +131,7 @@ public class EditTransactionController {
 		// To be implemented
 		// NOTE: would be the same as not clicking save so maybe not necessary
 		// Maybe return to View Trans page is better
+		updateFields();
 	}
 	private void displayErrorAlert(String message) {
 		Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
@@ -175,8 +176,9 @@ public class EditTransactionController {
 	    transactionDatePicker.setValue(oldTransaction.getTransDate());
 	    descriptionField.setText(oldTransaction.getDescription());
 	    if(oldTransaction.getPaymentAmount() != 0) { paymentAmountField.setText("" + oldTransaction.getPaymentAmount()); }
+	    else {paymentAmountField.setText(""); }
 	    if(oldTransaction.getDepositAmount() != 0) { depositAmountField.setText("" + oldTransaction.getDepositAmount()); }
-	   
+	    else {depositAmountField.setText(""); }
 	}
 		
 }
