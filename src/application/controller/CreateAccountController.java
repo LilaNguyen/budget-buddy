@@ -1,5 +1,8 @@
 package application.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
@@ -7,15 +10,7 @@ import application.model.AccountBean;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
+import view.AlertUtility;
 
 public class CreateAccountController {
 	// Reference to CommonObjs objects
@@ -59,7 +54,7 @@ public class CreateAccountController {
 		
         // Perform validation
         if (accName == null || accName.trim().isEmpty()) {
-        	displayErrorAlert("Account name is required.");
+        	AlertUtility.displayErrorAlert("Account name is required.");
             return;
         }
         
@@ -68,7 +63,7 @@ public class CreateAccountController {
 		for (AccountBean existingAcc : accounts) {
 			try {
 				if (existingAcc.getAccountName().equalsIgnoreCase(accName)) {
-					displayErrorAlert("This account name already exists. Please enter a unique account name.");
+					AlertUtility.displayErrorAlert("This account name already exists. Please enter a unique account name.");
 					return;
 				}
 			}
@@ -78,7 +73,7 @@ public class CreateAccountController {
 		}
         
         if (openingDate == null) {
-        	displayErrorAlert("Opening date selection is required.");
+        	AlertUtility.displayErrorAlert("Opening date selection is required.");
             return;
         }
 		
@@ -86,7 +81,7 @@ public class CreateAccountController {
         try {
         	openingBalance = Double.parseDouble(openingBalanceStr);
             if (openingBalance < 0) {
-            	displayErrorAlert("Balance cannot be negative.");
+            	AlertUtility.displayErrorAlert("Balance cannot be negative.");
                 // clear field for new input
             	openingBalField.clear();
                 return;
@@ -95,7 +90,7 @@ public class CreateAccountController {
             openingBalField.setText(String.format("%.2f", openingBalance));
         } 
         catch (NumberFormatException e) {
-        	displayErrorAlert("Invalid balance. Please enter a numeric value.");
+        	AlertUtility.displayErrorAlert("Invalid balance. Please enter a numeric value.");
             // clear field for new input
         	openingBalField.clear();
             return;
@@ -109,7 +104,7 @@ public class CreateAccountController {
         // Set new account in CommonObjs to access most recently created account
         CommonObjs.getInstance().setAccountBean(newAccount);
         
-        displaySuccessAlert("Account successfully created.");
+        AlertUtility.displaySuccessAlert("Account successfully created.");
         clearFormOp();
 	}
 
@@ -121,39 +116,6 @@ public class CreateAccountController {
 		accNameField.clear();
 		enterOpeningDateOp();
 		openingBalField.clear();
-	}
-	
-	/**
-	 * The following method displays a pop-up alert, informing the user of the error.
-	 * @param message the error message to be displayed
-	 */
-	private void displayErrorAlert(String message) {
-		Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
-		alert.setTitle("Input Error");
-		// remove default header
-		alert.setHeaderText(null);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
-	}
-	
-	/**
-	 * The following method displays a pop-up alert, informing the user that an action was completed
-	 * successfully.
-	 * @param message the success message to be displayed
-	 */
-	private void displaySuccessAlert(String message) {
-		Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
-		alert.setTitle("Success");
-		// remove default header
-		alert.setHeaderText(null);
-		// load custom image to use as icon
-		Image icon = new Image("images/successIcon.png");
-		ImageView iconView = new ImageView(icon);
-		iconView.setFitHeight(50);
-		iconView.setFitWidth(50);
-		alert.setGraphic(iconView);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
 	}
 	
 	

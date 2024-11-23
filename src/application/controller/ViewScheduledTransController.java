@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import view.TableUtility;
+import view.AlertUtility;
 
 public class ViewScheduledTransController {
     // Table and columns
@@ -96,21 +97,12 @@ public class ViewScheduledTransController {
 				System.out.println("Scheduled transaction deleted: " + selectedScheduledTrans.toString());
 			}
 			else {
-				displayErrorAlert();
+				AlertUtility.displayErrorAlert("A scheduled transaction must be selected first.");
 			}
 		}
 		catch (NullPointerException e) {
 			System.out.print(e.getMessage());
 		}
-	}
-	
-	private void displayErrorAlert() {
-		Alert alert = new Alert(AlertType.WARNING, "A scheduled transaction must be selected first.", ButtonType.OK);
-		alert.setTitle("Input Error");
-		// remove default header
-		alert.setHeaderText(null);
-		// display the alert and wait for user interaction
-		alert.showAndWait();
 	}
     
 }
