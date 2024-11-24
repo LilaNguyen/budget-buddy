@@ -10,6 +10,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import view.TableUtility;
 
@@ -22,6 +23,7 @@ public class ViewScheduledTransController {
     @FXML private TableColumn<ScheduledTransBean, String> frequencyColumn;
     @FXML private TableColumn<ScheduledTransBean, Integer> dueDateColumn;
     @FXML private TableColumn<ScheduledTransBean, Double> paymentAmountColumn;
+    @FXML private TextField TransactionsSearchBar;
 
     // Reference to DalInt
     private DalInt dalInterface = new FileDal();
@@ -64,16 +66,16 @@ public class ViewScheduledTransController {
 		
 		// Observe changes in search input
 		TransactionsSearchBar.textProperty().addListener((observable, previousText, currentText) -> {
-			filteredTrans.setPredicate(TransBean -> {
+			filteredScheduledTrans.setPredicate(TransBean -> {
 				
 				// If search input is empty, show all results
 				if (currentText == null || currentText.isEmpty()) {
 					return true;
 				}
 				
-				String searchedDescription = currentText.toLowerCase();
+				String searchedScheduleName = currentText.toLowerCase();
 				// Check if description contains search input
-				return TransBean.getDescription().toLowerCase().contains(searchedDescription);
+				return TransBean.getScheduleName().toLowerCase().contains(searchedScheduleName);
 			});
 		});
 	}

@@ -1,6 +1,9 @@
 **/.DS_Store
 **/.temp*
 **/*.class
+/.settings/
 /CSVs/
-/view/
 /application/
+/css/
+/images/
+/view/
