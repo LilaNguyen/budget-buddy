@@ -407,13 +407,38 @@ public class FileDal implements DalInt {
 
 	@Override
 	public void saveAllScheduledTrans(List<ScheduledTransBean> scheduledTransList) {
-		// To be implemented
+		try {
+            URL url = getClass().getClassLoader().getResource(scheduledTransFilePath);
+            if (url == null) {
+                System.out.println("Unable to find ScheduledTrans.csv");
+                return;
+            }
+
+            String path = url.toURI().getPath();
+
+            try (FileWriter writer = new FileWriter(path, false)) {
+                // Write header
+                writer.append("scheduleName,account,transType,frequency,dueDate,paymentAmount\n");
+                for (ScheduledTransBean scheduledTran : scheduledTransList) {
+                    writer.append(scheduledTran.getScheduleName()).append(",")
+                        .append(scheduledTran.getAccount()).append(",")
+                        .append(scheduledTran.getTransType()).append(",")
+                        .append(scheduledTran.getFrequency()).append(",")
+                        .append(String.valueOf(scheduledTran.getDueDate())).append(",")
+                        .append(String.valueOf(scheduledTran.getPaymentAmount())).append("\n");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 
 	@Override
 	public List<ScheduledTransBean> deleteScheduledTrans(ScheduledTransBean scheduledTran) {
-		// To be implemented
-		return null;
+		// Remove scheduled transaction from memory list
+		scheduledTrans.remove(scheduledTran);
+        saveAllScheduledTrans(scheduledTrans);
+        return scheduledTrans;
 	}
 
 }

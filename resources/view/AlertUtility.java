@@ -41,4 +41,15 @@ public class AlertUtility {
 		alert.showAndWait();
 	}
 	
+	/*
+	 * The following method displays a pop-up alert, confirming that user wants to delete a transaction.
+	 */
+	public static boolean displayDeleteConfirmationAlert() {
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to delete this transaction?", ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Delete Confirmation");
+        alert.setHeaderText(null);
+        alert.showAndWait();
+        return alert.getResult() == ButtonType.YES;
+    }
+	
 }

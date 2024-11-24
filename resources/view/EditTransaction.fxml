@@ -78,7 +78,7 @@
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="333.0" mnemonicParsing="false" onAction="#cancelOp" prefHeight="17.0" prefWidth="55.0" style="-fx-border-color: #CCCCCC; -fx-background-color: #E6E2E6;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="333.0" mnemonicParsing="false" onAction="#resetOp" prefHeight="17.0" prefWidth="55.0" style="-fx-border-color: #CCCCCC; -fx-background-color: #E6E2E6;" text="Reset" textAlignment="CENTER" textFill="#37474f">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>

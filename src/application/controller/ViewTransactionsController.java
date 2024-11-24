@@ -125,25 +125,27 @@ public class ViewTransactionsController {
 	}
 	
 	@FXML public void deleteOp() {
-		try {
-			// Get selected transaction
-			TransBean selectedTrans = transactionTable.getSelectionModel().getSelectedItem();
-			
-			if (selectedTrans != null) {
+		// Check if transaction is selected
+		TransBean selectedTrans = transactionTable.getSelectionModel().getSelectedItem();
+		if (selectedTrans == null) {
+			AlertUtility.displayErrorAlert("No transaction selected to delete.");
+			return;
+		}
+		
+		if (AlertUtility.displayDeleteConfirmationAlert()) {
+			try {
 				// Remove transaction from list and table
 				transactionList.remove(selectedTrans);
 				dalInterface.deleteTransaction(selectedTrans);
 				
 				// For debugging
-				System.out.println("Transaction deleted: " + selectedTrans.toString());
+				System.out.println("Transaction to be deleted: " + selectedTrans.toString());
+				
+				AlertUtility.displaySuccessAlert("Transaction successfully deleted.");
 			}
-			else {
-				AlertUtility.displayErrorAlert("A transaction must be selected first.");
+			catch (Exception e) {
+				e.printStackTrace();
 			}
-		}
-		catch (NullPointerException e) {
-			System.out.print(e.getMessage());
 		}
 	}
-    
 }
