@@ -4,21 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 import application.CommonObjs;
+import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.AccountBean;
 import application.model.TransBean;
 import application.model.TransTypeBean;
-import application.dal.DalInt;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import view.AlertUtility;
 
 
 public class CreateTransactionController {
@@ -72,33 +68,33 @@ public class CreateTransactionController {
 			
 			//make sure completing all fields
 			if (accName == null) {
-				displayErrorAlert("Account selection is required.");
+				AlertUtility.displayErrorAlert("Account selection is required.");
 				return;
 			}
 			
 			if (transType == null) {
-				displayErrorAlert("Transaction Type selection is required.");
+				AlertUtility.displayErrorAlert("Transaction Type selection is required.");
 				return;
 			}
 			
 			if (transDate == null) {
-				displayErrorAlert("Transaction Date is required.");
+				AlertUtility.displayErrorAlert("Transaction Date is required.");
 				return;
 			}
 			
 			if (descr.isEmpty()) {
-				displayErrorAlert("Transaction Description is required.");
+				AlertUtility.displayErrorAlert("Transaction Description is required.");
 				return;
 			}
 			
 			//make sure entered either payment or deposit
 			if(paymentAmountField.getText().isEmpty() && depositAmountField.getText().isEmpty()) {
-				displayErrorAlert("Payment or deposit amount required.");
+				AlertUtility.displayErrorAlert("Payment or deposit amount required.");
 				return;
 			}
 			//not both
 			if(!paymentAmountField.getText().isEmpty() && !depositAmountField.getText().isEmpty()) {
-				displayErrorAlert("Enter either a payment OR deposit amount.");
+				AlertUtility.displayErrorAlert("Enter either a payment OR deposit amount.");
 				return;
 			}
 			//if deposit
@@ -107,7 +103,7 @@ public class CreateTransactionController {
 					deposit = Double.parseDouble(depositAmountField.getText());
 				}
 				catch (NumberFormatException e) {
-					displayErrorAlert("Deposit must be a valid number.");
+					AlertUtility.displayErrorAlert("Deposit must be a valid number.");
 					// clear field for new input
 					depositAmountField.clear();
 					return;
@@ -120,7 +116,7 @@ public class CreateTransactionController {
 					payment = Double.parseDouble(paymentAmountField.getText());
 				}
 				catch (NumberFormatException e) {
-					displayErrorAlert("Payment must be a valid number.");
+					AlertUtility.displayErrorAlert("Payment must be a valid number.");
 					// clear field for new input
 					paymentAmountField.clear();
 					return;
@@ -137,7 +133,7 @@ public class CreateTransactionController {
 	        // Set new account in CommonObjs to access most recently created account
 	        CommonObjs.getInstance().setTransBean(newTrans);
 
-			displaySuccessAlert("Transaction successfully saved");
+	        AlertUtility.displaySuccessAlert("Transaction successfully saved");
 			clearFormOp();
 		}
 		
@@ -150,30 +146,6 @@ public class CreateTransactionController {
 			descriptionField.clear();
 			paymentAmountField.clear();
 			depositAmountField.clear();
-		}
-		
-		private void displayErrorAlert(String message) {
-			Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
-			alert.setTitle("Input Error");
-			// remove default header
-			alert.setHeaderText(null);
-			// display the alert and wait for user interaction
-			alert.showAndWait();
-		}
-		
-		private void displaySuccessAlert(String message) {
-			Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
-			alert.setTitle("Success");
-			// remove default header
-			alert.setHeaderText(null);
-			// load custom image to use as icon
-			Image icon = new Image("images/successIcon.png");
-			ImageView iconView = new ImageView(icon);
-			iconView.setFitHeight(50);
-			iconView.setFitWidth(50);
-			alert.setGraphic(iconView);
-			// display the alert and wait for user interaction
-			alert.showAndWait();
 		}
 		
 	}
