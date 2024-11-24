@@ -79,8 +79,10 @@ public class ViewTransactionsController {
 	        AnchorPane pane = loader.load();
 	       
 	        EditTransactionController controller = loader.getController();
-	        int selectedIndex = transactionTable.getSelectionModel().getSelectedIndex();
-	        if (selectedIndex >= 0) {
+	        //account for if table has been searched
+	        TransBean selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
+	        if (selectedTransaction != null) {
+	        	int selectedIndex = findTransactionIndexHelper(selectedTransaction);
 	        	controller.setTransactionList(transactionList);
 	        	controller.setIndex(selectedIndex);
 	        	System.out.println("Selected Index: " + selectedIndex);
@@ -102,6 +104,17 @@ public class ViewTransactionsController {
 			e.printStackTrace();
 		}
 	}
+    private int findTransactionIndexHelper(TransBean selected) {
+    	int index = 0;
+    	for (TransBean transactionBean : transactionList) {
+    		if(selected.equals(transactionBean)) {
+        		System.out.println("Index in transactionList: " + index);
+        		return index; 
+        	}
+    		index++;
+    	}
+    	return -1;
+    }
 
 	
 	@FXML public void searchOp() {

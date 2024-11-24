@@ -7,6 +7,7 @@ import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.ScheduledTransBean;
+import application.model.TransBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -102,8 +103,10 @@ public class ViewScheduledTransController {
 	        AnchorPane pane = loader.load();
 	       
 	        EditScheduledTransController controller = loader.getController();
-	        int selectedIndex = scheduledTransTable.getSelectionModel().getSelectedIndex();
-	        if (selectedIndex >= 0) {
+	        
+	        ScheduledTransBean selectedTransaction = scheduledTransTable.getSelectionModel().getSelectedItem();        
+	        if (selectedTransaction != null) {
+	        	int selectedIndex = findTransactionIndexHelper(selectedTransaction);
 	        	controller.setScheduledTransList(scheduledTransList);
 	        	controller.setIndex(selectedIndex);
 	        	System.out.println("Selected Index: " + selectedIndex);
@@ -125,6 +128,17 @@ public class ViewScheduledTransController {
 			e.printStackTrace();
 		}
 	}
+	private int findTransactionIndexHelper(ScheduledTransBean selected) {
+    	int index = 0;
+    	for (ScheduledTransBean schedBean : scheduledTransList) {
+    		if(selected.equals(schedBean)) {
+        		System.out.println("Index in transactionList: " + index);
+        		return index; 
+        	}
+    		index++;
+    	}
+    	return -1;
+    }
 	
 	@FXML public void deleteOp() {
 		// Check if scheduled transaction is selected
