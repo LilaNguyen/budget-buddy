@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.EditTransactionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.EditTransactionController">
    <children>
-      <GridPane layoutX="41.0" layoutY="118.0" prefHeight="199.0" prefWidth="293.0">
+      <GridPane layoutX="54.0" layoutY="126.0" prefHeight="199.0" prefWidth="293.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -28,28 +28,28 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="43.0" prefWidth="163.0" text="Account" textFill="#37474f">
+            <Label prefHeight="43.0" prefWidth="163.0" text="Account" textFill="#191d23">
                <font>
                   <Font name="Hiragino Sans GB W3" size="11.0" />
                </font>
             </Label>
-            <Label prefHeight="53.0" prefWidth="184.0" text="Transaction type" textFill="#37474f" GridPane.rowIndex="1">
+            <Label prefHeight="53.0" prefWidth="184.0" text="Transaction type" textFill="#191d23" GridPane.rowIndex="1">
                <font>
                   <Font name="Hiragino Sans GB W3" size="11.0" />
                </font></Label>
-            <Label prefHeight="36.0" prefWidth="167.0" text="Transaction date" textFill="#37474f" GridPane.rowIndex="2">
+            <Label prefHeight="36.0" prefWidth="167.0" text="Transaction date" textFill="#191d23" GridPane.rowIndex="2">
                <font>
                   <Font name="Hiragino Sans GB W3" size="11.0" />
                </font></Label>
-            <Label prefHeight="48.0" prefWidth="159.0" text="Description" textFill="#37474f" GridPane.rowIndex="3">
+            <Label prefHeight="48.0" prefWidth="159.0" text="Description" textFill="#191d23" GridPane.rowIndex="3">
                <font>
                   <Font name="Hiragino Sans GB W3" size="11.0" />
                </font></Label>
-            <Label prefHeight="64.0" prefWidth="177.0" text="Payment amount" textFill="#37474f" GridPane.rowIndex="4">
+            <Label prefHeight="64.0" prefWidth="177.0" text="Payment amount" textFill="#191d23" GridPane.rowIndex="4">
                <font>
                   <Font name="Hiragino Sans GB W3" size="11.0" />
                </font></Label>
-            <Label prefHeight="70.0" prefWidth="168.0" text="Deposit amount" textFill="#37474f" GridPane.rowIndex="5">
+            <Label prefHeight="70.0" prefWidth="168.0" text="Deposit amount" textFill="#191d23" GridPane.rowIndex="5">
                <font>
                   <Font name="Hiragino Sans GB W3" size="11.0" />
                </font></Label>
@@ -73,17 +73,17 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </GridPane>
-      <Button fx:id="save" alignment="CENTER" contentDisplay="CENTER" layoutX="258.0" layoutY="333.0" mnemonicParsing="false" onAction="#saveOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Save" textAlignment="CENTER" textFill="#37474f">
+      <Button fx:id="save" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="271.0" layoutY="341.0" mnemonicParsing="false" onAction="#saveOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-background-radius: 10;" text="Save" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="333.0" mnemonicParsing="false" onAction="#resetOp" prefHeight="17.0" prefWidth="55.0" style="-fx-border-color: #CCCCCC; -fx-background-color: #E6E2E6;" text="Reset" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="209.0" layoutY="341.0" mnemonicParsing="false" onAction="#resetOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-radius: 10; -fx-background-color: #C5BAC4;" text="Reset" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Label layoutX="61.0" layoutY="71.0" prefHeight="31.0" prefWidth="174.0" text="Edit Transaction" textFill="#37474f">
+      <Label layoutX="74.0" layoutY="79.0" prefHeight="31.0" prefWidth="174.0" text="Edit Transaction" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="16.0" />
          </font>

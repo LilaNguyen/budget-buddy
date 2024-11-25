@@ -6,34 +6,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateTransTypeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateTransTypeController">
    <children>
-      <Label layoutX="96.0" layoutY="149.0" prefHeight="31.0" prefWidth="184.0" text="Add Transaction Type" textFill="#37474f">
+      <Label layoutX="108.0" layoutY="158.0" prefHeight="31.0" prefWidth="184.0" text="Add Transaction Type" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="96.0" layoutY="181.0" prefHeight="31.0" prefWidth="142.0" text="Transaction type's name" textFill="#37474f">
+      <Label layoutX="108.0" layoutY="190.0" prefHeight="31.0" prefWidth="142.0" text="Transaction type's name" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
-      <Label layoutX="233.0" layoutY="188.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
+      <Label layoutX="245.0" layoutY="197.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
          <font>
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="transTypeField" layoutX="96.0" layoutY="208.0" onAction="#enterTransTypeOp" prefHeight="29.0" prefWidth="184.0" promptText="Education">
+      <TextField fx:id="transTypeField" layoutX="108.0" layoutY="217.0" onAction="#enterTransTypeOp" prefHeight="29.0" prefWidth="184.0" promptText="Education">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </TextField>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="254.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Submit" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="237.0" layoutY="263.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-background-radius: 10;" text="Submit" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="254.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="263.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #C5BAC4; -fx-background-radius: 10;" text="Cancel" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>

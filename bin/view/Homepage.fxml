@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,13 +9,17 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="90.0" fitWidth="91.0" layoutX="64.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="77.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/piggybank.png" />
-         </image></ImageView>
-      <Label alignment="TOP_RIGHT" layoutX="117.0" layoutY="169.0" prefHeight="55.0" prefWidth="194.0" text="Budget" textAlignment="RIGHT" wrapText="true">
+         </image>
+         <effect>
+            <ColorAdjust contrast="-0.17" hue="0.56" saturation="-0.49" />
+         </effect>
+      </ImageView>
+      <Label alignment="TOP_RIGHT" layoutX="130.0" layoutY="169.0" prefHeight="55.0" prefWidth="194.0" text="Budget" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Hiragino Sans GB W6" size="44.0" />
          </font>
@@ -22,13 +27,14 @@
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
                   <Stop color="#99bec9" />
-                  <Stop color="#99bec9" offset="0.4927536231884058" />
-                  <Stop color="#c0cce6" offset="1.0" />
+                  <Stop color="#99bec9" offset="0.007518796992481203" />
+                  <Stop color="#99bec9" offset="0.49275362318840576" />
+                  <Stop color="#c5bac4" offset="1.0" />
                </stops>
             </LinearGradient>
          </textFill>
       </Label>
-      <Label alignment="TOP_RIGHT" layoutX="124.0" layoutY="218.0" prefHeight="55.0" prefWidth="186.0" text="Buddy" textAlignment="RIGHT" wrapText="true">
+      <Label alignment="TOP_RIGHT" layoutX="137.0" layoutY="218.0" prefHeight="55.0" prefWidth="186.0" text="Buddy" textAlignment="RIGHT" wrapText="true">
          <font>
             <Font name="Hiragino Sans GB W6" size="44.0" />
          </font>
@@ -36,13 +42,14 @@
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
                   <Stop color="#99bec9" />
-                  <Stop color="#99bec9" offset="0.4927536231884058" />
-                  <Stop color="#c0cce6" offset="1.0" />
+                  <Stop color="#99bec9" offset="0.007518796992481203" />
+                  <Stop color="#99bec9" offset="0.49275362318840576" />
+                  <Stop color="#c5bac4" offset="1.0" />
                </stops>
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="64.0" layoutY="131.0" prefHeight="48.0" prefWidth="186.0" text="say hello to your" textFill="#37474f">
+      <Label layoutX="77.0" layoutY="131.0" prefHeight="48.0" prefWidth="186.0" text="say hello to your" textFill="#191d23">
          <font>
             <Font name="Baskerville Italic" size="22.0" />
          </font>

@@ -1,11 +1,10 @@
 package application;
 	
 import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.HBox;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
@@ -15,7 +14,7 @@ public class Main extends Application {
 		try {
 			
 			HBox mainBox = (HBox)FXMLLoader.load(getClass().getClassLoader().getResource("view/Main.fxml"));
-			Scene scene = new Scene(mainBox,650,425);
+			Scene scene = new Scene(mainBox,685,440);
 			scene.getStylesheets().add(getClass().getClassLoader().getResource("css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

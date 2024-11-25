@@ -4,70 +4,63 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="425.0" prefWidth="375.0" style="-fx-background-color: #E9EEEF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateAccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CreateAccountController">
    <children>
-      <ImageView fitHeight="70.0" fitWidth="72.0" layoutX="96.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/addCard.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="96.0" layoutY="120.0" prefHeight="31.0" prefWidth="168.0" text="Add New Account" textFill="#37474f">
+      <Label layoutX="108.0" layoutY="93.0" prefHeight="31.0" prefWidth="168.0" text="Add New Account" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="96.0" layoutY="152.0" prefHeight="31.0" prefWidth="94.0" text="Account name" textFill="#37474f">
+      <Label layoutX="108.0" layoutY="125.0" prefHeight="31.0" prefWidth="94.0" text="Account name" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
-      <Label layoutX="180.0" layoutY="159.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
+      <Label layoutX="192.0" layoutY="132.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
          <font>
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="accNameField" layoutX="96.0" layoutY="179.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Capitol One Savor Credit">
+      <TextField fx:id="accNameField" layoutX="108.0" layoutY="152.0" onAction="#enterAccNameOp" prefHeight="29.0" prefWidth="184.0" promptText="Capitol One Savor Credit">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </TextField>
-      <Label layoutX="96.0" layoutY="217.0" prefHeight="31.0" prefWidth="80.0" text="Opening date" textFill="#37474f">
+      <Label layoutX="108.0" layoutY="190.0" prefHeight="31.0" prefWidth="80.0" text="Opening date" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
-      <Label layoutX="176.0" layoutY="224.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
+      <Label layoutX="188.0" layoutY="197.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
          <font>
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <DatePicker fx:id="openingDateField" layoutX="96.0" layoutY="244.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="mm/dd/yyyy" style="-fx-font-size: 11.5;" />
-      <Label layoutX="96.0" layoutY="282.0" prefHeight="31.0" prefWidth="120.0" text="Opening balance" textFill="#37474f">
+      <DatePicker fx:id="openingDateField" layoutX="108.0" layoutY="217.0" onAction="#enterOpeningDateOp" prefHeight="29.0" prefWidth="184.0" promptText="mm/dd/yyyy" style="-fx-font-size: 11.5;" />
+      <Label layoutX="108.0" layoutY="255.0" prefHeight="31.0" prefWidth="120.0" text="Opening balance" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </Label>
-      <Label layoutX="193.0" layoutY="289.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
+      <Label layoutX="205.0" layoutY="262.0" prefHeight="5.0" prefWidth="7.0" text="*" textFill="#ff8a84">
          <font>
             <Font name="PT Sans" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="openingBalField" layoutX="96.0" layoutY="309.0" onAction="#enterOpeningBalOp" prefHeight="29.0" prefWidth="184.0" promptText="\$0.00">
+      <TextField fx:id="openingBalField" layoutX="108.0" layoutY="282.0" onAction="#enterOpeningBalOp" prefHeight="29.0" prefWidth="184.0" promptText="\$0.00">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </TextField>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="355.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-border-color: #CCCCCC;" text="Submit" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="237.0" layoutY="328.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-background-radius: 10;" text="Submit" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="163.0" layoutY="355.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #E6E2E6; -fx-border-color: #CCCCCC;" text="Cancel" textAlignment="CENTER" textFill="#37474f">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="328.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #C5BAC4; -fx-background-radius: 10;" text="Cancel" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
