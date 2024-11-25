@@ -75,20 +75,10 @@
                   <Font name="Hiragino Sans GB W3" size="10.0" />
                </font>
             </Button>
-            <Hyperlink blendMode="OVERLAY" layoutX="103.0" layoutY="382.0" onAction="#returnToHomepageOp" text="Return to Homepage" underline="true">
+            <Hyperlink blendMode="MULTIPLY" layoutX="103.0" layoutY="382.0" onAction="#returnToHomepageOp" text="Return to Homepage" textFill="#c4bbc4" underline="true">
                <font>
                   <Font name="Hiragino Sans GB W3" size="8.5" />
                </font>
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                     <stops>
-                        <Stop color="#acd3df" />
-                        <Stop color="#99bec9" offset="0.007518796992481203" />
-                        <Stop color="#99bec9" offset="0.3838904694167852" />
-                        <Stop color="#c5bac4" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
             </Hyperlink>
             <ImageView fitHeight="77.0" fitWidth="73.0" layoutX="42.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
