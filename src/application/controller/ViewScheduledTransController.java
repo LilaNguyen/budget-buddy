@@ -7,7 +7,6 @@ import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.ScheduledTransBean;
-import application.model.TransBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -93,9 +92,6 @@ public class ViewScheduledTransController {
 		});
 	}
 	
-	/**
-	 * This method was implemented by Rogelio. 
-	 */
 	@FXML public void showEditScheduledTransOp() {
 		URL url = getClass().getClassLoader().getResource("view/EditScheduledTrans.fxml");
 		try {

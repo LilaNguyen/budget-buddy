@@ -1,158 +1,52 @@
 package application.controller;
 
-import java.io.IOException;
-import java.net.URL;
-
+import application.CommonObjs;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 public class MainController {
 
 	@FXML HBox mainBox;
+	private static CommonObjs commonObj = CommonObjs.getInstance();
 
 	@FXML
 	public void initialize() {
+		commonObj.setMainBox(mainBox);
 		returnToHomepageOp();
 	}
 
 	@FXML public void returnToHomepageOp() {
-		// Create url to get fxml file 
-		URL url = getClass().getClassLoader().getResource("view/Homepage.fxml");
-		
-		try {
-			// Read the fxml file, then convert to AnchorPane
-			AnchorPane pane1 = (AnchorPane) FXMLLoader.load(url);
-			// Before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			// Get children of root pane manager, then add new pane to it
-			mainBox.getChildren().add(pane1);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/Homepage.fxml");
 	}
 	
 	@FXML public void showNewAccOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateAccount.fxml");
-		
-		try {
-			AnchorPane pane2 = (AnchorPane) FXMLLoader.load(url);
-			// before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane2);
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/CreateAccount.fxml");
 	}
 
 	
 	@FXML public void showViewAccsOp() {
-		URL url = getClass().getClassLoader().getResource("view/ViewAccounts.fxml");
-		
-		try {
-			AnchorPane pane3 = (AnchorPane) FXMLLoader.load(url);
-			// before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane3);
-		
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/ViewAccounts.fxml");
 	}
 	
 	@FXML public void showViewTransOp() {
-		URL url = getClass().getClassLoader().getResource("view/ViewTransactions.fxml");
-		
-		try {
-			AnchorPane pane4 = (AnchorPane) FXMLLoader.load(url);
-			// before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane4);
-		
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/ViewTransactions.fxml");
+
 	}
 	
 	@FXML public void showNewTransOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateTransaction.fxml");
-		
-		try {
-			AnchorPane pane5 = (AnchorPane) FXMLLoader.load(url);
-			// before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane5);
-		
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/CreateTransaction.fxml");
 	}
 	
 	@FXML public void showScheduleTransOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateScheduledTrans.fxml");
-		
-		try {
-			AnchorPane pane6 = (AnchorPane) FXMLLoader.load(url);
-			// before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane6);
-		
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/CreateScheduledTrans.fxml");
 	}
 
 	@FXML public void showViewScheduledTransOp() {
-		URL url = getClass().getClassLoader().getResource("view/ViewScheduledTrans.fxml");
-		
-		try {
-			AnchorPane pane7 = (AnchorPane) FXMLLoader.load(url);
-			// before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane7);
-		
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/ViewScheduledTrans.fxml");
 	}
 
 	@FXML public void showTransTypeOp() {
-		URL url = getClass().getClassLoader().getResource("view/CreateTransType.fxml");
-		
-		try {
-			AnchorPane pane8 = (AnchorPane) FXMLLoader.load(url);
-			// Before inserting new child, remove previous one
-			if (mainBox.getChildren().size() > 1) {
-				mainBox.getChildren().remove(1);
-			}
-			mainBox.getChildren().add(pane8);
-		
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		commonObj.loadPage("view/CreateTransType.fxml");
 	}
 
 

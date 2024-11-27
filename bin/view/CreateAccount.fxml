@@ -11,7 +11,7 @@
    <children>
       <Label layoutX="108.0" layoutY="93.0" prefHeight="31.0" prefWidth="168.0" text="Add New Account" textFill="#191d23">
          <font>
-            <Font name="Hiragino Sans GB W3" size="16.0" />
+            <Font name="Hiragino Sans GB W6" size="15.0" />
          </font>
       </Label>
       <Label layoutX="108.0" layoutY="125.0" prefHeight="31.0" prefWidth="94.0" text="Account name" textFill="#191d23">

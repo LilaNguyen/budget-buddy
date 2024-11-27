@@ -83,9 +83,9 @@
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Label layoutX="74.0" layoutY="79.0" prefHeight="31.0" prefWidth="174.0" text="Add New Transaction" textFill="#191d23">
+      <Label layoutX="74.0" layoutY="79.0" prefHeight="31.0" prefWidth="190.0" text="Add New Transaction" textFill="#191d23">
          <font>
-            <Font name="Hiragino Sans GB W3" size="16.0" />
+            <Font name="Hiragino Sans GB W6" size="15.0" />
          </font>
       </Label>
    </children>

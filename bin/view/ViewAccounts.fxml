@@ -10,7 +10,7 @@
    <children>
       <Label layoutX="14.0" layoutY="58.0" prefHeight="31.0" prefWidth="78.0" text="Accounts" textFill="#191d23">
          <font>
-            <Font name="Hiragino Sans GB W3" size="16.0" />
+            <Font name="Hiragino Sans GB W6" size="15.0" />
          </font>
       </Label>
 

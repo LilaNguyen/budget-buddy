@@ -80,9 +80,9 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </GridPane>
-      <Label layoutX="74.0" layoutY="79.0" prefHeight="31.0" prefWidth="174.0" text="Schedule Transaction" textFill="#191d23">
+      <Label layoutX="74.0" layoutY="79.0" prefHeight="31.0" prefWidth="194.0" text="Schedule Transaction" textFill="#191d23">
          <font>
-            <Font name="Hiragino Sans GB W3" size="16.0" />
+            <Font name="Hiragino Sans GB W6" size="15.0" />
          </font>
       </Label>
       <Button fx:id="cancel" contentDisplay="CENTER" layoutX="209.0" layoutY="341.0" mnemonicParsing="false" onAction="#clearFormOp" style="-fx-background-color: #C5BAC4; -fx-background-radius: 10;" text="Cancel" textAlignment="CENTER" textFill="#191d23">

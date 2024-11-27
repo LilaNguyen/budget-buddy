@@ -10,7 +10,7 @@
    <children>
       <Label layoutX="108.0" layoutY="158.0" prefHeight="31.0" prefWidth="184.0" text="Add Transaction Type" textFill="#191d23">
          <font>
-            <Font name="Hiragino Sans GB W3" size="16.0" />
+            <Font name="Hiragino Sans GB W6" size="15.0" />
          </font>
       </Label>
       <Label layoutX="108.0" layoutY="190.0" prefHeight="31.0" prefWidth="142.0" text="Transaction type's name" textFill="#191d23">

@@ -16,7 +16,7 @@
    <children>
       <AnchorPane prefHeight="440.0" prefWidth="285.0" style="-fx-background-color: #9eb6bd;">
          <children>
-            <Label alignment="TOP_RIGHT" blendMode="OVERLAY" layoutX="94.0" layoutY="46.0" prefHeight="48.0" prefWidth="148.0" text="Budget" textAlignment="RIGHT" wrapText="true">
+            <Label alignment="TOP_RIGHT" blendMode="OVERLAY" layoutX="95.0" layoutY="46.0" prefHeight="48.0" prefWidth="148.0" text="Budget" textAlignment="RIGHT" wrapText="true">
                <font>
                   <Font name="Hiragino Sans W6" size="36.0" />
                </font>
@@ -30,7 +30,7 @@
                      </stops>
                   </LinearGradient>
                </textFill></Label>
-            <Label alignment="TOP_RIGHT" blendMode="OVERLAY" layoutX="94.0" layoutY="86.0" prefHeight="48.0" prefWidth="148.0" text="Buddy" textAlignment="RIGHT" wrapText="true">
+            <Label alignment="TOP_RIGHT" blendMode="OVERLAY" layoutX="95.0" layoutY="86.0" prefHeight="48.0" prefWidth="148.0" text="Buddy" textAlignment="RIGHT" wrapText="true">
                <font>
                   <Font name="Hiragino Sans W6" size="36.0" />
                </font>
@@ -45,56 +45,56 @@
                   </LinearGradient>
                </textFill>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="158.0" mnemonicParsing="false" onAction="#showNewAccOp" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="New Account" textAlignment="CENTER" textFill="#191d23">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="158.0" mnemonicParsing="false" onAction="#showNewAccOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="New Account" textAlignment="CENTER" textFill="#191d23">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="158.0" mnemonicParsing="false" onAction="#showViewAccsOp" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="View Accounts" textAlignment="CENTER" textFill="#191d23" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="158.0" mnemonicParsing="false" onAction="#showViewAccsOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="View Accounts" textAlignment="CENTER" textFill="#191d23" wrapText="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="211.0" mnemonicParsing="false" onAction="#showViewTransOp" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="View Transactions" textAlignment="CENTER" textFill="#191d23" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="211.0" mnemonicParsing="false" onAction="#showViewTransOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="View Transactions" textAlignment="CENTER" textFill="#191d23" wrapText="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="211.0" mnemonicParsing="false" onAction="#showNewTransOp" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="New Transaction" textAlignment="CENTER" textFill="#191d23" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="211.0" mnemonicParsing="false" onAction="#showNewTransOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="New Transaction" textAlignment="CENTER" textFill="#191d23" wrapText="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="263.0" mnemonicParsing="false" onAction="#showScheduleTransOp" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="Schedule Transaction" textAlignment="CENTER" textFill="#191d23" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="263.0" mnemonicParsing="false" onAction="#showScheduleTransOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="Schedule Transaction" textAlignment="CENTER" textFill="#191d23" wrapText="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="90.0" layoutY="315.0" mnemonicParsing="false" onAction="#showTransTypeOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="New Transaction Type" textAlignment="CENTER" textFill="#191d23" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="315.0" mnemonicParsing="false" onAction="#showTransTypeOp" prefHeight="39.0" prefWidth="111.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="New Transaction Type" textAlignment="CENTER" textFill="#191d23" wrapText="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
-            <Hyperlink blendMode="MULTIPLY" layoutX="103.0" layoutY="382.0" onAction="#returnToHomepageOp" text="Return to Homepage" textFill="#c4bbc4" underline="true">
+            <Hyperlink blendMode="MULTIPLY" layoutX="99.0" layoutY="382.0" onAction="#returnToHomepageOp" text="Return to Homepage" textFill="#c4bbc4" underline="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="8.5" />
+                  <Font name="Hiragino Sans GB W6" size="8.5" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="77.0" fitWidth="73.0" layoutX="42.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="77.0" fitWidth="73.0" layoutX="43.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/piggybank.png" />
                </image>
                <effect>
                   <ColorAdjust contrast="-0.17" hue="0.56" saturation="-0.49" />
                </effect></ImageView>
-            <ImageView blendMode="HARD_LIGHT" fitHeight="12.0" fitWidth="23.0" layoutX="84.0" layoutY="383.0" opacity="0.25" pickOnBounds="true" preserveRatio="true">
+            <ImageView blendMode="HARD_LIGHT" fitHeight="12.0" fitWidth="23.0" layoutX="80.0" layoutY="383.0" opacity="0.25" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/homeIcon.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="263.0" mnemonicParsing="false" onAction="#showViewScheduledTransOp" prefHeight="39.0" prefWidth="97.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="View Scheduled Transactions" textAlignment="CENTER" textFill="#191d23" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="263.0" mnemonicParsing="false" onAction="#showViewScheduledTransOp" prefHeight="39.0" prefWidth="104.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 10;" text="View Scheduled Transactions" textAlignment="CENTER" textFill="#191d23" wrapText="true">
                <font>
-                  <Font name="Hiragino Sans GB W3" size="10.0" />
+                  <Font name="Hiragino Sans GB W6" size="10.0" />
                </font>
             </Button>
          </children>
