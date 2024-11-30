@@ -85,12 +85,12 @@
             <Font name="Hiragino Sans GB W6" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="cancel" contentDisplay="CENTER" layoutX="209.0" layoutY="341.0" mnemonicParsing="false" onAction="#clearFormOp" style="-fx-background-color: #C5BAC4; -fx-background-radius: 10;" text="Cancel" textAlignment="CENTER" textFill="#191d23">
+      <Button fx:id="cancel" contentDisplay="CENTER" layoutX="209.0" layoutY="341.0" mnemonicParsing="false" onAction="#clearFormOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: #C5BAC4; -fx-background-radius: 10;" text="Cancel" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
-      <Button fx:id="submit" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="271.0" layoutY="341.0" mnemonicParsing="false" onAction="#submitOp" style="-fx-background-color: D9E7E5; -fx-background-radius: 10;" text="Submit" textAlignment="CENTER" textFill="#191d23">
+      <Button fx:id="submit" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="271.0" layoutY="341.0" mnemonicParsing="false" onAction="#submitOp" prefHeight="17.0" prefWidth="55.0" style="-fx-background-color: D9E7E5; -fx-background-radius: 10;" text="Submit" textAlignment="CENTER" textFill="#191d23">
          <font>
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
