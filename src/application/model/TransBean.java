@@ -8,10 +8,10 @@ import java.time.LocalDate;
 public class TransBean {
     private String transType;  // Reference to TransTypeBean instead of String
     private String account; 
-    private double paymentAmount;
-    private String description;
-    private double depositAmount;
     private LocalDate transDate; 
+    private String description;
+    private double paymentAmount;
+    private double depositAmount;
 
     // Parameterized constructor
     public TransBean(String account, String transType, LocalDate transDate, String description, double payment, double deposit) {

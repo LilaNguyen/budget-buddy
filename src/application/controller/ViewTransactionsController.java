@@ -58,7 +58,7 @@ public class ViewTransactionsController {
 
     	transactionTable.setItems(transactionList);
 
-        // Sort the data by opening date in descending order
+        // Sort the data by transaction date in descending order
     	dateColumn.setSortType(TableColumn.SortType.DESCENDING);
         transactionTable.getSortOrder().add(dateColumn);
         
@@ -160,5 +160,9 @@ public class ViewTransactionsController {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@FXML public void showViewReportsOp() {
+		commonObjs.loadPage("view/ViewReports.fxml");
 	}
 }
