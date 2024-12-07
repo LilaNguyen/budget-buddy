@@ -179,44 +179,35 @@ public class ViewTransactionsController {
 	        e.printStackTrace();
 	    }
 	}
-	
 	@FXML
-public void handleViewDetails() {
-    // Get the selected transaction
-    TransBean selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
+	public void handleViewDetails() {
+	    // Get the selected transaction
+	    TransBean selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
 
-    // Check if a transaction is selected
-    if (selectedTransaction == null) {
-        AlertUtility.displayErrorAlert("Please select a transaction to view details.");
-        return;
-    }
+	    // Check if a transaction is selected
+	    if (selectedTransaction == null) {
+	        AlertUtility.displayErrorAlert("Please select a transaction to view details.");
+	        return;
+	    }
 
-    try {
-        // Load the details page FXML
-        URL url = getClass().getClassLoader().getResource("view/ViewTransactionDetail.fxml");
-        FXMLLoader loader = new FXMLLoader(url);
-        AnchorPane pane = loader.load();
+	    try {
+	        // Load the details page FXML
+	        URL url = getClass().getClassLoader().getResource("view/ViewTransactionDetail.fxml");
+	        FXMLLoader loader = new FXMLLoader(url);
+	        AnchorPane pane = loader.load();
 
-        // Get the controller and pass the selected transaction's data
-        ViewTransactionDetailController controller = loader.getController();
-        controller.setTransactionData(
-            selectedTransaction.getDescription(),  // Replace with a unique ID or field if applicable
-            selectedTransaction.getAccount(),
-            selectedTransaction.getTransType(),
-            selectedTransaction.getTransDate().toString(),
-            selectedTransaction.getDescription(),
-            selectedTransaction.getPaymentAmount(),
-            selectedTransaction.getDepositAmount()
-        );
+	        // Get the controller and pass the selected transaction's data
+	        ViewTransactionDetailController controller = loader.getController();
+	        controller.setTransactionData(selectedTransaction); // Pass the entire TransBean object
 
-        // Replace the main content with the details page
-        HBox mainBox = commonObjs.getMainBox();
-        if (mainBox.getChildren().size() > 1) {
-            mainBox.getChildren().remove(1);
-        }
-        mainBox.getChildren().add(pane);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
+	        // Replace the main content with the details page
+	        HBox mainBox = commonObjs.getMainBox();
+	        if (mainBox.getChildren().size() > 1) {
+	            mainBox.getChildren().remove(1);
+	        }
+	        mainBox.getChildren().add(pane);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 }
