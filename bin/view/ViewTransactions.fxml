@@ -40,5 +40,10 @@
             <Font name="Hiragino Sans GB W3" size="10.5" />
          </font>
       </Button>
+      <Button layoutX="150.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleViewDetails" prefHeight="17.0" prefWidth="90.0" style="-fx-background-color: #D9E7E5; -fx-background-radius: 10;" text="View Details" textFill="#191d23">
+   <font>
+      <Font name="Hiragino Sans GB W3" size="10.5" />
+   </font>
+</Button>
    </children>
 </AnchorPane>
