@@ -163,5 +163,9 @@ public class ViewScheduledTransController {
 			AlertUtility.displaySuccessAlert("Scheduled transaction deletion canceled.");
 		}
 	}
+	
+	@FXML public void showViewSchedReportsOp() {
+		commonObjs.loadPage("view/ViewScheduledReports.fxml");
+	}
     
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ViewScheduledReportsController">
+   <children>
+   		<Label layoutX="13.0" layoutY="58.0" prefHeight="31.0" prefWidth="201.0" text="Scheduled Transaction Report" textFill="#191d23">
+         <font>
+            <Font name="Hiragino Sans GB W6" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="scheduledReportTable" layoutX="11.0" layoutY="105.0" prefHeight="242.0" prefWidth="379.0">
+        <columns>
+           <TableColumn fx:id="scheduleNameColumn" prefWidth="113.33334350585938" sortable="false" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Schedule Name" />
+           <TableColumn fx:id="accountColumn" prefWidth="68.6666259765625" sortType="DESCENDING" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Account" />
+           <TableColumn fx:id="dueDateColumn" prefWidth="64.66668701171875" sortable="false" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Due Date" />
+           <TableColumn fx:id="paymentAmountColumn" prefWidth="130.00002034505206" sortable="false" style="-fx-font-size: 11.5; -fx-font-family: Hiragino Sans GB W3;" text="Payment Amount" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
