@@ -104,6 +104,7 @@ public class ViewTransactionsController {
 			e.printStackTrace();
 		}
 	}
+    
     private int findTransactionIndexHelper(TransBean selected) {
     	int index = 0;
     	for (TransBean transactionBean : transactionList) {

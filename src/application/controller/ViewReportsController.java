@@ -1,8 +1,11 @@
 package application.controller;
 
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
+import application.CommonObjs;
 import application.dal.DalInt;
 import application.dal.FileDal;
 import application.model.AccountBean;
@@ -11,10 +14,14 @@ import application.model.TransTypeBean;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import view.AlertUtility;
 import view.TableUtility;
 
 public class ViewReportsController {
@@ -30,6 +37,7 @@ public class ViewReportsController {
 
 	private DalInt dalInterface = new FileDal();
 	private ObservableList<TransBean> transactionList;
+	private CommonObjs commonObjs = CommonObjs.getInstance();
 
 	@FXML
 	public void initialize() {
@@ -122,6 +130,35 @@ public class ViewReportsController {
 			return new ReportByTransType();
 		}
 		return null;
+	}
+
+	@FXML public void showViewDetailsOp() {
+		URL url = getClass().getClassLoader().getResource("view/ViewTransactionDetails.fxml");
+		try {
+			FXMLLoader loader = new FXMLLoader(url);
+	        AnchorPane pane = loader.load();
+	       
+	        ViewTransactionDetailsController controller = loader.getController();
+	        //account for if table has been searched
+	        TransBean selectedTransaction = reportTable.getSelectionModel().getSelectedItem();
+	        if (selectedTransaction != null) {
+	        	
+	        	controller.setTransactionData(selectedTransaction);
+	        	reportTable.getSelectionModel().clearSelection(); // Clear selection
+	        	
+	        	HBox mainBox = commonObjs.getMainBox();		
+				if (mainBox.getChildren().size() > 1) {
+					mainBox.getChildren().remove(1);
+				}
+			
+				mainBox.getChildren().add(pane);
+	        }
+	        else {
+	        	AlertUtility.displayErrorAlert("A transaction must be selected first.");
+	        }
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

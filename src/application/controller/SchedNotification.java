@@ -1,6 +1,7 @@
 package application.controller;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import application.model.ScheduledTransBean;
@@ -33,7 +34,7 @@ public class SchedNotification {
      * @param dueToday   the list of transactions due today.
      */
     private static void showAlert(Stage ownerStage, List<ScheduledTransBean> dueToday) {
-        StringBuilder message = new StringBuilder("You have the following payments due today:\n");
+        StringBuilder message = new StringBuilder("");
 
         // Format each scheduled transaction into the message
         for (ScheduledTransBean trans : dueToday) {
@@ -43,10 +44,10 @@ public class SchedNotification {
         }
 
         // Create and display the alert
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(AlertType.WARNING);
         alert.initOwner(ownerStage);
         alert.setTitle("Scheduled Payments Due");
-        alert.setHeaderText("Payment Reminder");
+        alert.setHeaderText("The following payments are due today:");
         alert.setContentText(message.toString());
         alert.showAndWait();
     }

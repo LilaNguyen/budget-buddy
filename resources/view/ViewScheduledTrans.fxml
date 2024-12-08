@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ViewScheduledTransController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="400.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ViewScheduledTransController">
    <children>
    		<Label layoutX="13.0" layoutY="58.0" prefHeight="31.0" prefWidth="203.0" text="Scheduled Transactions" textFill="#191d23">
          <font>
@@ -40,10 +40,5 @@
             <Font name="Hiragino Sans GB W3" size="11.0" />
          </font>
       </TextField>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" onAction="#showViewSchedReportsOp" prefHeight="20.0" prefWidth="91.0" style="-fx-background-color: #9eb6bd; -fx-background-radius: 10;" text="View Reports" textAlignment="CENTER" textFill="#181f21">
-         <font>
-            <Font name="Hiragino Sans GB W3" size="10.5" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
