@@ -18,6 +18,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.stream.Collectors;
 
 public class FileDal implements DalInt {
 
@@ -440,5 +441,18 @@ public class FileDal implements DalInt {
         saveAllScheduledTrans(scheduledTrans);
         return scheduledTrans;
 	}
+	
+	public List<ScheduledTransBean> getDueTransactionsForToday() {
+        // Load all scheduled transactions from the CSV
+        List<ScheduledTransBean> allScheduledTrans = loadScheduledTrans();
+
+        // Get today's date as the day of the month
+        int today = LocalDate.now().getDayOfMonth();
+
+        // Filter transactions that are due today
+        return allScheduledTrans.stream()
+                .filter(trans -> trans.getDueDate() == today)
+                .collect(Collectors.toList());
+    }
 
 }

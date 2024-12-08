@@ -58,7 +58,7 @@ public class ViewTransactionsController {
 
     	transactionTable.setItems(transactionList);
 
-        // Sort the data by opening date in descending order
+        // Sort the data by transaction date in descending order
     	dateColumn.setSortType(TableColumn.SortType.DESCENDING);
         transactionTable.getSortOrder().add(dateColumn);
         
@@ -161,53 +161,8 @@ public class ViewTransactionsController {
 			}
 		}
 	}
-	@FXML
-	public void handleGoToEmptyPage() {
-	    try {
-	        // Load the empty page
-	        URL url = getClass().getClassLoader().getResource("view/EmptyPage.fxml");
-	        FXMLLoader loader = new FXMLLoader(url);
-	        AnchorPane pane = loader.load();
 
-	        // Display the empty page in the main HBox
-	        HBox mainBox = commonObjs.getMainBox();
-	        if (mainBox.getChildren().size() > 1) {
-	            mainBox.getChildren().remove(1);
-	        }
-	        mainBox.getChildren().add(pane);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-	}
-	@FXML
-	public void handleViewDetails() {
-	    // Get the selected transaction
-	    TransBean selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
-
-	    // Check if a transaction is selected
-	    if (selectedTransaction == null) {
-	        AlertUtility.displayErrorAlert("Please select a transaction to view details.");
-	        return;
-	    }
-
-	    try {
-	        // Load the details page FXML
-	        URL url = getClass().getClassLoader().getResource("view/ViewTransactionDetail.fxml");
-	        FXMLLoader loader = new FXMLLoader(url);
-	        AnchorPane pane = loader.load();
-
-	        // Get the controller and pass the selected transaction's data
-	        ViewTransactionDetailController controller = loader.getController();
-	        controller.setTransactionData(selectedTransaction); // Pass the entire TransBean object
-
-	        // Replace the main content with the details page
-	        HBox mainBox = commonObjs.getMainBox();
-	        if (mainBox.getChildren().size() > 1) {
-	            mainBox.getChildren().remove(1);
-	        }
-	        mainBox.getChildren().add(pane);
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+	@FXML public void showViewReportsOp() {
+		commonObjs.loadPage("view/ViewReports.fxml");
 	}
 }

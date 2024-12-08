@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 public class ViewTransactionDetailController {
 
     // FXML Components for displaying transaction details
+	private String navigationOrigin; // Tracks the page that opened this detail page
     @FXML private Label accountLabel;
     @FXML private Label typeLabel;
     @FXML private Label dateLabel;
@@ -27,36 +28,24 @@ public class ViewTransactionDetailController {
         paymentLabel.setText("Payment: $" + transaction.getPaymentAmount());
         depositLabel.setText("Deposit: $" + transaction.getDepositAmount());
     }
+    /**
+     * Sets the origin page for navigation.
+     * @param origin The originating page, e.g., "ViewReports" or "ViewTransactions".
+     */
+    public void setNavigationOrigin(String origin) {
+        this.navigationOrigin = origin;
+    }
+
+    /**
+     * Handles the Back button to navigate back to the originating page.
+     */
     @FXML
     public void handleBackButton() {
         try {
-            // Navigate back to the ViewTransactions page
-            CommonObjs.getInstance().loadPage("view/ViewTransactions.fxml");
+            // Navigate back to the ViewReports page
+            CommonObjs.getInstance().loadPage("view/ViewReports.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    /**
-     * Handles the Back button to navigate back to the originating page.
-     */
-   /* @FXML
-    public void handleBackButton() {
-        try {
-            // Determine the origin and navigate back to the appropriate page
-            String origin = CommonObjs.getInstance().getNavigationOrigin();
-            if ("account".equals(origin)) {
-                // Navigate back to Transactions by Account
-                CommonObjs.getInstance().loadPage("view/ViewTransactions.fxml");
-            } else if ("type".equals(origin)) {
-                // Navigate back to Transactions by Type
-                CommonObjs.getInstance().loadPage("view/ViewTransactionsByType.fxml");
-            } else {
-                // Fallback to homepage or default page
-                CommonObjs.getInstance().loadPage("view/Homepage.fxml");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    } */
 }

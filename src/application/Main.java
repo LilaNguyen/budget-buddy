@@ -1,5 +1,7 @@
 package application;
 	
+import application.controller.SchedNotification;
+import application.dal.FileDal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +25,11 @@ public class Main extends Application {
 			CommonObjs commonObjs = CommonObjs.getInstance();
 			commonObjs.setMainBox(mainBox);
 			
+			// Initialize FileDal
+            FileDal fileDal = new FileDal();
+
+            // Check for notifications
+            SchedNotification.checkAndAlert(primaryStage, fileDal);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
